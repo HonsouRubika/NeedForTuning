@@ -108,8 +108,8 @@ Material:
     - _ZWrite: 1
     - _gradDir: 0
     - _gradInverse: 0
-    - _gradOffset: 0
-    - _gradPower: 0.8
+    - _gradOffset: 0.39
+    - _gradPower: 2.27
     - _textureOnOFF: 0
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
@@ -117,8 +117,8 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
     - _color: {r: 0, g: 0, b: 0, a: 0}
-    - _color1: {r: 0.46053475, g: 0.7372549, b: 0.25490195, a: 0}
-    - _color2: {r: 0.18039216, g: 0.08540993, b: 0, a: 0}
+    - _color1: {r: 0.41157684, g: 0.5566038, b: 0.112896055, a: 0}
+    - _color2: {r: 0.4245283, g: 0.19478129, b: 0, a: 0}
     - _colorBottom: {r: 0.254717, g: 0.1214628, b: 0.03244037, a: 0}
     - _colorUp: {r: 0.36040404, g: 0.8584906, b: 0.44998497, a: 0}
   m_BuildTextureStacks: []
