@@ -22,6 +22,7 @@ public class CarController : MonoBehaviour
     private uint lanePosition = 1; //value between 0 and 2 : {0,1,2}
 
     //speed
+    public float speedActu = 60f;
     public float changingLaneSpeed = 100f;
     public float changingLaneSpeedLoss = 33f;
 
