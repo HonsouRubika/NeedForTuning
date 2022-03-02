@@ -113,8 +113,8 @@ Material:
     - _gradInverse: 0
     - _gradOffset: 0
     - _gradPower: 1
-    - _offset: 0
-    - _spread: 1
+    - _offset: 0.73
+    - _spread: 7.6
     - _textureOnOFF: 0
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
@@ -122,12 +122,13 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
     - _color: {r: 0, g: 0, b: 0, a: 0}
-    - _color1: {r: 0.25338197, g: 0.735849, b: 0.4204307, a: 0}
-    - _color2: {r: 0.1792453, g: 0.14473274, b: 0, a: 0}
+    - _color1: {r: 0.17063981, g: 0.38679248, b: 0.056559276, a: 0}
+    - _color2: {r: 0.4433962, g: 0.015835578, b: 0, a: 0}
     - _colorBottom: {r: 0.254717, g: 0.1214628, b: 0.03244037, a: 0}
     - _colorUp: {r: 0.36040404, g: 0.8584906, b: 0.44998497, a: 0}
     - _fadeColor: {r: 0.7725491, g: 0.8588236, b: 0.8588236, a: 1}
     - _gradAxis: {r: 0, g: 1, b: 0, a: 0}
+    - _tilingUV: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &4120595606364683137
 MonoBehaviour:

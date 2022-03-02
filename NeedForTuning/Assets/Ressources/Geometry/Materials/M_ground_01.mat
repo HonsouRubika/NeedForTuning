@@ -80,7 +80,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Boolean_22504a3911014f1e8489edd7a30c73c9: 0
+    - Boolean_22504a3911014f1e8489edd7a30c73c9: 1
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -122,12 +122,13 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
     - _color: {r: 0, g: 0, b: 0, a: 0}
-    - _color1: {r: 0.30081308, g: 1, b: 0, a: 1}
-    - _color2: {r: 0.16237986, g: 0.38679248, b: 0.3251491, a: 1}
+    - _color1: {r: 0.3962264, g: 0.0993063, b: 0, a: 1}
+    - _color2: {r: 0.533487, g: 0.6037736, b: 0.3218227, a: 1}
     - _colorBottom: {r: 0.254717, g: 0.1214628, b: 0.03244037, a: 0}
     - _colorUp: {r: 0.36040404, g: 0.8584906, b: 0.44998497, a: 0}
-    - _fadeColor: {r: 0.4503382, g: 0.8301887, b: 0.8301887, a: 1}
+    - _fadeColor: {r: 0.5647059, g: 0.5697799, b: 0.85882354, a: 1}
     - _gradAxis: {r: 0, g: 1, b: 0, a: 0}
+    - _tilingUV: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &4120595606364683137
 MonoBehaviour:
