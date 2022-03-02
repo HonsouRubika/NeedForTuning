@@ -80,6 +80,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Boolean_22504a3911014f1e8489edd7a30c73c9: 0
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -106,6 +107,7 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
+    - _gradAngle: 90
     - _gradDir: 0
     - _gradInverse: 0
     - _gradOffset: 0
@@ -117,10 +119,11 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
     - _color: {r: 0, g: 0, b: 0, a: 0}
-    - _color1: {r: 0.43950152, g: 0.6886792, b: 0.11369702, a: 0}
+    - _color1: {r: 0.027723404, g: 0.8396226, b: 0.67099464, a: 0}
     - _color2: {r: 0.7924528, g: 0.7924528, b: 0.7924528, a: 1}
     - _colorBottom: {r: 0.254717, g: 0.1214628, b: 0.03244037, a: 0}
     - _colorUp: {r: 0.36040404, g: 0.8584906, b: 0.44998497, a: 0}
+    - _fadeColor: {r: 0.7725491, g: 0.8588236, b: 0.8588236, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &4120595606364683137
 MonoBehaviour:
