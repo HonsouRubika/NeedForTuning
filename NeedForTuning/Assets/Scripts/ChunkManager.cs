@@ -23,6 +23,14 @@ public class ChunkManager : MonoBehaviour
     private int totalNbOfLineActu;
     public int nbLineInLD = 5;
 
+    //movement
+    public float speedActu = 6f;
+
+    //start run
+    public bool isRuning = false;
+    public float startTimer = 1f;
+    private float startTimerActu = 0;
+
     void Start()
     {
         //new seed for random
@@ -49,6 +57,17 @@ public class ChunkManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if(startTimerActu != 0 && !isRuning && Time.time > startTimer)
+        {
+            isRuning = true;
+        }
+
+        if (isRuning)
+        {
+            //Debug.Log(speedActu);
+        }
+
         //test
         LineSensor();
     }
@@ -63,7 +82,7 @@ public class ChunkManager : MonoBehaviour
         {
             //run is finished
             Debug.Log("finished");
-            GameManager.Instance.car.GetComponent<CarController>().speedActu = 0;
+            ChunkManager.Instance.speedActu = 0;
         }
     }
 
@@ -74,6 +93,8 @@ public class ChunkManager : MonoBehaviour
         NewLine();
         NewLine();
         NewLine();
+
+        startTimerActu = Time.time + startTimer;
     }
 
     public void NewLine()
@@ -87,19 +108,16 @@ public class ChunkManager : MonoBehaviour
         //column 1
         GameObject newChunk1 = Instantiate<GameObject>(PickChunk());
         newChunk1.transform.position = new Vector3(spawn.x - 5, spawn.y, zPos);
-        newChunk1.GetComponent<Chunk>().StartMovement();
         chunksInLD.Add(newChunk1);
 
         //column 2
         GameObject newChunk2 = Instantiate<GameObject>(PickChunk());
         newChunk2.transform.position = new Vector3(spawn.x, spawn.y, zPos);
-        newChunk2.GetComponent<Chunk>().StartMovement();
         chunksInLD.Add(newChunk2);
 
         //column 3
         GameObject newChunk3 = Instantiate<GameObject>(PickChunk());
         newChunk3.transform.position = new Vector3(spawn.x + 5, spawn.y, zPos);
-        newChunk3.GetComponent<Chunk>().StartMovement();
         chunksInLD.Add(newChunk3);
     }
 

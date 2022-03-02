@@ -54,4 +54,7 @@ MonoBehaviour:
   nbObstacle: 3
   probaObstacleGenerates: 25
   totalNbOfLine: 50
-  nbLineInLD: 8
+  nbLineInLD: 5
+  speedActu: 6
+  isRuning: 0
+  startTimer: 1

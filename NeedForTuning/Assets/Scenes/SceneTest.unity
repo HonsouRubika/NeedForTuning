@@ -579,6 +579,10 @@ PrefabInstance:
       value: ChunkManager
       objectReference: {fileID: 0}
     - target: {fileID: 5477486319280179631, guid: f1496435e148e724e9f11944bc93dba3, type: 3}
+      propertyPath: nbLineInLD
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5477486319280179631, guid: f1496435e148e724e9f11944bc93dba3, type: 3}
       propertyPath: depopLine.z
       value: -15
       objectReference: {fileID: 0}
