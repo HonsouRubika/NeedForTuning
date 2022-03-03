@@ -133,7 +133,7 @@ public class ChunkManager : MonoBehaviour
 
             //TODO: add modules
             //return chunkPrefabs[pickedCHunk];
-            return chunkPrefabs[0];
+            return chunkPrefabs[pickedCHunk];
         }
         else
         {
@@ -144,7 +144,12 @@ public class ChunkManager : MonoBehaviour
 
     public enum Modules
     {
+        empty,
         barrel,
+        waterfall,
+        treeTruck,
+        junk,
+        launchingPad,
         total
     }
 }

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5766956273760319895}
   - component: {fileID: 4664611472413682655}
   m_Layer: 0
-  m_Name: ChunkTest
+  m_Name: ChunkLaunchingPad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d91983010948be145923d6996cc70b84, type: 2}
+  - {fileID: 2100000, guid: fdab6cf534953c94bbbbbf2ab84fcd41, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -92,11 +92,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5901674732227060463}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
+  m_IsTrigger: 1
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!54 &5766956273760319895
 Rigidbody:
   m_ObjectHideFlags: 0
