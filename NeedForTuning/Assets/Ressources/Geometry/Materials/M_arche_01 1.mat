@@ -114,6 +114,7 @@ Material:
     - _gradOffset: 0.75
     - _gradPower: 8
     - _offset: -0.6
+    - _replaceBC: 0
     - _spread: 20
     - _textureOnOFF: 0
     m_Colors:
@@ -128,6 +129,8 @@ Material:
     - _colorUp: {r: 0.36040404, g: 0.8584906, b: 0.44998497, a: 0}
     - _fadeColor: {r: 0.7725491, g: 0.8588236, b: 0.8588236, a: 1}
     - _gradAxis: {r: 0, g: 0, b: 1, a: 0}
+    - _textureOffset: {r: 0, g: 0, b: 0, a: 0}
+    - _textureTiling: {r: 1, g: 1, b: 0, a: 0}
     - _tilingUV: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &4120595606364683137

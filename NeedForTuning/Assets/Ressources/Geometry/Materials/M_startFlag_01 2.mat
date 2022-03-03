@@ -114,6 +114,7 @@ Material:
     - _gradOffset: 0
     - _gradPower: 0.8
     - _offset: -1.58
+    - _replaceBC: 0.6
     - _spread: -0.6
     - _textureOnOFF: 1
     - _tilingX: 0
@@ -124,8 +125,8 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
     - _color: {r: 0, g: 0, b: 0, a: 0}
-    - _color1: {r: 0.3937692, g: 0.08677464, b: 0.735849, a: 1}
-    - _color2: {r: 0, g: 0.9216871, b: 1, a: 1}
+    - _color1: {r: 0.6707013, g: 0.6707013, b: 0.9056604, a: 1}
+    - _color2: {r: 0, g: 0.8773585, b: 0.7775805, a: 1}
     - _colorBottom: {r: 0.254717, g: 0.1214628, b: 0.03244037, a: 0}
     - _colorUp: {r: 0.36040404, g: 0.8584906, b: 0.44998497, a: 0}
     - _fadeColor: {r: 0.7725491, g: 0.8588236, b: 0.8588236, a: 1}
