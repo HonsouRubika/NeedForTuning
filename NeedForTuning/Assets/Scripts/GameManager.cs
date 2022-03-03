@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance;
 
+    public GameObject car;
+
     void Awake()
     {
         #region Make Singleton

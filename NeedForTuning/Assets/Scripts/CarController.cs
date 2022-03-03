@@ -24,6 +24,8 @@ public class CarController : MonoBehaviour
     //speed
     public float changingLaneSpeed = 100f;
     public float changingLaneSpeedLoss = 33f;
+    public float engineAcceleration = 150f; // with deltaTime
+    public float engineMaxSpeed = 10f;
 
     //component
     private Rigidbody rb;
@@ -55,6 +57,7 @@ public class CarController : MonoBehaviour
                 break;
             case (uint)CarState.idle:
                 //TODO : accelerate
+                CarAccelerate();
                 break;
             case (uint)CarState.using_capacity:
                 //TODO
@@ -66,6 +69,24 @@ public class CarController : MonoBehaviour
 
     }
 
+    public void CarAccelerate()
+    {
+        ChunkManager.Instance.speedActu += engineAcceleration * Time.deltaTime;
+        if (ChunkManager.Instance.speedActu > engineMaxSpeed) 
+        {
+            ChunkManager.Instance.speedActu = engineMaxSpeed;
+        }
+    }
+
+    public void CarDecelerate()
+    {
+        ChunkManager.Instance.speedActu -= changingLaneSpeedLoss * Time.deltaTime;
+        if (ChunkManager.Instance.speedActu < 0)
+        {
+            ChunkManager.Instance.speedActu = 0;
+        }
+    }
+
 
     public void ChangeLane()
     {
@@ -75,13 +96,15 @@ public class CarController : MonoBehaviour
                 if (movementInput.x < 0) //left
                 {
                     //do not move
-                    transform.position = new Vector3(lineWidth, transform.position.y, transform.position.z);
+                    transform.position = new Vector3(-lineWidth, transform.position.y, transform.position.z);
                     rb.velocity = new Vector3(0, rb.velocity.y, rb.velocity.z);
+                    carState = (uint)CarState.idle;
 
                 }
                 else if (movementInput.x > 0) // right
                 {
-                    rb.velocity = new Vector3(rb.velocity.x + (changingLaneSpeed * Time.deltaTime), rb.velocity.y, rb.velocity.z - (changingLaneSpeedLoss * Time.deltaTime));
+                    rb.velocity = new Vector3(rb.velocity.x + (changingLaneSpeed * Time.deltaTime), rb.velocity.y, rb.velocity.z);
+                    CarDecelerate();
 
                     if (transform.position.x >= 0)
                     {
@@ -97,7 +120,8 @@ public class CarController : MonoBehaviour
             case 1:
                 if (movementInput.x < 0) //left
                 {
-                    rb.velocity = new Vector3(rb.velocity.x - (changingLaneSpeed * Time.deltaTime), rb.velocity.y, rb.velocity.z - (changingLaneSpeedLoss * Time.deltaTime));
+                    rb.velocity = new Vector3(rb.velocity.x - (changingLaneSpeed * Time.deltaTime), rb.velocity.y, rb.velocity.z);
+                    CarDecelerate();
 
                     if (transform.position.x <= -lineWidth)
                     {
@@ -111,7 +135,8 @@ public class CarController : MonoBehaviour
                 }
                 else if (movementInput.x > 0) // right
                 {
-                    rb.velocity = new Vector3(rb.velocity.x + (changingLaneSpeed * Time.deltaTime), rb.velocity.y, rb.velocity.z - (changingLaneSpeedLoss * Time.deltaTime));
+                    rb.velocity = new Vector3(rb.velocity.x + (changingLaneSpeed * Time.deltaTime), rb.velocity.y, rb.velocity.z);
+                    CarDecelerate();
 
                     if (transform.position.x >= lineWidth)
                     {
@@ -127,7 +152,8 @@ public class CarController : MonoBehaviour
             case 2:
                 if (movementInput.x < 0) //left
                 {
-                    rb.velocity = new Vector3(rb.velocity.x - (changingLaneSpeed * Time.deltaTime), rb.velocity.y, rb.velocity.z - (changingLaneSpeedLoss * Time.deltaTime));
+                    rb.velocity = new Vector3(rb.velocity.x - (changingLaneSpeed * Time.deltaTime), rb.velocity.y, rb.velocity.z);
+                    CarDecelerate();
 
                     if (transform.position.x <= 0)
                     {
@@ -143,6 +169,7 @@ public class CarController : MonoBehaviour
                 {
                     transform.position = new Vector3(lineWidth, transform.position.y, transform.position.z);
                     rb.velocity = new Vector3(0, rb.velocity.y, rb.velocity.z);
+                    carState = (uint)CarState.idle;
                 }
                 break;
         }
