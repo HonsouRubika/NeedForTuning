@@ -8,6 +8,7 @@ public class ChunkManager : MonoBehaviour
     //Singleton
     public static ChunkManager Instance;
 
+    public CarController car;
     public GameObject[] chunkPrefabs;
     public Vector3 spawn;
     public Vector3 depopLine;
@@ -20,7 +21,10 @@ public class ChunkManager : MonoBehaviour
     public uint nbObstacle = 3;
     public float probaObstacleGenerates = 25f; //pourcentage
     public int totalNbOfLine = 50;
-    private int totalNbOfLineActu;
+    [HideInInspector]
+    public int totalNbOfLineActu;
+    public int modulesToCross;
+    
     public int nbLineInLD = 5;
 
     //movement
@@ -100,7 +104,10 @@ public class ChunkManager : MonoBehaviour
     public void NewLine()
     {
         totalNbOfLineActu++;
-
+        if (totalNbOfLineActu == modulesToCross)
+        {
+            car.GetComponent<AbilityController>().StopAbility();
+        }
         //reset var
         alreadyObstacleInLine = false;
         float zPos = chunksInLD.Last().transform.position.z + 5;
