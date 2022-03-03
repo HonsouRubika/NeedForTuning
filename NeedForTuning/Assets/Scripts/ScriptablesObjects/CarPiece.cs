@@ -41,7 +41,7 @@ public class CarPiece : ScriptableObject
     [Header("Resistance")]
     [Range(0, 5)]
     public int resistance;
-    
 
-    
+    [Header("Ability")]
+    public PieceAbility ability;
 }
