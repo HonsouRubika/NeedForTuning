@@ -46,8 +46,12 @@ public class OpeningBooster : MonoBehaviour
         card02 = Instantiate(prefabCard, initialCardPos.position, prefabCard.transform.rotation);
         card03 = Instantiate(prefabCard, initialCardPos.position, prefabCard.transform.rotation);
 
-        openBooster = true;
+        StartCoroutine(BoosterDisapear());
+    }
 
-        Debug.Log("BoosterIsOpen");
+    IEnumerator BoosterDisapear()
+    {
+        yield return new WaitForSeconds(1.5f);
+        openBooster = true;
     }
 }
