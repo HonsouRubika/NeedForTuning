@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CursorController : MonoBehaviour
 {
+    [Header("CURSOR")]
     public Texture2D cursor;
     public Texture2D cursorClicked;
 
@@ -11,6 +12,8 @@ public class CursorController : MonoBehaviour
 
     private Camera mainCamera;
 
+    [Header("CARD INTERACTION")]
+    public bool canInteractWithCards = false;
     [SerializeField]private GameObject cardHit;
 
     private void Awake()
@@ -85,9 +88,12 @@ public class CursorController : MonoBehaviour
                 //Debug.Log("3D Hit: " + hit.collider.tag);
                 if (hit.collider.tag == "Card")
                 {
-                    Debug.Log("Showing The Card");
-                    cardHit = hit.collider.gameObject;
-                    cardHit.GetComponent<Animator>().SetBool("upScale", true);
+                    if (canInteractWithCards)
+                    {
+                        Debug.Log("Showing The Card");
+                        cardHit = hit.collider.gameObject;
+                        cardHit.GetComponent<Animator>().SetBool("upScale", true);
+                    }                    
                 }                
             }                                
 

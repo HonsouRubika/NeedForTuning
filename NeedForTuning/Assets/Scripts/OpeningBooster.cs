@@ -5,7 +5,11 @@ using UnityEngine.UI;
 
 public class OpeningBooster : MonoBehaviour
 {
+    public CursorController cursorController;
+
     public GameObject prefabCard;
+
+    public GameObject button;
 
     private GameObject card01;
     private GameObject card02;
@@ -33,14 +37,16 @@ public class OpeningBooster : MonoBehaviour
         if (openBooster)
         {
             float step = speed * Time.deltaTime;
+
             card01.transform.position = Vector3.MoveTowards(card01.transform.position, targetCard01.position, step);
-            card03.transform.position = Vector3.MoveTowards(card03.transform.position, targetCard03.position, step);
+            card03.transform.position = Vector3.MoveTowards(card03.transform.position, targetCard03.position, step);            
         }        
     }
 
     public void OpenBooster()
     {
         anim.SetBool("openBooster", true);
+        button.SetActive(false);
         
         card01 = Instantiate(prefabCard, initialCardPos.position, prefabCard.transform.rotation);
         card02 = Instantiate(prefabCard, initialCardPos.position, prefabCard.transform.rotation);
@@ -53,5 +59,7 @@ public class OpeningBooster : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
         openBooster = true;
+        yield return new WaitForSeconds(1f);
+        cursorController.canInteractWithCards = true;
     }
 }

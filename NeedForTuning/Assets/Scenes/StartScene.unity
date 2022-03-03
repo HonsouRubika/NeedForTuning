@@ -472,6 +472,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cursor: {fileID: 2800000, guid: fa911b498fdf9d44db913f741c97bee0, type: 3}
   cursorClicked: {fileID: 2800000, guid: cf3195994a2af274fa31a8e4e0263e5c, type: 3}
+  canInteractWithCards: 0
+  cardHit: {fileID: 0}
 --- !u!4 &954423704
 Transform:
   m_ObjectHideFlags: 0
@@ -639,7 +641,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bc9dc184f221e946bc30d7d75de81e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cursorController: {fileID: 954423703}
   prefabCard: {fileID: 8072470096330423336, guid: c22c51ca16065d543a1328ff79d823f5, type: 3}
+  button: {fileID: 1705531981}
   initialCardPos: {fileID: 1699840793}
   targetCard01: {fileID: 1060920100}
   targetCard03: {fileID: 1961685972}
