@@ -13,12 +13,14 @@ public class CarController : MonoBehaviour
         idle, //going strait
         changing_lane, //change de voie
         using_capacity, //est en train d'utiliser une capacite (ex: esquive)
+        inObstacleModule, //ralenti car dans un obsacle
         arrived //a termine la course
     }
 
     //input
     private Vector2 movementInput = Vector2.zero;
     private uint carState = (uint)CarState.idle;
+    private bool inObsacle = false;
     private uint lanePosition = 1; //value between 0 and 2 : {0,1,2}
 
     //speed
@@ -26,6 +28,7 @@ public class CarController : MonoBehaviour
     public float changingLaneSpeedLoss = 33f;
     public float engineAcceleration = 150f; // with deltaTime
     public float engineMaxSpeed = 10f;
+    public float engineMinimumSpeed = 1f;
 
     //component
     private Rigidbody rb;
@@ -50,23 +53,96 @@ public class CarController : MonoBehaviour
 
     private void Update()
     {
+        DetectModule();
+
         switch (carState)
         {
             case (uint)CarState.changing_lane:
+
                 ChangeLane();
+
                 break;
             case (uint)CarState.idle:
+
                 //TODO : accelerate
-                CarAccelerate();
+                if (!inObsacle) CarAccelerate();
+
                 break;
             case (uint)CarState.using_capacity:
+
                 //TODO
+
                 break;
             case (uint)CarState.arrived:
+
                 //TODO: car stopps
+
                 break;
         }
 
+    }
+
+    /*private void OnTriggerStay(Collider other)
+    {
+        switch (other.gameObject.name)
+        {
+            case "ChunkBarrel":
+                CarDecelerate();
+                break;
+            case "ChunkWaterFall":
+                CarDecelerate();
+                break;
+            case "ChunkTreeTrunk":
+                CarDecelerate();
+                break;
+            case "ChunkJunk":
+                CarDecelerate();
+                break;
+            case "ChunkLaunchingPad":
+                CarDecelerate();
+                break;
+        }
+    }*/
+
+    public void DetectModule()
+    {
+        Collider[] module = Physics.OverlapBox(transform.position, transform.localScale);
+
+        if (module.Length > 0)
+        {
+            //Debug.Log("module detected");
+            switch (module[0].gameObject.name)
+            {
+                case "ChunkBarrel(Clone)":
+                    CarInObstacle();
+                    inObsacle = true;
+                    break;
+                case "ChunkWaterFall(Clone)":
+                    CarInObstacle();
+                    inObsacle = true;
+                    break;
+                case "ChunkTreeTrunk(Clone)":
+                    CarInObstacle();
+                    inObsacle = true;
+                    break;
+                case "ChunkJunk(Clone)":
+                    CarInObstacle();
+                    inObsacle = true;
+                    break;
+                case "ChunkLaunchingPad(Clone)":
+                    CarInObstacle();
+                    inObsacle = true;
+                    break;
+                default:
+                    Debug.Log(module[0].gameObject.name);
+                    inObsacle = false;
+                    break;
+            }
+        }
+        else
+        {
+            inObsacle = false;
+        }
     }
 
     public void CarAccelerate()
@@ -84,6 +160,15 @@ public class CarController : MonoBehaviour
         if (ChunkManager.Instance.speedActu < 0)
         {
             ChunkManager.Instance.speedActu = 0;
+        }
+    }
+    
+    public void CarInObstacle()
+    {
+        ChunkManager.Instance.speedActu -= changingLaneSpeedLoss * Time.deltaTime;
+        if (ChunkManager.Instance.speedActu < engineMinimumSpeed)
+        {
+            ChunkManager.Instance.speedActu = engineMinimumSpeed;
         }
     }
 
@@ -173,5 +258,10 @@ public class CarController : MonoBehaviour
                 }
                 break;
         }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        //Gizmos.DrawCube(transform.position, transform.localScale+ new Vector3(0.1f,0.1f,0.1f));
     }
 }

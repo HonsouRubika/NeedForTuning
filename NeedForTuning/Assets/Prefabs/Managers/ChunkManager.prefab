@@ -45,6 +45,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chunkPrefabs:
   - {fileID: 5901674732227060463, guid: b33266959d5f9984d9a0924539bb8e5e, type: 3}
+  - {fileID: 5901674732227060463, guid: ae30d8221dd891c429f9b4990937bbb1, type: 3}
+  - {fileID: 5901674732227060463, guid: ae30d8221dd891c429f9b4990937bbb1, type: 3}
+  - {fileID: 5901674732227060463, guid: ae30d8221dd891c429f9b4990937bbb1, type: 3}
+  - {fileID: 5901674732227060463, guid: ae30d8221dd891c429f9b4990937bbb1, type: 3}
+  - {fileID: 5901674732227060463, guid: ae30d8221dd891c429f9b4990937bbb1, type: 3}
   spawn: {x: 0, y: -1.51, z: 0}
   depopLine: {x: 0, y: -1.51, z: -15}
   chunksInLD:
