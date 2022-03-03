@@ -2,12 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-enum Abilities { Default,Spring, Dolorean, Bumper, Suspension, Swim, AutoGearbox, Trubo, Nailed, Grip };
-
 [CreateAssetMenu(fileName = "New Car Piece", menuName ="CarPiece",order = 50)]
 public class CarPiece : ScriptableObject
 {
-    
     public new string name;
     public Sprite image;
 
@@ -46,6 +43,5 @@ public class CarPiece : ScriptableObject
     public int resistance;
 
     [Header("Ability")]
-    [SerializeField]
-    Abilities abilities;
+    public PieceAbility ability;
 }

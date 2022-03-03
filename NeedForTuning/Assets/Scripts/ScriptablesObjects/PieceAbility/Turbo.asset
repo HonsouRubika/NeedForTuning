@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3a28a41865cffb347867ffd1eac6be71, type: 3}
-  m_Name: Spring
+  m_Name: Turbo
   m_EditorClassIdentifier: 
-  name: Spring
+  name: Turbo
   image: {fileID: 0}
   efficiencyConcrete: 2
   efficiencySand: 1
-  efficiencyIce: 1
-  efficiencyBump: 1
-  moduleDistance: 2
-  utilisationNumber: 1
+  efficiencyIce: 2
+  efficiencyBump: 0
+  moduleDistance: 3
+  utilisationNumber: 2
