@@ -333,7 +333,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d9cac52a16049fe40a3e85a148add9ac, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.9
+      value: -0.86
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d9cac52a16049fe40a3e85a148add9ac, type: 3}
       propertyPath: m_LocalPosition.y
@@ -341,7 +341,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d9cac52a16049fe40a3e85a148add9ac, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 28.7
+      value: -2.46
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d9cac52a16049fe40a3e85a148add9ac, type: 3}
       propertyPath: m_LocalRotation.w
@@ -375,6 +375,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Banderole
       objectReference: {fileID: 0}
+    - target: {fileID: 5694059874591286030, guid: d9cac52a16049fe40a3e85a148add9ac, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d007bb599e8bf04796696f4014f8cbe, type: 2}
+    - target: {fileID: 6841003676236821729, guid: d9cac52a16049fe40a3e85a148add9ac, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 122001bb44cf703418e7af6c5622c203, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9cac52a16049fe40a3e85a148add9ac, type: 3}
 --- !u!1001 &276093325
@@ -944,6 +952,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 617860102192275844, guid: b744e508efeed9442aa284efeb6ffbba, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 122001bb44cf703418e7af6c5622c203, type: 2}
     - target: {fileID: 919132149155446097, guid: b744e508efeed9442aa284efeb6ffbba, type: 3}
       propertyPath: m_Name
       value: SM_Tente
