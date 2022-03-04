@@ -129,18 +129,18 @@ public class ChunkManager : MonoBehaviour
         float zPos = chunksInLD.Last().transform.position.z + 5;
 
         //column 1
-        GameObject newChunk1 = Instantiate<GameObject>(PickChunk());
-        newChunk1.transform.position = new Vector3(spawn.x - 5, spawn.y, zPos);
+        GameObject chunk1 = PickChunk();
+        GameObject newChunk1 = Instantiate<GameObject>(chunk1, new Vector3(spawn.x - 5, spawn.y, zPos), chunk1.transform.rotation);
         chunksInLD.Add(newChunk1);
 
         //column 2
-        GameObject newChunk2 = Instantiate<GameObject>(PickChunk());
-        newChunk2.transform.position = new Vector3(spawn.x, spawn.y, zPos);
+        GameObject chunk2 = PickChunk();
+        GameObject newChunk2 = Instantiate<GameObject>(chunk2, new Vector3(spawn.x, spawn.y, zPos), chunk2.transform.rotation);
         chunksInLD.Add(newChunk2);
 
         //column 3
-        GameObject newChunk3 = Instantiate<GameObject>(PickChunk());
-        newChunk3.transform.position = new Vector3(spawn.x + 5, spawn.y, zPos);
+        GameObject chunk3 = PickChunk();
+        GameObject newChunk3 = Instantiate<GameObject>(chunk3, new Vector3(spawn.x + 5, spawn.y, zPos), chunk3.transform.rotation);
         chunksInLD.Add(newChunk3);
     }
 
