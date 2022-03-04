@@ -212,6 +212,8 @@ public class ChunkManager : MonoBehaviour
         treeTruck,
         junk,
         launchingPad,
+        ice, //debug
+        sand, //debug
         total
     }
 
