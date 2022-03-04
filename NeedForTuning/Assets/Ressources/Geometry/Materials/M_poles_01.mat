@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_arche_01 1
+  m_Name: M_poles_01
   m_Shader: {fileID: -6465566751694194690, guid: 4570d116a8cf9ab41b8e8abd003daf85, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -64,7 +64,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _texture2D:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: e7ac3972700a5414fbe46d943e13444d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -110,28 +110,31 @@ Material:
     - _fadeDistance: 50
     - _gradAngle: 0
     - _gradDir: 0
-    - _gradInverse: 1
-    - _gradOffset: 0.75
-    - _gradPower: 8
-    - _offset: -0.6
+    - _gradInverse: 0
+    - _gradOffset: 0
+    - _gradPower: 0.8
+    - _offset: 0
     - _replaceBC: 0
-    - _spread: 20
-    - _textureOnOFF: 0
+    - _spread: 1
+    - _textureOnOFF: 1
+    - _tilingX: 0
+    - _tilingY: 0
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
     - _color: {r: 0, g: 0, b: 0, a: 0}
-    - _color1: {r: 1, g: 0, b: 0, a: 1}
-    - _color2: {r: 1, g: 0.5928419, b: 0, a: 1}
+    - _color1: {r: 0.8207547, g: 0.5594773, b: 0.45296368, a: 1}
+    - _color2: {r: 0.3773585, g: 0.2290913, b: 0.20825917, a: 1}
     - _colorBottom: {r: 0.254717, g: 0.1214628, b: 0.03244037, a: 0}
     - _colorUp: {r: 0.36040404, g: 0.8584906, b: 0.44998497, a: 0}
     - _fadeColor: {r: 0.7725491, g: 0.8588236, b: 0.8588236, a: 1}
     - _gradAxis: {r: 0, g: 0, b: 1, a: 0}
     - _textureOffset: {r: 0, g: 0, b: 0, a: 0}
-    - _textureTiling: {r: 1, g: 1, b: 0, a: 0}
-    - _tilingUV: {r: 1, g: 1, b: 0, a: 0}
+    - _textureTiling: {r: 0.25, g: 0.25, b: 0, a: 0}
+    - _tiling: {r: 0.2, g: 0.2, b: 0, a: 0}
+    - _tilingUV: {r: 10, g: 10, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &4120595606364683137
 MonoBehaviour:
