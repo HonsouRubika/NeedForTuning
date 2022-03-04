@@ -93,7 +93,7 @@ public class ChunkManager : MonoBehaviour
         {
             NewLine();
         }
-        else if(totalNbOfLineActu >= totalNbOfLine)
+        else if(totalNbOfLineActu >= totalNbOfLine && chunksInLD.Last().transform.position.z + 5 <= car.transform.position.z )
         {
             //run is finished
             Debug.Log("finished");
