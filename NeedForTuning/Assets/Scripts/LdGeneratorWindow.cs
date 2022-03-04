@@ -8,11 +8,12 @@ public class LdGenerator : EditorWindow
     SerializedObject serializedObject;
     LevelProfile currentLevel;
 
-    SerializedProperty nbOfLine, nbObstacle, nbLineInLD, chunks, modules, currentChunkSelected;
+    SerializedProperty nbOfLine, levelType, chunks, modules, currentChunkSelected;
 
     private bool isMouseDown;
     private int marginSize;
     private Vector2 curMousePosition;
+    private int tileActu = 0;
 
     public void InitializeWindow(LevelProfile correspondingLevel)
     {
@@ -20,8 +21,7 @@ public class LdGenerator : EditorWindow
         serializedObject = new SerializedObject(currentLevel);
 
         nbOfLine = serializedObject.FindProperty("nbOfLine");
-        nbObstacle = serializedObject.FindProperty("nbObstacle");
-        nbLineInLD = serializedObject.FindProperty("nbLineInLD");
+        levelType = serializedObject.FindProperty("levelType");
         chunks = serializedObject.FindProperty("chunks");
         modules = serializedObject.FindProperty("modules");
         currentChunkSelected = serializedObject.FindProperty("currentChunkSelected");
@@ -43,12 +43,18 @@ public class LdGenerator : EditorWindow
 
         //
 
-        EditorGUILayout.Space(20);
+        EditorGUILayout.Space(5);
 
 
         #region Chunk Selector
 
         currentLevel.nbOfLine = EditorGUILayout.IntField("nbOfLine", currentLevel.nbOfLine);
+
+        //EditorGUILayout.Space(10);
+
+        EditorGUILayout.PropertyField(levelType);
+
+        EditorGUILayout.Space(10);
 
         EditorGUILayout.BeginHorizontal();
         
@@ -72,6 +78,30 @@ public class LdGenerator : EditorWindow
         EditorGUILayout.Space(10);
 
         EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.Space(5);
+
+        /*EditorGUILayout.BeginHorizontal();
+        
+        EditorGUILayout.LabelField("Current road type : " + levelType.enumValueIndex + " => " + levelType.enumNames[levelType.enumValueIndex]);
+
+        
+        //changer de couleur
+        if (GUILayout.Button("<<"))
+        {
+            if (levelType.enumValueIndex != 0) levelType.enumValueIndex--;
+            else levelType.enumValueIndex = (int)ChunkManager.RoadType.total - 1;
+        }
+        if (GUILayout.Button(">>"))
+        {
+            if (levelType.enumValueIndex != (int)ChunkManager.RoadType.total - 1) levelType.enumValueIndex++;
+            else levelType.enumValueIndex = 0;
+        }
+
+        EditorGUILayout.Space(10);
+
+        EditorGUILayout.EndHorizontal();
+        */
 
         EditorGUILayout.Space(5);
 
@@ -111,7 +141,7 @@ public class LdGenerator : EditorWindow
         EditorGUI.DrawRect(gridArea, new Color(0, 1, 1, 0.3f));
 
 
-        // ignorer après cette ligne -------
+        // affichage des chunks
 
         float cellToSpaceRatio = 4f;
         float totalCellWidth = gridWidth * (cellToSpaceRatio) / (cellToSpaceRatio + 1);
@@ -129,16 +159,16 @@ public class LdGenerator : EditorWindow
 
             //EditorGUILayout.BeginHorizontal();
 
-
             for (int j = 0; j < 3; j++)
             {
                 curX += spaceWidth; // on trace le 1er espace
                 Rect rect = new Rect(curX, curY, cellWidth, cellWidth);
                 curX += cellWidth;
 
-                int tileindex = j * nbOfLine.intValue + i;
-                //int tileindex = 0;
+                //int tileindex = j * nbOfLine.intValue + i;
+                int tileindex = i * 3 + j;
 
+                //detec if left mouse pressed
                 bool isPaintingOverThis = isMouseDown && rect.Contains(Event.current.mousePosition);
                 if (isPaintingOverThis)
                 {
@@ -150,22 +180,34 @@ public class LdGenerator : EditorWindow
                     Color col = Color.magenta;
                     EditorGUI.DrawRect(rect, col);
                     //tilesProp.InsertArrayElementAtIndex(0);
-                    //Debug.Log("oui");
                 }
                 else
                 {
                     if (chunks.arraySize > tileindex)
                     {
+                        //if (tileindex == 0) Debug.Log("ERROR");
                         int enumIndexInPalette = chunks.GetArrayElementAtIndex(tileindex).enumValueIndex;
                         Color col = modules.GetArrayElementAtIndex(enumIndexInPalette).colorValue;
                         EditorGUI.DrawRect(rect, col);
                     }
                     else
                     {
-                        Debug.Log("changement détécté dans la taille de la grid");
-                        Debug.Log("actualisation de la grid size");
+                        //Debug.Log(chunks.arraySize);
+                        //Debug.Log("changement détécté dans la taille de la grid");
+                        //Debug.Log("actualisation de la grid size");
                         //update array size
+                        for (int z = chunks.arraySize-1; z < 3 * nbOfLine.intValue; z++)
+                        {
+                            chunks.InsertArrayElementAtIndex(z);
+                        }
+                        /*
                         chunks.arraySize = 3 * currentLevel.nbOfLine; // le GD a changer la taille de la grid depuis l'editor
+                        for (int i = 0; i < chunks.arraySize; i++)
+                        {
+                            if chunks.InsertArrayElementAtIndex
+                        }
+                        */
+                        
                     }
                 }
             }

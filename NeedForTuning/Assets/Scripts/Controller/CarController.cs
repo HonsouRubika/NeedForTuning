@@ -126,7 +126,7 @@ public class CarController : MonoBehaviour
                     CarInObstacle();
                     inObsacle = true;
                     break;
-                case "ChunkWaterFall(Clone)":
+                case "ChunkWaterfall(Clone)":
                     CarInObstacle();
                     inObsacle = true;
                     break;
