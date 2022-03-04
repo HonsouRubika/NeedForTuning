@@ -29,7 +29,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8629115605035993648}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -55,6 +55,7 @@ MonoBehaviour:
   engineMaxSpeed: 10
   engineMinimumSpeed: 1
   lineWidth: 5
+  jumpPadDistance: 2
 --- !u!114 &4757020060118075399
 MonoBehaviour:
   m_ObjectHideFlags: 0
