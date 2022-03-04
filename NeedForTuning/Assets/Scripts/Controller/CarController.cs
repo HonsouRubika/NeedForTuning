@@ -33,6 +33,9 @@ public class CarController : MonoBehaviour
     public float engineAcceleration = 150f; // with deltaTime
     public float engineMaxSpeed = 10f;
     public float engineMinimumSpeed = 1f;
+    public float minSpdIce = 6f;
+    public float minSpdSand = 3f;
+    public float minSpdBarrel = 1f;
 
     //component
     private Rigidbody rb;
@@ -123,29 +126,36 @@ public class CarController : MonoBehaviour
             {
                 case "ChunkBarrel(Clone)":
                     //abilityController.StopAbility();
-                    CarInObstacle();
+                    CarInObstacle(minSpdBarrel);
                     inObsacle = true;
                     break;
                 case "ChunkWaterFall(Clone)":
-                    CarInObstacle();
+                    CarInObstacle(engineMinimumSpeed);
                     inObsacle = true;
                     break;
                 case "ChunkTreeTrunk(Clone)":
-                    CarInObstacle();
+                    CarInObstacle(engineMinimumSpeed);
                     inObsacle = true;
                     break;
                 case "ChunkJunk(Clone)":
-                    CarInObstacle();
+                    CarInObstacle(engineMinimumSpeed);
                     inObsacle = true;
                     break;
                 case "ChunkLaunchingPad(Clone)":
                     CarJumping();
-                    
-                    
+                    Debug.Log("boing");
+                    break;
+                case "ChunkIce(Clone)":
+                    CarInObstacle(minSpdIce);
+                    inObsacle = true;
+                    break;
+                case "ChunkSand(Clone)":
+                    CarInObstacle(minSpdSand);
+                    inObsacle = true;
                     break;
                 default:
                     Debug.Log(module[0].gameObject.name);
-                    CarInObstacle();
+                    CarInObstacle(minSpdIce);
                     inObsacle = true;
                     break;
             }
@@ -178,14 +188,14 @@ public class CarController : MonoBehaviour
         }
     }
     
-    public void CarInObstacle()
+    public void CarInObstacle(float minSpd)
     {
         if (abilityController.currentAbility != Abilities.Bumper)
         {
             ChunkManager.Instance.speedActu -= changingLaneSpeedLoss * Time.deltaTime;
-            if (ChunkManager.Instance.speedActu < engineMinimumSpeed)
+            if (ChunkManager.Instance.speedActu < minSpd)
             {
-                ChunkManager.Instance.speedActu = engineMinimumSpeed;
+                ChunkManager.Instance.speedActu = minSpd;
             }
         }
         else
@@ -304,6 +314,6 @@ public class CarController : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        //Gizmos.DrawCube(transform.position, transform.localScale+ new Vector3(0.1f,0.1f,0.1f));
+        Gizmos.DrawCube(transform.position, transform.localScale+ new Vector3(0.1f,0.1f,0.1f));
     }
 }

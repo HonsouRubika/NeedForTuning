@@ -54,6 +54,9 @@ MonoBehaviour:
   engineAcceleration: 50
   engineMaxSpeed: 10
   engineMinimumSpeed: 1
+  minSpdIce: 6
+  minSpdSand: 3
+  minSpdBarrel: 1
   lineWidth: 5
   jumpPadDistance: 2
 --- !u!114 &4757020060118075399
