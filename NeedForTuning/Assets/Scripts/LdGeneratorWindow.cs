@@ -14,6 +14,7 @@ public class LdGenerator : EditorWindow
     private int marginSize;
     private Vector2 curMousePosition;
     private int tileActu = 0;
+    private Vector2 scrollPos;
 
     public void InitializeWindow(LevelProfile correspondingLevel)
     {
@@ -42,9 +43,7 @@ public class LdGenerator : EditorWindow
         EditorGUI.EndDisabledGroup();
 
         //
-
         EditorGUILayout.Space(5);
-
 
         #region Chunk Selector
 
@@ -57,10 +56,10 @@ public class LdGenerator : EditorWindow
         EditorGUILayout.Space(10);
 
         EditorGUILayout.BeginHorizontal();
-        
+
         EditorGUILayout.LabelField("Current Brush : " + currentChunkSelected.enumValueIndex + " => " + currentChunkSelected.enumNames[currentChunkSelected.enumValueIndex]);
 
-        
+
         //changer de couleur
         if (GUILayout.Button("<<"))
         {
@@ -137,84 +136,95 @@ public class LdGenerator : EditorWindow
         if (nextRect.y == 0) return;
 
         ///le css c est de la merde
-        Rect gridArea = new Rect(nextRect.x + totalWidth * marginRatio, nextRect.y, gridWidth, (float)nbOfLine.intValue * 53.1f); //ref => r1
+        Rect gridArea = new Rect(nextRect.x + totalWidth * marginRatio, nextRect.y, gridWidth, gridWidth * ((float)nbOfLine.intValue / (float)3)); //ref => r1
         EditorGUI.DrawRect(gridArea, new Color(0, 1, 1, 0.3f));
 
 
         // affichage des chunks
+        float maxHeightAvailable = position.height - nextRect.y - (2 * EditorGUIUtility.singleLineHeight);
+        float visibleAreaHeight = Mathf.Min(gridArea.height, maxHeightAvailable);
 
-        float cellToSpaceRatio = 4f;
-        float totalCellWidth = gridWidth * (cellToSpaceRatio) / (cellToSpaceRatio + 1);
-        float cellWidth = totalCellWidth / 3f;
-        float totalSpaceWidth = gridWidth - totalCellWidth;
-        float spaceWidth = totalSpaceWidth / (3f + 1f);
+        Rect visibleArea = new Rect(gridArea.x, nextRect.y, gridArea.width + 15, visibleAreaHeight);
 
-        Event e = Event.current;
-        bool isClick = e.type == EventType.MouseDown;
-
-        float curY = gridArea.y + spaceWidth;
-        for (int i = 0; i < currentLevel.nbOfLine; i++)
+        scrollPos = GUI.BeginScrollView(visibleArea, scrollPos, gridArea);
         {
-            float curX = gridArea.x;
+            float cellToSpaceRatio = 4f;
+            float totalCellWidth = gridWidth * (cellToSpaceRatio) / (cellToSpaceRatio + 1);
+            float cellWidth = totalCellWidth / 3f;
+            float totalSpaceWidth = gridWidth - totalCellWidth;
+            float spaceWidth = totalSpaceWidth / (3f + 1f);
 
-            //EditorGUILayout.BeginHorizontal();
+            Event e = Event.current;
+            bool isClick = e.type == EventType.MouseDown;
 
-            for (int j = 0; j < 3; j++)
+            float curY = gridArea.y + spaceWidth;
+            for (int i = 0; i < currentLevel.nbOfLine; i++)
             {
-                curX += spaceWidth; // on trace le 1er espace
-                Rect rect = new Rect(curX, curY, cellWidth, cellWidth);
-                curX += cellWidth;
+                float curX = gridArea.x;
 
-                //int tileindex = j * nbOfLine.intValue + i;
-                int tileindex = i * 3 + j;
+                //EditorGUILayout.BeginHorizontal();
 
-                //detec if left mouse pressed
-                bool isPaintingOverThis = isMouseDown && rect.Contains(Event.current.mousePosition);
-                if (isPaintingOverThis)
+                for (int j = 0; j < 3; j++)
                 {
-                    chunks.GetArrayElementAtIndex(tileindex).enumValueIndex = currentChunkSelected.enumValueIndex;
-                }
+                    curX += spaceWidth; // on trace le 1er espace
+                    Rect rect = new Rect(curX, curY, cellWidth, cellWidth);
+                    curX += cellWidth;
 
-                if (modules.arraySize == 0)
-                {
-                    Color col = Color.magenta;
-                    EditorGUI.DrawRect(rect, col);
-                    //tilesProp.InsertArrayElementAtIndex(0);
-                }
-                else
-                {
-                    if (chunks.arraySize > tileindex)
+                    //int tileindex = j * nbOfLine.intValue + i;
+                    int tileindex = i * 3 + j;
+
+                    //detec if left mouse pressed
+                    bool isPaintingOverThis = isMouseDown && rect.Contains(Event.current.mousePosition);
+                    if (isPaintingOverThis)
                     {
-                        //if (tileindex == 0) Debug.Log("ERROR");
-                        int enumIndexInPalette = chunks.GetArrayElementAtIndex(tileindex).enumValueIndex;
-                        Color col = modules.GetArrayElementAtIndex(enumIndexInPalette).colorValue;
+                        chunks.GetArrayElementAtIndex(tileindex).enumValueIndex = currentChunkSelected.enumValueIndex;
+                    }
+
+                    if (modules.arraySize == 0)
+                    {
+                        Color col = Color.magenta;
                         EditorGUI.DrawRect(rect, col);
+                        //tilesProp.InsertArrayElementAtIndex(0);
                     }
                     else
                     {
-                        //Debug.Log(chunks.arraySize);
-                        //Debug.Log("changement détécté dans la taille de la grid");
-                        //Debug.Log("actualisation de la grid size");
-                        //update array size
-                        for (int z = chunks.arraySize-1; z < 3 * nbOfLine.intValue; z++)
+                        if (chunks.arraySize > tileindex)
                         {
-                            chunks.InsertArrayElementAtIndex(z);
+                            //if (tileindex == 0) Debug.Log("ERROR");
+                            int enumIndexInPalette = chunks.GetArrayElementAtIndex(tileindex).enumValueIndex;
+                            Color col = modules.GetArrayElementAtIndex(enumIndexInPalette).colorValue;
+                            EditorGUI.DrawRect(rect, col);
                         }
-                        /*
-                        chunks.arraySize = 3 * currentLevel.nbOfLine; // le GD a changer la taille de la grid depuis l'editor
-                        for (int i = 0; i < chunks.arraySize; i++)
+                        else
                         {
-                            if chunks.InsertArrayElementAtIndex
+                            //Debug.Log(chunks.arraySize);
+                            //Debug.Log("changement détécté dans la taille de la grid");
+                            //Debug.Log("actualisation de la grid size");
+                            //update array size
+                            for (int z = chunks.arraySize - 1; z < 3 * nbOfLine.intValue; z++)
+                            {
+                                chunks.InsertArrayElementAtIndex(z);
+                            }
+                            /*
+                            chunks.arraySize = 3 * currentLevel.nbOfLine; // le GD a changer la taille de la grid depuis l'editor
+                            for (int i = 0; i < chunks.arraySize; i++)
+                            {
+                                if chunks.InsertArrayElementAtIndex
+                            }
+                            */
+
                         }
-                        */
-                        
                     }
                 }
+
+                curY += cellWidth;
+                curY += spaceWidth;
             }
 
-            curY += cellWidth;
-            curY += spaceWidth;
         }
+        // End the scroll view that we began above.
+        GUI.EndScrollView();
+
         #endregion
 
 
