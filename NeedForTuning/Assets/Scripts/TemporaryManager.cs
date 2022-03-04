@@ -4,7 +4,14 @@ using UnityEngine;
 
 public class TemporaryManager : MonoBehaviour
 {
+    [Header("Start Menu")]
+    public GameObject title;
+    public GameObject buttonStart;
     public GameObject clickableStartText;
+
+    [Header("Opening First Booster")]
+    public GameObject booster;
+
     public GameObject blackScreen;
 
     // Start is called before the first frame update
@@ -23,10 +30,14 @@ public class TemporaryManager : MonoBehaviour
 
     IEnumerator TransitionBlackScreen()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         Animator anim = blackScreen.GetComponent<Animator>();
         anim.SetBool("fadeInBlackScreen", true);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.5f);
+        title.SetActive(false);
+        buttonStart.SetActive(false);
+        booster.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
         anim.SetBool("fadeInBlackScreen", false);
     }
 
