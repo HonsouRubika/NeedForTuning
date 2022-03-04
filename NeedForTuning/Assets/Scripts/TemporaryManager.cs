@@ -10,7 +10,10 @@ public class TemporaryManager : MonoBehaviour
     public GameObject clickableStartText;
 
     [Header("Opening First Booster")]
-    public GameObject booster;
+    //Spawn Bulle Texte
+    //Scroll du Booster 
+
+    // Road To Deck Building
 
     public GameObject blackScreen;
 
@@ -36,7 +39,6 @@ public class TemporaryManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         title.SetActive(false);
         buttonStart.SetActive(false);
-        booster.SetActive(true);
         yield return new WaitForSeconds(1.5f);
         anim.SetBool("fadeInBlackScreen", false);
     }
