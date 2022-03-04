@@ -17,6 +17,7 @@ public class TemporaryManager : MonoBehaviour
     {
         Animator anim = clickableStartText.GetComponent<Animator>();
         anim.SetBool("clickToStart", true);
+        blackScreen.SetActive(true);
         StartCoroutine(TransitionBlackScreen());
     }
 
