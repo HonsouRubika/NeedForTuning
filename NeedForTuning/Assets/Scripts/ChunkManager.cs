@@ -24,6 +24,7 @@ public class ChunkManager : MonoBehaviour
     [HideInInspector]
     public int totalNbOfLineActu;
     public int modulesToCross;
+    public int modulesToCrossLaunchPad;
     
     public int nbLineInLD = 5;
 
@@ -107,6 +108,11 @@ public class ChunkManager : MonoBehaviour
         if (totalNbOfLineActu == modulesToCross)
         {
             car.GetComponent<AbilityController>().StopAbility();
+            
+        }
+        if (totalNbOfLineActu == modulesToCrossLaunchPad)
+        {
+            car.EndJump();
         }
         //reset var
         alreadyObstacleInLine = false;

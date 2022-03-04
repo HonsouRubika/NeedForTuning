@@ -6,9 +6,9 @@ public enum Abilities {Default,Spring,AutoGearbox,Dolorean,Grip,Nail,Swim,Suspen
 public class AbilityController : MonoBehaviour
 {
     private CarController car;
-    [HideInInspector] public CarPiece abilityEngine;
-    [HideInInspector] public CarPiece abilityTire;
-    [HideInInspector] public CarPiece abilityChassis;
+    /*[HideInInspector]*/ public CarPiece abilityEngine;
+    /*[HideInInspector]*/ public CarPiece abilityTire;
+    /*[HideInInspector]*/ public CarPiece abilityChassis;
     public Abilities currentAbility;
 
     [Header ("Abilities")]
@@ -22,45 +22,49 @@ public class AbilityController : MonoBehaviour
     
     private void TriggerAbility(PieceAbility ability)
     {
-        switch (abilityEngine.ability.name)
+        if (currentAbility == Abilities.Default)
         {
-            case "Spring":
-                Spring(ability,true);
-                currentAbility = Abilities.Spring;
-                break;
-            case "AutoGearbox":
-                AutoGearbox(ability, true);
-                currentAbility = Abilities.AutoGearbox;
-                break;
-            case "Bumper":
-                Bumper(ability, true);
-                currentAbility = Abilities.Bumper;
-                break;
-            case "Dolorean":
-                Dolorean(ability, true);
-                currentAbility = Abilities.Dolorean;
-                break;
-            case "Grip":
-                Grip(ability, true);
-                currentAbility = Abilities.Grip;
-                break;
-            case "Nail":
-                Nail(ability, true);
-                currentAbility = Abilities.Nail;
-                break;
-            case "Suspension":
-                Suspension(ability, true);
-                currentAbility = Abilities.Suspension;
-                break;
-            case "Swim":
-                Swim(ability, true);
-                currentAbility = Abilities.Swim;
-                break;
-            case "Turbo":
-                Turbo(ability,true);
-                currentAbility = Abilities.Turbo;
-                break;
+            switch (ability.name)
+            {
+                case "Spring":
+                    Spring(ability, true);
+                    currentAbility = Abilities.Spring;
+                    break;
+                case "AutoGearbox":
+                    AutoGearbox(ability, true);
+                    currentAbility = Abilities.AutoGearbox;
+                    break;
+                case "Bumper":
+                    Bumper(ability, true);
+                    currentAbility = Abilities.Bumper;
+                    break;
+                case "Dolorean":
+                    Dolorean(ability, true);
+                    currentAbility = Abilities.Dolorean;
+                    break;
+                case "Grip":
+                    Grip(ability, true);
+                    currentAbility = Abilities.Grip;
+                    break;
+                case "Nail":
+                    Nail(ability, true);
+                    currentAbility = Abilities.Nail;
+                    break;
+                case "Suspension":
+                    Suspension(ability, true);
+                    currentAbility = Abilities.Suspension;
+                    break;
+                case "Swim":
+                    Swim(ability, true);
+                    currentAbility = Abilities.Swim;
+                    break;
+                case "Turbo":
+                    Turbo(ability, true);
+                    currentAbility = Abilities.Turbo;
+                    break;
+            }
         }
+        
     }
     
     public void StopAbility()
@@ -68,41 +72,51 @@ public class AbilityController : MonoBehaviour
         switch (currentAbility)
         {
             case Abilities.Spring:
-            break;
+                Spring(null, false);
+                break;
             case Abilities.AutoGearbox:
-            break;
+                AutoGearbox(null, false);
+                break;
             case Abilities.Bumper:
-            break;
+                Bumper(null, false);
+                break;
             case Abilities.Dolorean:
-            break;
+                Dolorean(null, false);
+                break;
             case Abilities.Grip:
-            break;
+                Grip(null, false);
+                break;
             case Abilities.Nail:
-            break;
+                Nail(null, false);
+                break;
             case Abilities.Suspension:
-            break;
+                Suspension(null, false);
+                break;
             case Abilities.Swim:
-            break;
+                Swim(null, false);
+                break;
             case Abilities.Turbo:
-            Turbo(null,false);
-            break;
+                Turbo(null,false);
+                break;
 
             
         }
     }
     #region Trigger Ability
-    private void ClickEngine()
+    public void ClickEngine()
     {
         TriggerAbility(abilityEngine.ability);
+        
     }
 
-    private void ClickTire()
+    public void ClickTire()
     {
         TriggerAbility(abilityTire.ability);
+        
     }
 
 
-    private void ClickChassis()
+    public void ClickChassis()
     {
         TriggerAbility(abilityChassis.ability);
     }
@@ -137,11 +151,14 @@ public class AbilityController : MonoBehaviour
 
     private void Turbo(PieceAbility ability,bool enabled)
     {
+        
         if (enabled)
         {
+            
             ChunkManager.Instance.modulesToCross = ChunkManager.Instance.totalNbOfLineActu + ability.moduleDistance;
             
             ChunkManager.Instance.speedActu = car.engineMaxSpeed * turboMultiplier;
+            
         }
         else
         {
@@ -155,8 +172,10 @@ public class AbilityController : MonoBehaviour
     #region Tire Ability
     private void Spring(PieceAbility ability, bool enabled)
     {
+        
         if (enabled)
         {
+            
             ChunkManager.Instance.modulesToCross = ChunkManager.Instance.totalNbOfLineActu + ability.moduleDistance;
             gameObject.transform.position = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + jumpHeight);
         }

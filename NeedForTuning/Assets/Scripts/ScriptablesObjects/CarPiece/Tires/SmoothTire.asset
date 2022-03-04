@@ -22,8 +22,9 @@ MonoBehaviour:
   accelerationSand: 2
   accelerationIce: 3
   accelerationBump: 1
-  adhesionConcrete: 4
-  adhesionSand: 1
-  adhesionIce: 1
-  adhesionBump: 0
+  gripConcrete: 0
+  gripSand: 0
+  gripIce: 0
+  gripBump: 0
   resistance: 1
+  ability: {fileID: 11400000, guid: 30f36686e5bead3499678f0dea667402, type: 2}
