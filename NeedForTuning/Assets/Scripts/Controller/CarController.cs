@@ -24,6 +24,7 @@ public class CarController : MonoBehaviour
     private Vector2 movementInput = Vector2.zero;
     private uint carState = (uint)CarState.idle;
     private bool inObsacle = false;
+    
     private uint lanePosition = 1; //value between 0 and 2 : {0,1,2}
 
     //speed
@@ -39,6 +40,8 @@ public class CarController : MonoBehaviour
     //level ref
     public float lineWidth = 5;
 
+    //JumpPad
+    public int jumpPadDistance = 2;
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -70,6 +73,7 @@ public class CarController : MonoBehaviour
 
                 //TODO : accelerate
                 if (!inObsacle) CarAccelerate();
+                
 
                 break;
             case (uint)CarState.using_capacity:
@@ -135,8 +139,9 @@ public class CarController : MonoBehaviour
                     inObsacle = true;
                     break;
                 case "ChunkLaunchingPad(Clone)":
-                    CarInObstacle();
-                    inObsacle = true;
+                    CarJumping();
+                    
+                    
                     break;
                 default:
                     Debug.Log(module[0].gameObject.name);
@@ -148,6 +153,7 @@ public class CarController : MonoBehaviour
         else
         {
             inObsacle = false;
+            
         }
     }
 
@@ -189,7 +195,25 @@ public class CarController : MonoBehaviour
         }
         
     }
+    public void CarJumping()
+    {
+        gameObject.transform.position = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + abilityController.jumpHeight);
 
+        if (abilityController.currentAbility != Abilities.Turbo)
+        {    
+            ChunkManager.Instance.modulesToCrossLaunchPad = ChunkManager.Instance.totalNbOfLineActu + jumpPadDistance;
+        }
+        else
+        {
+            ChunkManager.Instance.modulesToCrossLaunchPad = ChunkManager.Instance.totalNbOfLineActu + (int)(jumpPadDistance * abilityController.turboMultiplier);
+        }
+
+    }
+
+    public void EndJump()
+    {
+        gameObject.transform.position = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - abilityController.jumpHeight);
+    }
 
     public void ChangeLane()
     {
