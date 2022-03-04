@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-enum Abilities {Spring,AutoGearbox,Dolorean,Grip,Nail,Swim,Suspension,Turbo,Bumper}
+public enum Abilities {Default,Spring,AutoGearbox,Dolorean,Grip,Nail,Swim,Suspension,Turbo,Bumper}
 public class AbilityController : MonoBehaviour
 {
     private CarController car;
     [HideInInspector] public CarPiece abilityEngine;
     [HideInInspector] public CarPiece abilityTire;
     [HideInInspector] public CarPiece abilityChassis;
-    private Abilities currentAbility;
+    public Abilities currentAbility;
 
     [Header ("Abilities")]
     public float turboMultiplier;
+    public float jumpHeight;
+
     private void Start()
     {
         car = GetComponent<CarController>();
@@ -23,35 +25,35 @@ public class AbilityController : MonoBehaviour
         switch (abilityEngine.ability.name)
         {
             case "Spring":
-                Spring(ability);
+                Spring(ability,true);
                 currentAbility = Abilities.Spring;
                 break;
             case "AutoGearbox":
-                AutoGearbox(ability);
+                AutoGearbox(ability, true);
                 currentAbility = Abilities.AutoGearbox;
                 break;
             case "Bumper":
-                Bumper(ability);
+                Bumper(ability, true);
                 currentAbility = Abilities.Bumper;
                 break;
             case "Dolorean":
-                Dolorean(ability);
+                Dolorean(ability, true);
                 currentAbility = Abilities.Dolorean;
                 break;
             case "Grip":
-                Grip(ability);
+                Grip(ability, true);
                 currentAbility = Abilities.Grip;
                 break;
             case "Nail":
-                Nail(ability);
+                Nail(ability, true);
                 currentAbility = Abilities.Nail;
                 break;
             case "Suspension":
-                Suspension(ability);
+                Suspension(ability, true);
                 currentAbility = Abilities.Suspension;
                 break;
             case "Swim":
-                Swim(ability);
+                Swim(ability, true);
                 currentAbility = Abilities.Swim;
                 break;
             case "Turbo":
@@ -107,14 +109,30 @@ public class AbilityController : MonoBehaviour
     #endregion
 
     #region Engine Ability
-    private void Grip(PieceAbility ability)
+    private void Grip(PieceAbility ability, bool enabled)
     {
-
+        if (enabled)
+        {
+            ChunkManager.Instance.modulesToCross = ChunkManager.Instance.totalNbOfLineActu + ability.moduleDistance;
+        }
+        else
+        {
+            ChunkManager.Instance.speedActu = car.engineMaxSpeed;
+            currentAbility = Abilities.Default;
+        }
     }
 
-    private void AutoGearbox(PieceAbility ability)
+    private void AutoGearbox(PieceAbility ability, bool enabled)
     {
-
+        if (enabled)
+        {
+            ChunkManager.Instance.modulesToCross = ChunkManager.Instance.totalNbOfLineActu + ability.moduleDistance;
+        }
+        else
+        {
+            ChunkManager.Instance.speedActu = car.engineMaxSpeed;
+            currentAbility = Abilities.Default;
+        }
     }
 
     private void Turbo(PieceAbility ability,bool enabled)
@@ -128,42 +146,87 @@ public class AbilityController : MonoBehaviour
         else
         {
             ChunkManager.Instance.speedActu = car.engineMaxSpeed;
+            currentAbility = Abilities.Default;
         }
         
     }
     #endregion
 
     #region Tire Ability
-    private void Spring(PieceAbility ability)
+    private void Spring(PieceAbility ability, bool enabled)
     {
-
+        if (enabled)
+        {
+            ChunkManager.Instance.modulesToCross = ChunkManager.Instance.totalNbOfLineActu + ability.moduleDistance;
+            gameObject.transform.position = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + jumpHeight);
+        }
+        else
+        {
+            gameObject.transform.position = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - jumpHeight);
+            currentAbility = Abilities.Default;
+        }
     }
 
-    private void Dolorean(PieceAbility ability)
+    private void Dolorean(PieceAbility ability, bool enabled)
     {
-
+        if (enabled)
+        {
+            ChunkManager.Instance.modulesToCross = ChunkManager.Instance.totalNbOfLineActu + ability.moduleDistance;
+        }
+        else
+        {
+            currentAbility = Abilities.Default;
+        }
     }
 
-    private void Nail(PieceAbility ability)
+    private void Nail(PieceAbility ability, bool enabled)
     {
-
+        if (enabled)
+        {
+            ChunkManager.Instance.modulesToCross = ChunkManager.Instance.totalNbOfLineActu + ability.moduleDistance;
+        }
+        else
+        {
+            currentAbility = Abilities.Default;
+        }
     }
     #endregion
 
     #region Chassis Ability
-    private void Bumper(PieceAbility ability)
+    private void Bumper(PieceAbility ability, bool enabled)
     {
-
+        if (enabled)
+        {
+            ChunkManager.Instance.modulesToCross = ChunkManager.Instance.totalNbOfLineActu + ability.moduleDistance;
+        }
+        else
+        {
+            currentAbility = Abilities.Default;
+        }
     }
 
-    private void Swim(PieceAbility ability)
+    private void Swim(PieceAbility ability, bool enabled)
     {
-
+        if (enabled)
+        {
+            ChunkManager.Instance.modulesToCross = ChunkManager.Instance.totalNbOfLineActu + ability.moduleDistance;
+        }
+        else
+        {
+            currentAbility = Abilities.Default;
+        }
     }
 
-    private void Suspension(PieceAbility ability)
+    private void Suspension(PieceAbility ability, bool enabled)
     {
-
+        if (enabled)
+        {
+            ChunkManager.Instance.modulesToCross = ChunkManager.Instance.totalNbOfLineActu + ability.moduleDistance;
+        }
+        else
+        {
+            currentAbility = Abilities.Default;
+        }
     }
     #endregion
 }

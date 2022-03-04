@@ -17,6 +17,9 @@ public class CarController : MonoBehaviour
         arrived //a termine la course
     }
 
+    //ref
+    private AbilityController abilityController;
+
     //input
     private Vector2 movementInput = Vector2.zero;
     private uint carState = (uint)CarState.idle;
@@ -39,6 +42,7 @@ public class CarController : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        abilityController = GetComponent<AbilityController>();
     }
 
 
@@ -114,6 +118,7 @@ public class CarController : MonoBehaviour
             switch (module[0].gameObject.name)
             {
                 case "ChunkBarrel(Clone)":
+                    abilityController.StopAbility();
                     CarInObstacle();
                     inObsacle = true;
                     break;
@@ -165,11 +170,19 @@ public class CarController : MonoBehaviour
     
     public void CarInObstacle()
     {
-        ChunkManager.Instance.speedActu -= changingLaneSpeedLoss * Time.deltaTime;
-        if (ChunkManager.Instance.speedActu < engineMinimumSpeed)
+        if (abilityController.currentAbility != Abilities.Bumper)
         {
-            ChunkManager.Instance.speedActu = engineMinimumSpeed;
+            ChunkManager.Instance.speedActu -= changingLaneSpeedLoss * Time.deltaTime;
+            if (ChunkManager.Instance.speedActu < engineMinimumSpeed)
+            {
+                ChunkManager.Instance.speedActu = engineMinimumSpeed;
+            }
         }
+        else
+        {
+            Debug.Log("BUMPER!!!!!!");
+        }
+        
     }
 
 
