@@ -107,6 +107,7 @@ public class ChunkManager : MonoBehaviour
         if (totalNbOfLineActu == modulesToCross)
         {
             car.GetComponent<AbilityController>().StopAbility();
+            Debug.Log("STOP");
         }
         //reset var
         alreadyObstacleInLine = false;

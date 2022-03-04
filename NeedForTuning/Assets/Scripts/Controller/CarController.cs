@@ -118,7 +118,7 @@ public class CarController : MonoBehaviour
             switch (module[0].gameObject.name)
             {
                 case "ChunkBarrel(Clone)":
-                    abilityController.StopAbility();
+                    //abilityController.StopAbility();
                     CarInObstacle();
                     inObsacle = true;
                     break;
@@ -140,7 +140,8 @@ public class CarController : MonoBehaviour
                     break;
                 default:
                     Debug.Log(module[0].gameObject.name);
-                    inObsacle = false;
+                    CarInObstacle();
+                    inObsacle = true;
                     break;
             }
         }
@@ -152,10 +153,13 @@ public class CarController : MonoBehaviour
 
     public void CarAccelerate()
     {
-        ChunkManager.Instance.speedActu += engineAcceleration * Time.deltaTime;
-        if (ChunkManager.Instance.speedActu > engineMaxSpeed) 
+        if (abilityController.currentAbility != Abilities.Turbo)
         {
-            ChunkManager.Instance.speedActu = engineMaxSpeed;
+            ChunkManager.Instance.speedActu += engineAcceleration * Time.deltaTime;
+            if (ChunkManager.Instance.speedActu > engineMaxSpeed)
+            {
+                ChunkManager.Instance.speedActu = engineMaxSpeed;
+            }
         }
     }
 
@@ -180,7 +184,8 @@ public class CarController : MonoBehaviour
         }
         else
         {
-            Debug.Log("BUMPER!!!!!!");
+           
+            CarAccelerate();
         }
         
     }
