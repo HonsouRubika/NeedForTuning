@@ -174,6 +174,14 @@ public class ChunkManager : MonoBehaviour
                     //Debug.Log((totalNbOfChunkActu) + " launchingPad");
                     totalNbOfChunkActu++;
                     return chunkPrefabs[(int)Modules.launchingPad];
+                case Modules.ice:
+                    //Debug.Log((totalNbOfChunkActu) + " launchingPad");
+                    totalNbOfChunkActu++;
+                    return chunkPrefabs[(int)Modules.ice];
+                case Modules.sand:
+                    //Debug.Log((totalNbOfChunkActu) + " launchingPad");
+                    totalNbOfChunkActu++;
+                    return chunkPrefabs[(int)Modules.sand];
                 default:
                     //Debug.Log((totalNbOfChunkActu) + " error");
                     totalNbOfChunkActu++;
