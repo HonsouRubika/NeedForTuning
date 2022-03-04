@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ParticlesInCards
-  m_Shader: {fileID: 4800000, guid: 6e3d4bae59e73584ca7951cee6baef6b, type: 3}
+  m_Name: M_StencilMaskCard
+  m_Shader: {fileID: 4800000, guid: 276be3c8d1244c0428a224d895de7fc8, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -19,18 +19,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _Alpha:
-        m_Texture: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _Tex:
-        m_Texture: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - _Contrast: 1.18
-    - _Opacity: 1.6
-    - _Transparency: 0.5
-    m_Colors:
-    - _Color: {r: 1, g: 0, b: 0.010437012, a: 1}
+    m_Floats: []
+    m_Colors: []
   m_BuildTextureStacks: []
