@@ -368,6 +368,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eedc6f96c838e804389e90b089072f3f, type: 3}
+--- !u!114 &1043111646 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2484660007687885031, guid: eedc6f96c838e804389e90b089072f3f, type: 3}
+  m_PrefabInstance: {fileID: 1043111645}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1915676011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da13c5c4879225d4a8e856e61f9ee232, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1833775124
 GameObject:
   m_ObjectHideFlags: 0
@@ -582,6 +593,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChunkManager
       objectReference: {fileID: 0}
+    - target: {fileID: 5477486319280179631, guid: f1496435e148e724e9f11944bc93dba3, type: 3}
+      propertyPath: car
+      value: 
+      objectReference: {fileID: 1043111646}
     - target: {fileID: 5477486319280179631, guid: f1496435e148e724e9f11944bc93dba3, type: 3}
       propertyPath: depopLine.z
       value: -15

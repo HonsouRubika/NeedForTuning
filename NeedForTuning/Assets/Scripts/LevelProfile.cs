@@ -7,8 +7,7 @@ public class LevelProfile : ScriptableObject
 {
     public int levelID;
     public int nbOfLine;
-    public uint nbObstacle;
-    public int nbLineInLD = 5;
+    public ChunkManager.RoadType levelType;
     public ChunkManager.Modules[] chunks;
 #if UNITY_EDITOR
     public ChunkManager.Modules currentChunkSelected;

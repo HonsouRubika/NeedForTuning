@@ -10,6 +10,7 @@ public class ChunkManager : MonoBehaviour
 
     public CarController car;
     public GameObject[] chunkPrefabs;
+    public LevelProfile selectedLevel;
     public Vector3 spawn;
     public Vector3 depopLine;
 
@@ -23,6 +24,8 @@ public class ChunkManager : MonoBehaviour
     public int totalNbOfLine = 50;
     [HideInInspector]
     public int totalNbOfLineActu;
+    [HideInInspector]
+    public int totalNbOfChunkActu;
     public int modulesToCross;
     
     public int nbLineInLD = 5;
@@ -41,6 +44,7 @@ public class ChunkManager : MonoBehaviour
         Random.InitState((int)Time.time);
 
         totalNbOfLineActu = 1;
+        totalNbOfChunkActu = 0;
         InitLD();
     }
     void Awake()
@@ -61,6 +65,12 @@ public class ChunkManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        //load level
+        if (selectedLevel != null)
+        {
+            totalNbOfLine = selectedLevel.nbOfLine;
+        }
 
         if(startTimerActu != 0 && !isRuning && Time.time > startTimer)
         {
@@ -130,22 +140,61 @@ public class ChunkManager : MonoBehaviour
 
     public GameObject PickChunk()
     {
-        float diceRoll = Random.Range(0, 100);
-
-        if(diceRoll < probaObstacleGenerates && !alreadyObstacleInLine)
+        if (selectedLevel != null)
         {
-            //creates obsacle
-            int pickedCHunk = Random.Range(1, (int)Modules.total);
-            alreadyObstacleInLine = true;
-
-            //TODO: add modules
-            //return chunkPrefabs[pickedCHunk];
-            return chunkPrefabs[pickedCHunk];
+            switch (selectedLevel.chunks[totalNbOfChunkActu])
+            {
+                case Modules.empty:
+                    //Debug.Log((totalNbOfChunkActu) + " empty");
+                    totalNbOfChunkActu++;
+                    return chunkPrefabs[(int)Modules.empty];
+                case Modules.barrel:
+                    //Debug.Log((totalNbOfChunkActu) + " barrel");
+                    totalNbOfChunkActu++;
+                    return chunkPrefabs[(int)Modules.barrel];
+                case Modules.waterfall:
+                    //Debug.Log((totalNbOfChunkActu) + " waterfall");
+                    totalNbOfChunkActu++;
+                    return chunkPrefabs[(int)Modules.waterfall];
+                case Modules.treeTruck:
+                    //Debug.Log((totalNbOfChunkActu) + " treeTruck");
+                    totalNbOfChunkActu++;
+                    return chunkPrefabs[(int)Modules.treeTruck];
+                case Modules.junk:
+                    //Debug.Log((totalNbOfChunkActu) + " junk");
+                    totalNbOfChunkActu++;
+                    return chunkPrefabs[(int)Modules.junk];
+                case Modules.launchingPad:
+                    //Debug.Log((totalNbOfChunkActu) + " launchingPad");
+                    totalNbOfChunkActu++;
+                    return chunkPrefabs[(int)Modules.launchingPad];
+                default:
+                    //Debug.Log((totalNbOfChunkActu) + " error");
+                    totalNbOfChunkActu++;
+                    return chunkPrefabs[(int)Modules.empty];
+            }
         }
         else
         {
-            //creates empty chunk
-            return chunkPrefabs[0];
+            float diceRoll = Random.Range(0, 100);
+
+            if (diceRoll < probaObstacleGenerates && !alreadyObstacleInLine)
+            {
+                //creates obsacle
+                int pickedCHunk = Random.Range(1, (int)Modules.total);
+                alreadyObstacleInLine = true;
+
+                //TODO: add modules
+                //return chunkPrefabs[pickedCHunk];
+                totalNbOfChunkActu++;
+                return chunkPrefabs[pickedCHunk];
+            }
+            else
+            {
+                //creates empty chunk
+                totalNbOfChunkActu++;
+                return chunkPrefabs[0];
+            }
         }
     }
 
@@ -159,4 +208,15 @@ public class ChunkManager : MonoBehaviour
         launchingPad,
         total
     }
+
+    public enum RoadType
+    {
+        beton,
+        sable,
+        glace,
+        bosse,
+        total
+    }
+
+
 }

@@ -6,12 +6,14 @@ using UnityEditor;
 [CustomEditor(typeof(LevelProfile))]
 public class LevelProfileInspector : Editor
 {
-    SerializedProperty levelId, modules;
+    SerializedProperty levelId, levelType, modules, nbOfLine;
 
     private void OnEnable()
     {
         levelId = serializedObject.FindProperty("levelID");
+        levelType = serializedObject.FindProperty("levelType");
         modules = serializedObject.FindProperty("modules");
+        nbOfLine = serializedObject.FindProperty("nbOfLine");
     }
 
     public override void OnInspectorGUI()
@@ -20,7 +22,10 @@ public class LevelProfileInspector : Editor
 
         if (GUILayout.Button("Open Window")) OpenWindow();
         EditorGUILayout.PropertyField(levelId);
+        EditorGUILayout.PropertyField(levelType);
+        EditorGUILayout.PropertyField(nbOfLine);
         EditorGUILayout.PropertyField(modules);
+        
 
         serializedObject.ApplyModifiedProperties();
     }
