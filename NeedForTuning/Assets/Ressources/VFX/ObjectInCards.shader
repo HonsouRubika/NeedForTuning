@@ -1,9 +1,11 @@
-Shader "Unlit/ObjectInCards"
+Shader "Custom/ObjectInCards"
 {
     Properties
     {
         _Tex ("InputTex", 2D) = "white" {}
         _Color("Color", Color) = (1,1,1,1)
+        _TexOpacity ("Texture opacity", range(0,1)) = 1
+        _Emissive("Emissive", Color) = (0,0,0,1)
     }
     SubShader
     {
@@ -41,6 +43,8 @@ Shader "Unlit/ObjectInCards"
             sampler2D _Tex;
             float4 _Tex_ST;
             float4 _Color;
+            float _TexOpacity;
+            float4 _Emissive;
 
             v2f vert (appdata v)
             {
@@ -54,7 +58,8 @@ Shader "Unlit/ObjectInCards"
             fixed4 frag (v2f i) : SV_Target
             {
                 // sample the texture
-                fixed4 col = _Color*tex2D(_Tex, i.uv);
+                fixed4 col = lerp(_Color, _Color*tex2D(_Tex, i.uv), _TexOpacity);
+                col *= _Emissive;
                 // apply fog
                 UNITY_APPLY_FOG(i.fogCoord, col);
                 return col;
