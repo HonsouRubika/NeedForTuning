@@ -41,7 +41,7 @@ public class ChunkManager : MonoBehaviour
     public float startTimer = 1f;
     private float startTimerActu = 0;
 
-    AbilityController abilityCar;
+    public AbilityController abilityCar;
     void Start()
     {
         //new seed for random

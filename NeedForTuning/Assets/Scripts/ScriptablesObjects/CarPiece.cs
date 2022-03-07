@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Type { Engine, Tire, Chassis }
 [CreateAssetMenu(fileName = "New Car Piece", menuName ="CarPiece",order = 50)]
+
 public class CarPiece : ScriptableObject
 {
+    public Type type;
     public new string name;
     public Sprite image;
+    public GameObject cardPrefab;
 
     [Header("MaxSpeed")]
     [Range(0,5)]

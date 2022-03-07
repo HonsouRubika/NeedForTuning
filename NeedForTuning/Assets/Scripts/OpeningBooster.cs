@@ -7,7 +7,7 @@ public class OpeningBooster : MonoBehaviour
 {
     public CursorController cursorController;
 
-    public GameObject prefabCard;
+   
 
     public GameObject button;
 
@@ -15,6 +15,10 @@ public class OpeningBooster : MonoBehaviour
     private GameObject card02;
     private GameObject card03;
 
+    [Header("Pieces in Booster")]
+    public CarPiece pieceEngine;
+    public CarPiece pieceTire;
+    public CarPiece pieceChassis;
 
     [Space(20)]
     public Transform initialCardPos;
@@ -48,10 +52,14 @@ public class OpeningBooster : MonoBehaviour
         anim.SetBool("openBooster", true);
         button.SetActive(false);
         
-        card01 = Instantiate(prefabCard, initialCardPos.position, prefabCard.transform.rotation);
-        card02 = Instantiate(prefabCard, initialCardPos.position, prefabCard.transform.rotation);
-        card03 = Instantiate(prefabCard, initialCardPos.position, prefabCard.transform.rotation);
+        card01 = Instantiate(pieceEngine.cardPrefab, initialCardPos.position, pieceEngine.cardPrefab.transform.rotation);
 
+        card02 = Instantiate(pieceTire.cardPrefab, initialCardPos.position, pieceTire.cardPrefab.transform.rotation);
+        card03 = Instantiate(pieceChassis.cardPrefab, initialCardPos.position, pieceChassis.cardPrefab.transform.rotation);
+
+        InventoryManager.Instance.AddPiece(pieceEngine,InventoryManager.Instance.ownedPiecesEngine);
+        InventoryManager.Instance.AddPiece(pieceTire,InventoryManager.Instance.ownedPiecesTire);
+        InventoryManager.Instance.AddPiece(pieceChassis,InventoryManager.Instance.ownedPiecesChassis);
         StartCoroutine(BoosterDisapear());
     }
 

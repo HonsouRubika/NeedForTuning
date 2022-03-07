@@ -53,6 +53,8 @@ public class CarController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         abilityController = GetComponent<AbilityController>();
+
+        
     }
 
 
