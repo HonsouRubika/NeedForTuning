@@ -10,6 +10,8 @@ public class Chunk : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+
+        Debug.Log("create chunk");
     }
 
     // Update is called once per frame
@@ -21,8 +23,9 @@ public class Chunk : MonoBehaviour
         }
 
         //verif if out of camera (passed end line)
-        if (transform.position.z <= ChunkManager.Instance.depopLine.z)
+        if (transform.position.z <= ChunkManager.Instance.depopLine.z && ChunkManager.Instance.isRuning)
         {
+            Debug.Log("destroy chunk");
             ChunkManager.Instance.chunksInLD.Remove(this.gameObject);
             Destroy(this.gameObject);
         }
