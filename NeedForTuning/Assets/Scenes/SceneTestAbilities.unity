@@ -885,8 +885,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2484660007687885031, guid: eedc6f96c838e804389e90b089072f3f, type: 3}
+      propertyPath: minSpdLanding
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2484660007687885031, guid: eedc6f96c838e804389e90b089072f3f, type: 3}
+      propertyPath: engineAcceleration
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2484660007687885031, guid: eedc6f96c838e804389e90b089072f3f, type: 3}
       propertyPath: engineMinimumSpeed
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2484660007687885031, guid: eedc6f96c838e804389e90b089072f3f, type: 3}
+      propertyPath: changingLaneSpeedLoss
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8629115605035993648, guid: eedc6f96c838e804389e90b089072f3f, type: 3}
       propertyPath: m_Name
@@ -1225,9 +1237,12 @@ MonoBehaviour:
   abilityEngine: {fileID: 11400000, guid: 2da5136f79c0765489b2967a309a3ad0, type: 2}
   abilityTire: {fileID: 11400000, guid: bd01661c7dfc061459f7b161086c87ba, type: 2}
   abilityChassis: {fileID: 11400000, guid: 3f024ec34f503f043838cd43d331ced0, type: 2}
-  currentAbility: 0
+  currentAbilityEngine: 0
+  currentAbilityTire: 0
+  currentAbilityChassis: 0
   turboMultiplier: 2.5
   jumpHeight: 2
+  AutoGearBoxRatio: 10
 --- !u!114 &1915676018 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2484660007687885031, guid: eedc6f96c838e804389e90b089072f3f, type: 3}

@@ -23,19 +23,23 @@ public class CarController : MonoBehaviour
     //input
     private Vector2 movementInput = Vector2.zero;
     private uint carState = (uint)CarState.idle;
-    private bool inObsacle = false;
-    
+    private bool inObtsacle = false;
+    private bool collideWithModule = false;
+
     private uint lanePosition = 1; //value between 0 and 2 : {0,1,2}
 
     //speed
     public float changingLaneSpeed = 100f;
     public float changingLaneSpeedLoss = 33f;
+    public float obstacleSpeedLoss = 33f;
+    public float surfaceSpeedLoss = 33f;
     public float engineAcceleration = 150f; // with deltaTime
     public float engineMaxSpeed = 10f;
     public float engineMinimumSpeed = 1f;
     public float minSpdIce = 6f;
     public float minSpdSand = 3f;
-    public float minSpdBarrel = 1f;
+    public float minSpdObstacle = 1f;
+    public float minSpdLanding = 5f;
 
     //component
     private Rigidbody rb;
@@ -75,8 +79,8 @@ public class CarController : MonoBehaviour
             case (uint)CarState.idle:
 
                 //TODO : accelerate
-                if (!inObsacle) CarAccelerate();
-                
+                if (!inObtsacle) CarAccelerate();
+
 
                 break;
             case (uint)CarState.using_capacity:
@@ -126,50 +130,61 @@ public class CarController : MonoBehaviour
             {
                 case "ChunkBarrel(Clone)":
                     //abilityController.StopAbility();
-                    CarInObstacle(minSpdBarrel);
-                    inObsacle = true;
+                    CarInObstacle(minSpdObstacle);
+                    inObtsacle = true;
+
                     break;
                 case "ChunkWaterFall(Clone)":
-                    CarInObstacle(engineMinimumSpeed);
-                    inObsacle = true;
+                    if (abilityController.currentAbilityChassis != Abilities.Swim)
+                    {
+                        CarInObstacle(minSpdObstacle);
+                        inObtsacle = true;
+                    }
                     break;
                 case "ChunkTreeTrunk(Clone)":
-                    CarInObstacle(engineMinimumSpeed);
-                    inObsacle = true;
+                    CarInObstacle(minSpdObstacle);
+                    inObtsacle = true;
+
                     break;
                 case "ChunkJunk(Clone)":
-                    CarInObstacle(engineMinimumSpeed);
-                    inObsacle = true;
+                    CarInObstacle(minSpdObstacle);
+                    inObtsacle = true;
+
                     break;
                 case "ChunkLaunchingPad(Clone)":
                     CarJumping();
                     Debug.Log("boing");
+
                     break;
                 case "ChunkIce(Clone)":
-                    CarInObstacle(minSpdIce);
-                    inObsacle = true;
+                    if (abilityController.currentAbilityTire != Abilities.Nail)
+                    {
+                        CarInSurface(minSpdIce);
+                        inObtsacle = true;
+                    }
+
                     break;
                 case "ChunkSand(Clone)":
-                    CarInObstacle(minSpdSand);
-                    inObsacle = true;
+                    CarInSurface(minSpdSand);
+                    inObtsacle = true;
                     break;
                 default:
                     Debug.Log(module[0].gameObject.name);
-                    CarInObstacle(minSpdIce);
-                    inObsacle = true;
+                    CarInSurface(minSpdIce);
+                    inObtsacle = true;
                     break;
             }
         }
         else
         {
-            inObsacle = false;
-            
+            inObtsacle = false;
+            collideWithModule = false;
         }
     }
 
     public void CarAccelerate()
     {
-        if (abilityController.currentAbility != Abilities.Turbo)
+        if (abilityController.currentAbilityEngine != Abilities.Turbo)
         {
             ChunkManager.Instance.speedActu += engineAcceleration * Time.deltaTime;
             if (ChunkManager.Instance.speedActu > engineMaxSpeed)
@@ -187,30 +202,46 @@ public class CarController : MonoBehaviour
             ChunkManager.Instance.speedActu = 0;
         }
     }
-    
-    public void CarInObstacle(float minSpd)
+    public void CarLanding()
     {
-        if (abilityController.currentAbility != Abilities.Bumper)
+        if (abilityController.currentAbilityChassis != Abilities.Suspension)
         {
-            ChunkManager.Instance.speedActu -= changingLaneSpeedLoss * Time.deltaTime;
+            ChunkManager.Instance.speedActu = minSpdLanding;
+        }
+
+    }
+
+    public void CarInSurface(float minSpd)
+    {
+        if (abilityController.currentAbilityTire != Abilities.Dolorean)
+        {
+            ChunkManager.Instance.speedActu -= surfaceSpeedLoss * Time.deltaTime;
             if (ChunkManager.Instance.speedActu < minSpd)
             {
                 ChunkManager.Instance.speedActu = minSpd;
             }
         }
+
+    }
+    public void CarInObstacle(float minSpd)
+    {
+        if (abilityController.currentAbilityChassis != Abilities.Bumper && !collideWithModule)
+        {
+            collideWithModule = true;
+            ChunkManager.Instance.speedActu = minSpd;
+        }
         else
         {
-           
             CarAccelerate();
         }
-        
+
     }
     public void CarJumping()
     {
         gameObject.transform.position = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + abilityController.jumpHeight);
 
-        if (abilityController.currentAbility != Abilities.Turbo)
-        {    
+        if (abilityController.currentAbilityEngine != Abilities.Turbo)
+        {
             ChunkManager.Instance.modulesToCrossLaunchPad = ChunkManager.Instance.totalNbOfLineActu + jumpPadDistance;
         }
         else
@@ -223,6 +254,7 @@ public class CarController : MonoBehaviour
     public void EndJump()
     {
         gameObject.transform.position = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - abilityController.jumpHeight);
+        CarLanding();
     }
 
     public void ChangeLane()
@@ -314,6 +346,6 @@ public class CarController : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.DrawCube(transform.position, transform.localScale+ new Vector3(0.1f,0.1f,0.1f));
+        Gizmos.DrawCube(transform.position, transform.localScale + new Vector3(0.1f, 0.1f, 0.1f));
     }
 }

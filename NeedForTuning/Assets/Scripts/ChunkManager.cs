@@ -26,7 +26,9 @@ public class ChunkManager : MonoBehaviour
     public int totalNbOfLineActu;
     [HideInInspector]
     public int totalNbOfChunkActu;
-    public int modulesToCross;
+    public int modulesToCrossEngine;
+    public int modulesToCrossTire;
+    public int modulesToCrossChassis;
     public int modulesToCrossLaunchPad;
     
     public int nbLineInLD = 5;
@@ -39,11 +41,12 @@ public class ChunkManager : MonoBehaviour
     public float startTimer = 1f;
     private float startTimerActu = 0;
 
+    AbilityController abilityCar;
     void Start()
     {
         //new seed for random
         Random.InitState((int)Time.time);
-
+        abilityCar = car.GetComponent<AbilityController>();
         totalNbOfLineActu = 1;
         totalNbOfChunkActu = 0;
         InitLD();
@@ -115,10 +118,22 @@ public class ChunkManager : MonoBehaviour
     public void NewLine()
     {
         totalNbOfLineActu++;
-        if (totalNbOfLineActu == modulesToCross)
+        
+        if (totalNbOfLineActu == modulesToCrossEngine)
         {
-            car.GetComponent<AbilityController>().StopAbility();
+            abilityCar.StopAbility(abilityCar.currentAbilityEngine);
             
+        }
+        if (totalNbOfLineActu == modulesToCrossTire)
+        {
+            
+            abilityCar.StopAbility(abilityCar.currentAbilityTire);
+
+        }
+        if (totalNbOfLineActu == modulesToCrossChassis)
+        {
+            abilityCar.StopAbility(abilityCar.currentAbilityChassis);
+
         }
         if (totalNbOfLineActu == modulesToCrossLaunchPad)
         {
