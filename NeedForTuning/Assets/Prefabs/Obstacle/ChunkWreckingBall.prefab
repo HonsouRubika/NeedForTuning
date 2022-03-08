@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a64a79031394bf144b86a7d6780d5725, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 0
 --- !u!1 &5901674732227060463
 GameObject:
   m_ObjectHideFlags: 0
@@ -423,6 +424,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -4685580033295739089, guid: a26f3d1712451634d82b6ab96756f471, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5bbd956b33551e44894b205cda2f73a1, type: 2}
+    - target: {fileID: 716594585982090717, guid: a26f3d1712451634d82b6ab96756f471, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0c3f2f48b7b2ea048a46d9349e4e2f9d, type: 2}
     - target: {fileID: 919132149155446097, guid: a26f3d1712451634d82b6ab96756f471, type: 3}
       propertyPath: m_Name
       value: SM_WreckingBall

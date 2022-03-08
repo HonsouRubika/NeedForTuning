@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fdab6cf534953c94bbbbbf2ab84fcd41, type: 2}
+  - {fileID: 2100000, guid: 0c3f2f48b7b2ea048a46d9349e4e2f9d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -194,7 +194,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 866d26aa85dbff84c8db08060db0d80e, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: f88cc30140deb784b8bb04ff95d33595, type: 2}
+      objectReference: {fileID: 2100000, guid: 1b21eb5354a92504ca17fd6f0de175ba, type: 2}
     - target: {fileID: 919132149155446097, guid: 866d26aa85dbff84c8db08060db0d80e, type: 3}
       propertyPath: m_Name
       value: SM_Muscle_Wreck
