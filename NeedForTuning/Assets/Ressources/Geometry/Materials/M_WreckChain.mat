@@ -117,7 +117,7 @@ Material:
     - _replaceBC: 0
     - _spread: 0.87
     - _texMask: 0
-    - _textureOnOFF: 1
+    - _textureOnOFF: 0
     - _tilingX: 0
     - _tilingY: 0
     m_Colors:
