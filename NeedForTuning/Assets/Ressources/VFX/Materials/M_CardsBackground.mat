@@ -26,6 +26,7 @@ Material:
     m_Floats:
     - _NbPattern: 50
     - _OpacityMask: 0.4
+    - _Speed: 0.25
     - _ThicknessPattern: 0.1
     m_Colors:
     - _Color: {r: 0.8537736, g: 0.996981, b: 1, a: 1}
