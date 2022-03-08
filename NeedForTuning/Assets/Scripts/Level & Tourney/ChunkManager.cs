@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Linq;
 
 public class ChunkManager : MonoBehaviour
@@ -47,11 +48,14 @@ public class ChunkManager : MonoBehaviour
         //new seed for random
         Random.InitState((int)Time.time);
 
-        totalNbOfLineActu = 1;
+        totalNbOfLineActu = 0;
         totalNbOfChunkActu = 0;
 
+        SceneManager.sceneLoaded += OnLoadScene;
+
         //InitLD();
-        Preview();
+        //yield return new WaitUntil(()=>)
+        //Preview();
     }
     void Awake()
     {
@@ -72,12 +76,6 @@ public class ChunkManager : MonoBehaviour
     void Update()
     {
 
-        //load level
-        if (selectedLevel != null)
-        {
-            totalNbOfLine = selectedLevel.nbOfLine;
-        }
-
         if(startTimerActu != 0 && !isRuning && Time.time > startTimer)
         {
             isRuning = true;
@@ -92,17 +90,28 @@ public class ChunkManager : MonoBehaviour
         LineSensor();
     }
 
+    private void OnLoadScene(Scene scene, LoadSceneMode mode)
+    {
+        //CreateChunks
+        //Debug.Log(scene.name);
+        if (scene.name == "SceneTestAbilities")
+        {
+            Preview();
+        }
+    }
+
     public void LineSensor()
     {
         if (isRuning && chunksInLD.Count() < nbLineInLD * 3 && totalNbOfLineActu < totalNbOfLine)
         {
             NewLine();
         }
-        else if(isRuning && totalNbOfLineActu >= totalNbOfLine && chunksInLD.Last().transform.position.z + 5 <= car.transform.position.z)
+        else if(isRuning && totalNbOfLineActu >= totalNbOfLine && chunksInLD.Count() > 0 && chunksInLD.Last().transform.position.z + 5 <= car.transform.position.z)
         {
             //run is finished
-            Debug.Log("finished");
+            //Debug.Log("finished");
             isFinished = true;
+            isRuning = false;
             ChunkManager.Instance.speedActu = 0;
         }
     }
@@ -111,9 +120,20 @@ public class ChunkManager : MonoBehaviour
     {
         ///TODO : set cam
 
+        //reset var
+        isRuning = false;
+        isFinished = false;
+        startTimerActu = 0;
+
+        //get car
+        car = FindObjectOfType<CarController>();
+
         //generate map
         DeleteAllLine();
         StartLine();
+
+        //load level
+        totalNbOfLine = selectedLevel.nbOfLine;
 
         for (int i = 0; i< totalNbOfLine; i++)
         {
@@ -127,9 +147,17 @@ public class ChunkManager : MonoBehaviour
         {
             Destroy(chunksInLD[i].gameObject);
             Destroy(groundsInLD[i].gameObject);
-            chunksInLD.Clear();
-            groundsInLD.Clear();
         }
+        chunksInLD.Clear();
+
+        for (int j=0; j< groundsInLD.Count(); j++)
+        {
+            Destroy(groundsInLD[j].gameObject);
+        }
+        groundsInLD.Clear();
+
+        totalNbOfLineActu = 0;
+        totalNbOfChunkActu = 0;
     }
 
     public void InitLD()
@@ -149,10 +177,12 @@ public class ChunkManager : MonoBehaviour
 
     public void StartLine()
     {
+        totalNbOfLineActu++;
         GameObject chunk1 = chunkPrefabs[(int)Modules.empty];
-        GameObject newChunk1 = Instantiate<GameObject>(chunk1, new Vector3(spawn.x - 5, spawn.y, spawn.z), chunk1.transform.rotation);
+        GameObject newChunk1 = Instantiate(chunk1, new Vector3(spawn.x - 5, spawn.y, spawn.z), chunk1.transform.rotation);
         //ground
         GameObject newGround1 = Instantiate<GameObject>(getGround(selectedLevel.levelType), new Vector3(spawn.x - 5, spawn.y, spawn.z), chunk1.transform.rotation);
+        newGround1.GetComponent<Chunk>().isGround = true;
         chunksInLD.Add(newChunk1);
         groundsInLD.Add(newGround1);
 
@@ -161,6 +191,7 @@ public class ChunkManager : MonoBehaviour
         GameObject newChunk2 = Instantiate<GameObject>(chunk2, new Vector3(spawn.x, spawn.y, spawn.z), chunk2.transform.rotation);
         //ground
         GameObject newGround2 = Instantiate<GameObject>(getGround(selectedLevel.levelType), new Vector3(spawn.x, spawn.y, spawn.z), chunk2.transform.rotation);
+        newGround2.GetComponent<Chunk>().isGround = true;
 
         chunksInLD.Add(newChunk2);
         groundsInLD.Add(newGround2);
@@ -170,6 +201,7 @@ public class ChunkManager : MonoBehaviour
         GameObject newChunk3 = Instantiate<GameObject>(chunk3, new Vector3(spawn.x + 5, spawn.y, spawn.z), chunk3.transform.rotation);
         //ground
         GameObject newGround3 = Instantiate<GameObject>(getGround(selectedLevel.levelType), new Vector3(spawn.x + 5, spawn.y, spawn.z), chunk3.transform.rotation);
+        newGround3.GetComponent<Chunk>().isGround = true;
 
         chunksInLD.Add(newChunk3);
         groundsInLD.Add(newGround3);
@@ -197,6 +229,7 @@ public class ChunkManager : MonoBehaviour
         GameObject newChunk1 = Instantiate<GameObject>(chunk1, new Vector3(spawn.x - 5, spawn.y, zPos), chunk1.transform.rotation);
         //ground
         GameObject newGround1 = Instantiate<GameObject>(getGround(selectedLevel.levelType), new Vector3(spawn.x - 5, spawn.y, zPos), chunk1.transform.rotation);
+        newGround1.GetComponent<Chunk>().isGround = true;
         chunksInLD.Add(newChunk1);
         groundsInLD.Add(newGround1);
 
@@ -205,6 +238,7 @@ public class ChunkManager : MonoBehaviour
         GameObject newChunk2 = Instantiate<GameObject>(chunk2, new Vector3(spawn.x, spawn.y, zPos), chunk2.transform.rotation);
         //ground
         GameObject newGround2 = Instantiate<GameObject>(getGround(selectedLevel.levelType), new Vector3(spawn.x, spawn.y, zPos), chunk2.transform.rotation);
+        newGround2.GetComponent<Chunk>().isGround = true;
 
         chunksInLD.Add(newChunk2);
         groundsInLD.Add(newGround2);
@@ -214,6 +248,7 @@ public class ChunkManager : MonoBehaviour
         GameObject newChunk3 = Instantiate<GameObject>(chunk3, new Vector3(spawn.x + 5, spawn.y, zPos), chunk3.transform.rotation);
         //ground
         GameObject newGround3 = Instantiate<GameObject>(getGround(selectedLevel.levelType), new Vector3(spawn.x + 5, spawn.y, zPos), chunk3.transform.rotation);
+        newGround3.GetComponent<Chunk>().isGround = true;
 
         chunksInLD.Add(newChunk3);
         groundsInLD.Add(newGround3);
@@ -223,8 +258,8 @@ public class ChunkManager : MonoBehaviour
     {
         if (selectedLevel != null)
         {
-            Debug.Log("oui");
-            switch (selectedLevel.chunks[0])
+            //Debug.Log("oui");
+            switch (selectedLevel.chunks[totalNbOfChunkActu])
             {
                 case Modules.empty:
                     //Debug.Log((totalNbOfChunkActu) + " empty");

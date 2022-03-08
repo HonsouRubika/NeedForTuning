@@ -6,12 +6,11 @@ public class Chunk : MonoBehaviour
 {
     //component
     private Rigidbody rb;
+    public bool isGround = false;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-
-        Debug.Log("create chunk");
     }
 
     // Update is called once per frame
@@ -23,11 +22,20 @@ public class Chunk : MonoBehaviour
         }
 
         //verif if out of camera (passed end line)
-        if (transform.position.z <= ChunkManager.Instance.depopLine.z && ChunkManager.Instance.isRuning)
+        if (ChunkManager.Instance.isRuning && transform.position.z <= ChunkManager.Instance.depopLine.z)
         {
-            Debug.Log("destroy chunk");
-            ChunkManager.Instance.chunksInLD.Remove(this.gameObject);
-            Destroy(this.gameObject);
+            if (!isGround)
+            {
+                //Debug.Log("destroy chunk");
+                ChunkManager.Instance.chunksInLD.Remove(this.gameObject);
+                Destroy(this.gameObject);
+            }
+            else
+            {
+                //Debug.Log("destroy ground");
+                ChunkManager.Instance.groundsInLD.Remove(this.gameObject);
+                Destroy(this.gameObject);
+            }
         }
     }
 }

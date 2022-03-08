@@ -37,19 +37,13 @@ public class LevelManager : MonoBehaviour
         #endregion
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void OnSpace(InputAction.CallbackContext context)
     {
         if (context.started && currentState == LevelState.preview)
         {
             currentState = LevelState.play;
             //passer en game
-            Debug.Log("play");
+            //Debug.Log("play");
             ChunkManager.Instance.InitLD();
         }
         else if(context.started && currentState == LevelState.play && ChunkManager.Instance.isFinished)

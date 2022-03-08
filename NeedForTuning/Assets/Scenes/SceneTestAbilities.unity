@@ -759,6 +759,10 @@ PrefabInstance:
       propertyPath: engineMinimumSpeed
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8268997289470524645, guid: eedc6f96c838e804389e90b089072f3f, type: 3}
+      propertyPath: m_Constraints
+      value: 104
+      objectReference: {fileID: 0}
     - target: {fileID: 8629115605035993648, guid: eedc6f96c838e804389e90b089072f3f, type: 3}
       propertyPath: m_Name
       value: Car

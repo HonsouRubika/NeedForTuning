@@ -124,31 +124,38 @@ public class CarController : MonoBehaviour
             //Debug.Log("module detected");
             switch (module[0].gameObject.name)
             {
+                case "ChunkBarrel":
                 case "ChunkBarrel(Clone)":
                     //abilityController.StopAbility();
                     CarInObstacle(minSpdBarrel);
                     inObsacle = true;
                     break;
-                case "ChunkWaterFall(Clone)":
+                case "ChunkWaterfall":
+                case "ChunkWaterfall(Clone)":
                     CarInObstacle(engineMinimumSpeed);
                     inObsacle = true;
                     break;
+                case "ChunkTreeTrunk":
                 case "ChunkTreeTrunk(Clone)":
                     CarInObstacle(engineMinimumSpeed);
                     inObsacle = true;
                     break;
+                case "ChunkJunk":
                 case "ChunkJunk(Clone)":
                     CarInObstacle(engineMinimumSpeed);
                     inObsacle = true;
                     break;
+                case "ChunkLaunchingPad":
                 case "ChunkLaunchingPad(Clone)":
                     CarJumping();
                     Debug.Log("boing");
                     break;
+                case "ChunkIce":
                 case "ChunkIce(Clone)":
                     CarInObstacle(minSpdIce);
                     inObsacle = true;
                     break;
+                case "ChunkSand":
                 case "ChunkSand(Clone)":
                     CarInObstacle(minSpdSand);
                     inObsacle = true;
