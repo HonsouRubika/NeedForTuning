@@ -5,7 +5,11 @@ Shader "Unlit/ParticlesInCards"
         _Tex("InputTex", 2D) = "white" {}
         //_Color("Color", Color) = (1,1,1,1)
         _Contrast("Contrast", float) = 1
-        _Intensity("HDRIntesity", float) = 1
+        _Intensity("HDR Intesity", float) = 1
+        _BoolMask("Opacity Mask ?", range(0,1)) = 0
+        _Mask("Opacity Mask", 2D) = "white" {}
+        _MaskIntensity("Mask Intesity", range(0,1)) = 1
+        _RGB("RGB?", range(0,1)) = 1
     }
     SubShader
     {
@@ -50,6 +54,10 @@ Shader "Unlit/ParticlesInCards"
             //float4 _Color;
             float _Contrast;
             float _Intensity;
+            float _BoolMask;
+            sampler2D _Mask;
+            bool _RGB;
+            float _MaskIntensity;
 
             v2f vert (appdata v)
             {
@@ -63,9 +71,16 @@ Shader "Unlit/ParticlesInCards"
 
             fixed4 frag(v2f i) : SV_Target
             {
+                fixed4 _Texture = tex2D(_Tex,i.uv);
+                _Texture = _RGB ? _Texture : _Texture.r;
+
                 // sample the texture
-                fixed4 col = i.color*tex2D(_Tex, i.uv)*_Contrast;
-                //col.rgb *= col.a;
+                fixed4 col = i.color*_Texture*_Contrast; //tex2D(_Tex, i.uv)
+
+                if (_BoolMask == 1) {
+                    float testVal = col.r + col.g + col.b - 0.001;
+                    clip(col.a - _MaskIntensity);
+                }
      
                 // apply fog
                 UNITY_APPLY_FOG(i.fogCoord, col);
