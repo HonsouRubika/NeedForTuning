@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc58bd786dc5f494cb4e548cf1bc665b, type: 3}
   m_Name: SteamEngine
   m_EditorClassIdentifier: 
+  type: 0
   name: SteamEngine
   image: {fileID: 0}
+  cardPrefab: {fileID: 0}
   maxSpeedConcrete: 3
   maxSpeedSand: 4
   maxSpeedIce: 1
@@ -22,9 +24,9 @@ MonoBehaviour:
   accelerationSand: 4
   accelerationIce: 2
   accelerationBump: 3
-  gripConcrete: 0
-  gripSand: 0
-  gripIce: 0
-  gripBump: 0
+  gripConcrete: 3
+  gripSand: 4
+  gripIce: 2
+  gripBump: 3
   resistance: 2
   ability: {fileID: 11400000, guid: 60bf6944d98d13f43bc74fca69f1019f, type: 2}

@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc58bd786dc5f494cb4e548cf1bc665b, type: 3}
   m_Name: ElectricEngine
   m_EditorClassIdentifier: 
+  type: 0
   name: ElectricEngine
   image: {fileID: 0}
+  cardPrefab: {fileID: 0}
   maxSpeedConcrete: 4
   maxSpeedSand: 2
   maxSpeedIce: 3
@@ -22,8 +24,9 @@ MonoBehaviour:
   accelerationSand: 3
   accelerationIce: 4
   accelerationBump: 2
-  adhesionConcrete: 4
-  adhesionSand: 2
-  adhesionIce: 3
-  adhesionBump: 2
+  gripConcrete: 4
+  gripSand: 2
+  gripIce: 3
+  gripBump: 2
   resistance: 3
+  ability: {fileID: 0}

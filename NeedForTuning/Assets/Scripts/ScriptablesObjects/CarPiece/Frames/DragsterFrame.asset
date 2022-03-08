@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc58bd786dc5f494cb4e548cf1bc665b, type: 3}
   m_Name: DragsterFrame
   m_EditorClassIdentifier: 
+  type: 0
   name: DragsterFrame
   image: {fileID: 0}
+  cardPrefab: {fileID: 0}
   maxSpeedConcrete: 5
   maxSpeedSand: 3
   maxSpeedIce: 4
@@ -22,8 +24,9 @@ MonoBehaviour:
   accelerationSand: 4
   accelerationIce: 4
   accelerationBump: 3
-  adhesionConcrete: 0
-  adhesionSand: 0
-  adhesionIce: 0
-  adhesionBump: 0
+  gripConcrete: 5
+  gripSand: 3
+  gripIce: 4
+  gripBump: 3
   resistance: 0
+  ability: {fileID: 0}

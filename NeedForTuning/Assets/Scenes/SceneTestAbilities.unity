@@ -885,8 +885,28 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2484660007687885031, guid: eedc6f96c838e804389e90b089072f3f, type: 3}
+      propertyPath: minSpdIce
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2484660007687885031, guid: eedc6f96c838e804389e90b089072f3f, type: 3}
+      propertyPath: minSpdSand
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2484660007687885031, guid: eedc6f96c838e804389e90b089072f3f, type: 3}
+      propertyPath: minSpdBumps
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2484660007687885031, guid: eedc6f96c838e804389e90b089072f3f, type: 3}
       propertyPath: minSpdLanding
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2484660007687885031, guid: eedc6f96c838e804389e90b089072f3f, type: 3}
+      propertyPath: engineMaxSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2484660007687885031, guid: eedc6f96c838e804389e90b089072f3f, type: 3}
+      propertyPath: minSpdObstacle
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2484660007687885031, guid: eedc6f96c838e804389e90b089072f3f, type: 3}
       propertyPath: engineAcceleration
@@ -899,6 +919,38 @@ PrefabInstance:
     - target: {fileID: 2484660007687885031, guid: eedc6f96c838e804389e90b089072f3f, type: 3}
       propertyPath: changingLaneSpeedLoss
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2484660007687885031, guid: eedc6f96c838e804389e90b089072f3f, type: 3}
+      propertyPath: engineAccelerationIce
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2484660007687885031, guid: eedc6f96c838e804389e90b089072f3f, type: 3}
+      propertyPath: engineAccelerationSand
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2484660007687885031, guid: eedc6f96c838e804389e90b089072f3f, type: 3}
+      propertyPath: engineAccelerationBumps
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2484660007687885031, guid: eedc6f96c838e804389e90b089072f3f, type: 3}
+      propertyPath: changingLaneSpeedLossIce
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 2484660007687885031, guid: eedc6f96c838e804389e90b089072f3f, type: 3}
+      propertyPath: changingLaneSpeedLossSand
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 2484660007687885031, guid: eedc6f96c838e804389e90b089072f3f, type: 3}
+      propertyPath: changingLaneSpeedLossBumps
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 2484660007687885031, guid: eedc6f96c838e804389e90b089072f3f, type: 3}
+      propertyPath: engineAccelerationConcrete
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2484660007687885031, guid: eedc6f96c838e804389e90b089072f3f, type: 3}
+      propertyPath: changingLaneSpeedLossConcrete
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 8629115605035993648, guid: eedc6f96c838e804389e90b089072f3f, type: 3}
       propertyPath: m_Name
@@ -991,6 +1043,42 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1 &1101330236 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1783166034375803580, guid: 6bedef4ae69662346b37399ffedc4dc3, type: 3}
+  m_PrefabInstance: {fileID: 1783166035722225218}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1101330237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101330236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84886d7e62610e34b9ff9b377ccd9970, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownedPiecesEngine: []
+  ownedPiecesTire: []
+  ownedPiecesChassis: []
+  engine: {fileID: 11400000, guid: a4bd023b36365cf4682670bed133aa76, type: 2}
+  tire: {fileID: 11400000, guid: 307d00b9a011524428593ceb42e962df, type: 2}
+  chassis: {fileID: 11400000, guid: a88ddc27178156b419d02d26a4bd9eeb, type: 2}
+  maxSpeedConcrete: 0.8
+  maxSpeedSand: 0.4
+  maxSpeedIce: 0.8
+  maxSpeedBump: 0.4
+  accelerationConcrete: 0.8
+  accelerationSand: 0.6
+  accelerationIce: 0.6
+  accelerationBump: 0.4
+  gripConcrete: 0.8
+  gripSand: 0.4
+  gripIce: 0.6
+  gripBump: 0.4
+  resistance: 0.4
 --- !u!1 &1540566355
 GameObject:
   m_ObjectHideFlags: 0

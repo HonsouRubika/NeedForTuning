@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc58bd786dc5f494cb4e548cf1bc665b, type: 3}
   m_Name: OffRoadTire
   m_EditorClassIdentifier: 
+  type: 0
   name: OffRoadTire
   image: {fileID: 0}
+  cardPrefab: {fileID: 0}
   maxSpeedConcrete: 2
   maxSpeedSand: 3
   maxSpeedIce: 2
@@ -22,8 +24,9 @@ MonoBehaviour:
   accelerationSand: 1
   accelerationIce: 0
   accelerationBump: 1
-  adhesionConcrete: 4
-  adhesionSand: 4
-  adhesionIce: 2
-  adhesionBump: 3
+  gripConcrete: 2
+  gripSand: 3
+  gripIce: 2
+  gripBump: 3
   resistance: 4
+  ability: {fileID: 0}

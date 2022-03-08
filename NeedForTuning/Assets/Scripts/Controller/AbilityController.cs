@@ -25,8 +25,14 @@ public class AbilityController : MonoBehaviour
     private void Start()
     {
         car = GetComponent<CarController>();
+        AttributePieces();
     }
-
+    void AttributePieces()
+    {
+        abilityEngine = InventoryManager.Instance.engine;
+        abilityTire = InventoryManager.Instance.tire;
+        abilityChassis = InventoryManager.Instance.chassis;
+    }
     private void TriggerAbility(PieceAbility ability)
     {
 
@@ -135,13 +141,13 @@ public class AbilityController : MonoBehaviour
     {
         if (enabled)
         {
-            GripLaneChange = car.changingLaneSpeedLoss;
+            GripLaneChange = car.changingLaneSpeedLossConcrete;
             ChunkManager.Instance.modulesToCrossEngine = ChunkManager.Instance.totalNbOfLineActu + ability.moduleDistance;
-            car.changingLaneSpeedLoss -= GripLaneChange;
+            car.changingLaneSpeedLossConcrete -= GripLaneChange;
         }
         else
         {
-            car.changingLaneSpeedLoss += GripLaneChange;
+            car.changingLaneSpeedLossConcrete += GripLaneChange;
             ChunkManager.Instance.speedActu = car.engineMaxSpeed;
             currentAbilityEngine = Abilities.Default;
         }
@@ -152,12 +158,12 @@ public class AbilityController : MonoBehaviour
         if (enabled)
         {
             ChunkManager.Instance.modulesToCrossEngine = ChunkManager.Instance.totalNbOfLineActu + ability.moduleDistance;
-            car.engineAcceleration *= AutoGearBoxRatio;
+            car.engineAccelerationConcrete *= AutoGearBoxRatio;
         }
         else
         {
             ChunkManager.Instance.speedActu = car.engineMaxSpeed;
-            car.engineAcceleration /= AutoGearBoxRatio;
+            car.engineAccelerationConcrete /= AutoGearBoxRatio;
             currentAbilityEngine = Abilities.Default;
         }
     }

@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc58bd786dc5f494cb4e548cf1bc665b, type: 3}
   m_Name: BrokenFrame
   m_EditorClassIdentifier: 
+  type: 0
   name: BrokenFrame
   image: {fileID: 0}
+  cardPrefab: {fileID: 0}
   maxSpeedConcrete: 3
   maxSpeedSand: 2
   maxSpeedIce: 2
@@ -22,8 +24,9 @@ MonoBehaviour:
   accelerationSand: 2
   accelerationIce: 1
   accelerationBump: 1
-  adhesionConcrete: 3
-  adhesionSand: 3
-  adhesionIce: 2
-  adhesionBump: 1
+  gripConcrete: 3
+  gripSand: 2
+  gripIce: 2
+  gripBump: 1
   resistance: 1
+  ability: {fileID: 0}

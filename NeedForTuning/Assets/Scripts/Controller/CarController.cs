@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.SceneManagement;
 
+public enum Surface { Concrete,Ice,Sand,Bumps }
 public class CarController : MonoBehaviour
 {
 
@@ -17,6 +18,7 @@ public class CarController : MonoBehaviour
         arrived //a termine la course
     }
 
+    private Surface currentSurface;
     //ref
     private AbilityController abilityController;
 
@@ -30,14 +32,21 @@ public class CarController : MonoBehaviour
 
     //speed
     public float changingLaneSpeed = 100f;
-    public float changingLaneSpeedLoss = 33f;
+    public float changingLaneSpeedLossConcrete = 33f;
+    public float changingLaneSpeedLossIce = 33f;
+    public float changingLaneSpeedLossSand = 33f;
+    public float changingLaneSpeedLossBumps = 33f;
     public float obstacleSpeedLoss = 33f;
     public float surfaceSpeedLoss = 33f;
-    public float engineAcceleration = 150f; // with deltaTime
+    public float engineAccelerationConcrete = 150f; // with deltaTime
+    public float engineAccelerationIce = 100f; // with deltaTime
+    public float engineAccelerationSand = 60f; // with deltaTime
+    public float engineAccelerationBumps = 40f; // with deltaTime
     public float engineMaxSpeed = 10f;
     public float engineMinimumSpeed = 1f;
     public float minSpdIce = 6f;
     public float minSpdSand = 3f;
+    public float minSpdBumps = 2f;
     public float minSpdObstacle = 1f;
     public float minSpdLanding = 5f;
 
@@ -53,10 +62,26 @@ public class CarController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         abilityController = GetComponent<AbilityController>();
-
+        ApplyPiecesStats();
         
     }
 
+    void ApplyPiecesStats()
+    {
+        engineMaxSpeed = engineMaxSpeed * InventoryManager.Instance.maxSpeedConcrete*4;
+        minSpdIce = minSpdIce * InventoryManager.Instance.maxSpeedIce*4;
+        minSpdSand = minSpdSand * InventoryManager.Instance.maxSpeedSand*4;
+        minSpdBumps = minSpdBumps * InventoryManager.Instance.maxSpeedBump*4;
+        engineAccelerationConcrete = engineAccelerationConcrete * InventoryManager.Instance.accelerationConcrete*4;
+        engineAccelerationIce = engineAccelerationIce * InventoryManager.Instance.accelerationIce*4;
+        engineAccelerationSand = engineAccelerationSand * InventoryManager.Instance.accelerationSand*4;
+        engineAccelerationBumps = engineAccelerationBumps * InventoryManager.Instance.accelerationBump*4;
+        changingLaneSpeedLossConcrete = changingLaneSpeedLossConcrete / (InventoryManager.Instance.gripConcrete*2);
+        changingLaneSpeedLossIce = changingLaneSpeedLossIce / (InventoryManager.Instance.gripIce*2);
+        changingLaneSpeedLossSand = changingLaneSpeedLossSand / (InventoryManager.Instance.gripSand*2);
+        changingLaneSpeedLossBumps = changingLaneSpeedLossBumps / (InventoryManager.Instance.gripBump*2);
+        minSpdObstacle += minSpdObstacle * InventoryManager.Instance.resistance*4;
+    }
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -162,6 +187,7 @@ public class CarController : MonoBehaviour
                     if (abilityController.currentAbilityTire != Abilities.Nail)
                     {
                         CarInSurface(minSpdIce);
+                        currentSurface = Surface.Ice;
                         inObtsacle = true;
                     }
 
@@ -169,6 +195,7 @@ public class CarController : MonoBehaviour
                 case "ChunkSand(Clone)":
                     CarInSurface(minSpdSand);
                     inObtsacle = true;
+                    currentSurface = Surface.Sand;
                     break;
                 default:
                     Debug.Log(module[0].gameObject.name);
@@ -179,6 +206,7 @@ public class CarController : MonoBehaviour
         }
         else
         {
+            currentSurface = Surface.Concrete;
             inObtsacle = false;
             collideWithModule = false;
         }
@@ -188,21 +216,79 @@ public class CarController : MonoBehaviour
     {
         if (abilityController.currentAbilityEngine != Abilities.Turbo)
         {
-            ChunkManager.Instance.speedActu += engineAcceleration * Time.deltaTime;
-            if (ChunkManager.Instance.speedActu > engineMaxSpeed)
+            switch (currentSurface)
             {
-                ChunkManager.Instance.speedActu = engineMaxSpeed;
+                case Surface.Concrete:
+                    ChunkManager.Instance.speedActu += engineAccelerationConcrete * Time.deltaTime;
+                    if (ChunkManager.Instance.speedActu > engineMaxSpeed)
+                    {
+                        ChunkManager.Instance.speedActu = engineMaxSpeed;
+                    }
+                    break;
+                case Surface.Ice:
+                    ChunkManager.Instance.speedActu += engineAccelerationIce * Time.deltaTime;
+                    if (ChunkManager.Instance.speedActu > minSpdIce)
+                    {
+                        ChunkManager.Instance.speedActu = minSpdIce;
+                    }
+                    break;
+                case Surface.Sand:
+                    ChunkManager.Instance.speedActu += engineAccelerationSand * Time.deltaTime;
+                    if (ChunkManager.Instance.speedActu > minSpdSand)
+                    {
+                        ChunkManager.Instance.speedActu = minSpdSand;
+                    }
+                    break;
+                case Surface.Bumps:
+                    ChunkManager.Instance.speedActu += engineAccelerationBumps * Time.deltaTime;
+                    if (ChunkManager.Instance.speedActu > minSpdBumps)
+                    {
+                        ChunkManager.Instance.speedActu = minSpdBumps;
+                    }
+                    break;
+                default:
+                    break;
             }
+            
         }
     }
 
     public void CarDecelerate()
     {
-        ChunkManager.Instance.speedActu -= changingLaneSpeedLoss * Time.deltaTime;
-        if (ChunkManager.Instance.speedActu < 0)
+        switch (currentSurface)
         {
-            ChunkManager.Instance.speedActu = 0;
+            case Surface.Concrete:
+                ChunkManager.Instance.speedActu -= changingLaneSpeedLossConcrete * Time.deltaTime;
+                if (ChunkManager.Instance.speedActu < 0)
+                {
+                    ChunkManager.Instance.speedActu = 0;
+                }
+                break;
+            case Surface.Ice:
+                ChunkManager.Instance.speedActu -= changingLaneSpeedLossIce * Time.deltaTime;
+                if (ChunkManager.Instance.speedActu < 0)
+                {
+                    ChunkManager.Instance.speedActu = 0;
+                }
+                break;
+            case Surface.Sand:
+                ChunkManager.Instance.speedActu -= changingLaneSpeedLossSand * Time.deltaTime;
+                if (ChunkManager.Instance.speedActu < 0)
+                {
+                    ChunkManager.Instance.speedActu = 0;
+                }
+                break;
+            case Surface.Bumps:
+                ChunkManager.Instance.speedActu -= changingLaneSpeedLossBumps * Time.deltaTime;
+                if (ChunkManager.Instance.speedActu < 0)
+                {
+                    ChunkManager.Instance.speedActu = 0;
+                }
+                break;
+            default:
+                break;
         }
+        
     }
     public void CarLanding()
     {
@@ -229,6 +315,7 @@ public class CarController : MonoBehaviour
     {
         if (abilityController.currentAbilityChassis != Abilities.Bumper && !collideWithModule)
         {
+            Debug.Log("la mamacita");
             collideWithModule = true;
             ChunkManager.Instance.speedActu = minSpd;
         }
