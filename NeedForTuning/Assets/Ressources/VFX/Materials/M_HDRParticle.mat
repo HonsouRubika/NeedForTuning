@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_HDRParticles
+  m_Name: M_HDRParticle
   m_Shader: {fileID: -6465566751694194690, guid: eadbb82c17d833545ab8871808335c22, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -81,7 +81,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _particleTex:
-        m_Texture: {fileID: 2800000, guid: 1745c807affe35246981cfa3c6353aa4, type: 3}
+        m_Texture: {fileID: 2800000, guid: d99181f55cd0ffa4aacc6dd6f4f34396, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -141,10 +141,10 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
-    - _radiosity: 3
+    - _radiosity: 2
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _COLOR_xyzw: {r: 1, g: 1, b: 1, a: 1}
+    - _COLOR_xyzw: {r: 2.9960785, g: 2.9960785, b: 2.9960785, a: 1}
     - _CameraFadeParams: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _ColorAddSubDiff: {r: 0, g: 0, b: 0, a: 0}
@@ -154,5 +154,5 @@ Material:
     - _SoftParticleFadeParams: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
     - _particleColor: {r: 1.8640716, g: 8.770373, b: 10.680627, a: 1}
-    - _texChannel: {r: 1, g: 0, b: 0, a: 0}
+    - _texChannel: {r: 0, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []

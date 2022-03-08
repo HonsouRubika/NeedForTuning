@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_simpleParticles
+  m_Name: M_HDRSquarecles
   m_Shader: {fileID: -6465566751694194690, guid: eadbb82c17d833545ab8871808335c22, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -141,10 +141,10 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
-    - _radiosity: 1
+    - _radiosity: 3
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _COLOR_xyzw: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    - _COLOR_xyzw: {r: 1, g: 1, b: 1, a: 1}
     - _CameraFadeParams: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _ColorAddSubDiff: {r: 0, g: 0, b: 0, a: 0}
