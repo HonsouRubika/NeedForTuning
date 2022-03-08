@@ -76,7 +76,7 @@ public class ChunkManager : MonoBehaviour
     void Update()
     {
 
-        if(startTimerActu != 0 && !isRuning && Time.time > startTimer)
+        if(startTimerActu != 0 && !isRuning && Time.time > startTimer && !isFinished)
         {
             isRuning = true;
         }

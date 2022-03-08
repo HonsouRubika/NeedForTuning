@@ -20,6 +20,10 @@ public class Chunk : MonoBehaviour
         {
             rb.velocity = new Vector3(0, 0, -ChunkManager.Instance.speedActu);
         }
+        else
+        {
+            rb.velocity = Vector3.zero;
+        }
 
         //verif if out of camera (passed end line)
         if (ChunkManager.Instance.isRuning && transform.position.z <= ChunkManager.Instance.depopLine.z)
