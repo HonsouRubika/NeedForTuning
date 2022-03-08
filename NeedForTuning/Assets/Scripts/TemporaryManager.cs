@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class TemporaryManager : MonoBehaviour
 {
     [Header("Start Menu")]
@@ -10,17 +10,17 @@ public class TemporaryManager : MonoBehaviour
     public GameObject clickableStartText;
 
     [Header("Opening First Booster")]
-    //Spawn Bulle Texte
-    //Scroll du Booster 
-
-    // Road To Deck Building
+    public Text[] textBook;
+    [Space(10)]
+    public int indexText;
+    public bool displayingText = false;
 
     public GameObject blackScreen;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        indexText = 0;
     }
 
     public void StartingGame()
@@ -41,11 +41,26 @@ public class TemporaryManager : MonoBehaviour
         buttonStart.SetActive(false);
         yield return new WaitForSeconds(1.5f);
         anim.SetBool("fadeInBlackScreen", false);
+        yield return new WaitForSeconds(1f);
+        displayingText = true;
+    }
+
+    public void DisplayText(Text text)
+    {
+        for (int i = indexText; i < textBook.Length; i++)
+        {
+            //Activer la bulle de dialogue
+            Debug.Log("Displaying Text");
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (displayingText)
+        {
+            DisplayText(textBook[indexText]);
+            displayingText = false;
+        }
     }
 }

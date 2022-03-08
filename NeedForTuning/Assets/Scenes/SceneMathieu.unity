@@ -915,7 +915,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -806.18}
+  m_AnchoredPosition: {x: 0, y: -810}
   m_SizeDelta: {x: 329, y: 623}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1575931952
@@ -969,8 +969,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cursorController: {fileID: 954423703}
-  prefabCard: {fileID: 8072470096330423336, guid: c22c51ca16065d543a1328ff79d823f5, type: 3}
   button: {fileID: 1705531981}
+  pieceEngine: {fileID: 11400000, guid: b645f03dd158b8e4da2a81c04ae22993, type: 2}
+  pieceTire: {fileID: 11400000, guid: b645f03dd158b8e4da2a81c04ae22993, type: 2}
+  pieceChassis: {fileID: 11400000, guid: b645f03dd158b8e4da2a81c04ae22993, type: 2}
   initialCardPos: {fileID: 1699840793}
   targetCard01: {fileID: 1060920100}
   targetCard03: {fileID: 1961685972}
@@ -1026,7 +1028,9 @@ MonoBehaviour:
   title: {fileID: 2013259019}
   buttonStart: {fileID: 344799498}
   clickableStartText: {fileID: 146900709}
-  booster: {fileID: 1575931950}
+  textBook: []
+  indexText: 0
+  displayingText: 0
   blackScreen: {fileID: 875389340}
 --- !u!4 &1647196566
 Transform:

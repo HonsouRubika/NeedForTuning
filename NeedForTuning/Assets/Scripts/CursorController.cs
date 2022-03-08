@@ -55,25 +55,7 @@ public class CursorController : MonoBehaviour
     private void EndedClick()
     {
         ChangeCursor(cursor);
-        //DetectObject();
     }
-
-
-    //private void DetectObject()
-    //{
-    //    Ray ray = mainCamera.ScreenPointToRay(controls.Mouse.Position.ReadValue<Vector2>());
-    //    RaycastHit hit;
-    //    if (Physics.Raycast(ray, out hit))
-    //    {
-    //        if (hit.collider != null)
-    //        {
-    //            Debug.Log("3D Hit: " + hit.collider.tag);
-    //        }
-    //    }
-
-    //    RaycastHit[] hits = Physics.RaycastAll(ray, 200);
-    //}
-
 
 
     // Update is called once per frame
