@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1783166034375803714}
   - component: {fileID: 1783166034375803581}
+  - component: {fileID: 2943223231595409667}
+  - component: {fileID: 2757450621306407987}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -44,3 +46,66 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   car: {fileID: 0}
+--- !u!114 &2943223231595409667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783166034375803580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c96806cf631cd5f4fa55982d6702b063, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levels: []
+  levelActu: 0
+  levelScene: SceneTestAbilities
+  testIsFinished: 0
+--- !u!114 &2757450621306407987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783166034375803580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e170ade1a0358448182cf391511c9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  car: {fileID: 0}
+  chunkPrefabs:
+  - {fileID: 5901674732227060463, guid: b33266959d5f9984d9a0924539bb8e5e, type: 3}
+  - {fileID: 5901674732227060463, guid: ae30d8221dd891c429f9b4990937bbb1, type: 3}
+  - {fileID: 5901674732227060463, guid: 2295afd321b30874f9b9195720859958, type: 3}
+  - {fileID: 5901674732227060463, guid: 27be2aa2bee37dd4389e858a1e73e6bf, type: 3}
+  - {fileID: 5901674732227060463, guid: aa3dc2a8bd028b74481174be36b3a4a5, type: 3}
+  - {fileID: 5901674732227060463, guid: 8f066880e5efb3b40b577b1c8c465dcb, type: 3}
+  - {fileID: 5901674732227060463, guid: 26fe3127de6448d499606df11e3cc675, type: 3}
+  - {fileID: 5901674732227060463, guid: f680111218262bb40854cf7437c2ef51, type: 3}
+  groundPrefabs:
+  - {fileID: 5901674732227060463, guid: b33266959d5f9984d9a0924539bb8e5e, type: 3}
+  - {fileID: 5901674732227060463, guid: f680111218262bb40854cf7437c2ef51, type: 3}
+  - {fileID: 5901674732227060463, guid: 26fe3127de6448d499606df11e3cc675, type: 3}
+  - {fileID: 5901674732227060463, guid: b33266959d5f9984d9a0924539bb8e5e, type: 3}
+  selectedLevel: {fileID: 11400000, guid: 1fe895eb019f1244a8f6466bce114365, type: 2}
+  spawn: {x: 0, y: -1.51, z: 0}
+  depopLine: {x: 0, y: -1.51, z: -15}
+  chunksInLD:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  groundsInLD: []
+  nbObstacle: 3
+  probaObstacleGenerates: 25
+  totalNbOfLine: 50
+  totalNbOfLineActu: 0
+  totalNbOfChunkActu: 0
+  modulesToCross: 0
+  modulesToCrossLaunchPad: 0
+  nbLineInLD: 8
+  speedActu: 6
+  isRuning: 0
+  isFinished: 0
+  startTimer: 1

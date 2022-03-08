@@ -53,6 +53,11 @@ MonoBehaviour:
   - {fileID: 5901674732227060463, guid: 8f066880e5efb3b40b577b1c8c465dcb, type: 3}
   - {fileID: 5901674732227060463, guid: 26fe3127de6448d499606df11e3cc675, type: 3}
   - {fileID: 5901674732227060463, guid: f680111218262bb40854cf7437c2ef51, type: 3}
+  groundPrefabs:
+  - {fileID: 5901674732227060463, guid: b33266959d5f9984d9a0924539bb8e5e, type: 3}
+  - {fileID: 5901674732227060463, guid: f680111218262bb40854cf7437c2ef51, type: 3}
+  - {fileID: 5901674732227060463, guid: 26fe3127de6448d499606df11e3cc675, type: 3}
+  - {fileID: 5901674732227060463, guid: b33266959d5f9984d9a0924539bb8e5e, type: 3}
   selectedLevel: {fileID: 0}
   spawn: {x: 0, y: -1.51, z: 0}
   depopLine: {x: 0, y: -1.51, z: -15}

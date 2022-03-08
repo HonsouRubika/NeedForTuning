@@ -58,6 +58,7 @@ MonoBehaviour:
   minSpdSand: 3
   minSpdBarrel: 1
   lineWidth: 5
+  currentState: 0
   jumpPadDistance: 2
 --- !u!114 &4757020060118075399
 MonoBehaviour:
@@ -144,6 +145,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 7da14ccf-b51b-4972-b278-8ae4b65fa83e
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2484660007687885031}
+        m_TargetAssemblyTypeName: CarController, Assembly-CSharp
+        m_MethodName: OnSpace
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e4b3bfcb-c7ef-44cc-a0b2-636a183afd4b
+    m_ActionName: Player/NextLevelPhase[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
