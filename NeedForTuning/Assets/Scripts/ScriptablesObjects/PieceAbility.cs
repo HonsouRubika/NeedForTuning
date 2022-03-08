@@ -17,4 +17,5 @@ public class PieceAbility : ScriptableObject
     [Header("Utilisation")]
     public int moduleDistance;
     public int utilisationNumber;
+    public float cooldown;
 }

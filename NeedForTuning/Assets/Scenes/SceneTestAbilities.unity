@@ -860,13 +860,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_FillClockwise: 0
+  m_FillOrigin: 2
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &908439782
@@ -1063,7 +1063,7 @@ MonoBehaviour:
   ownedPiecesEngine: []
   ownedPiecesTire: []
   ownedPiecesChassis: []
-  engine: {fileID: 11400000, guid: a4bd023b36365cf4682670bed133aa76, type: 2}
+  engine: {fileID: 11400000, guid: 2da5136f79c0765489b2967a309a3ad0, type: 2}
   tire: {fileID: 11400000, guid: 307d00b9a011524428593ceb42e962df, type: 2}
   chassis: {fileID: 11400000, guid: a88ddc27178156b419d02d26a4bd9eeb, type: 2}
   maxSpeedConcrete: 0.8
@@ -1195,13 +1195,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
   m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_FillOrigin: 2
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &1540566359
@@ -1328,6 +1328,9 @@ MonoBehaviour:
   currentAbilityEngine: 0
   currentAbilityTire: 0
   currentAbilityChassis: 0
+  engineButtonImage: {fileID: 908439781}
+  ChassisButtonImage: {fileID: 0}
+  TireButtonImage: {fileID: 0}
   turboMultiplier: 2.5
   jumpHeight: 2
   AutoGearBoxRatio: 10
@@ -1458,13 +1461,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
   m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_FillOrigin: 2
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &1983199296

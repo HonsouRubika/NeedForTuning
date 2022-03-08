@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum Abilities { Default, Spring, AutoGearbox, Dolorean, Grip, Nail, Swim, Suspension, Turbo, Bumper }
 public class AbilityController : MonoBehaviour
@@ -16,11 +17,25 @@ public class AbilityController : MonoBehaviour
     public Abilities currentAbilityTire;
     public Abilities currentAbilityChassis;
 
+    [Header("Images")]
+    public Image engineButtonImage;
+    public Image ChassisButtonImage;
+    public Image TireButtonImage;
+
     [Header("Abilities")]
     public float turboMultiplier;
     public float jumpHeight;
     public float AutoGearBoxRatio;
     private float GripLaneChange;
+    private int utilisationEngine;
+    private int utilisationTire;
+    private int utilisationChassis;
+    private float cdEngine;
+    private float cdTire;
+    private float cdChassis;
+    private bool engineRdy = true;
+    private bool tireRdy = true;
+    private bool chassisRdy = true;
 
     private void Start()
     {
@@ -33,6 +48,57 @@ public class AbilityController : MonoBehaviour
         abilityTire = InventoryManager.Instance.tire;
         abilityChassis = InventoryManager.Instance.chassis;
     }
+
+    private void Update()
+    {
+        ReloadCooldown();
+    }
+
+    private void ReloadCooldown()
+    {
+        if (!engineRdy)
+        {
+            if (cdEngine < abilityEngine.ability.cooldown)
+            {
+                cdEngine += Time.deltaTime;
+                engineButtonImage.fillAmount = cdEngine / abilityEngine.ability.cooldown;
+            }
+            else
+            {
+                engineRdy = true;
+                cdEngine = 0;
+            }
+        }
+
+        if (!chassisRdy)
+        {
+            if (cdChassis < abilityEngine.ability.cooldown)
+            {
+                cdChassis += Time.deltaTime;
+                ChassisButtonImage.fillAmount = cdChassis / abilityEngine.ability.cooldown;
+            }
+            else
+            {
+                chassisRdy = true;
+                cdChassis = 0;
+            }
+        }
+
+        if (!tireRdy)
+        {
+            if (cdTire < abilityEngine.ability.cooldown)
+            {
+                cdTire += Time.deltaTime;
+                TireButtonImage.fillAmount = cdTire / abilityEngine.ability.cooldown;
+            }
+            else
+            {
+                tireRdy = true;
+                cdTire = 0;
+            }
+        }
+    }
+
     private void TriggerAbility(PieceAbility ability)
     {
 
@@ -41,38 +107,47 @@ public class AbilityController : MonoBehaviour
         {
             case "Spring":
                 Spring(ability, true);
+                tireRdy = false;
                 currentAbilityTire = Abilities.Spring;
                 break;
             case "AutoGearbox":
                 AutoGearbox(ability, true);
+                engineRdy = false;
                 currentAbilityEngine = Abilities.AutoGearbox;
                 break;
             case "Bumper":
                 Bumper(ability, true);
+                chassisRdy = false;
                 currentAbilityChassis = Abilities.Bumper;
                 break;
             case "Dolorean":
                 Dolorean(ability, true);
+                tireRdy = false;
                 currentAbilityTire = Abilities.Dolorean;
                 break;
             case "Grip":
                 Grip(ability, true);
+                engineRdy = false;
                 currentAbilityEngine = Abilities.Grip;
                 break;
             case "Nail":
                 Nail(ability, true);
+                tireRdy = false;
                 currentAbilityTire = Abilities.Nail;
                 break;
             case "Suspension":
                 Suspension(ability, true);
+                chassisRdy = false;
                 currentAbilityChassis = Abilities.Suspension;
                 break;
             case "Swim":
                 Swim(ability, true);
+                chassisRdy = false;
                 currentAbilityChassis = Abilities.Swim;
                 break;
             case "Turbo":
                 Turbo(ability, true);
+                engineRdy = false;
                 currentAbilityEngine = Abilities.Turbo;
                 break;
         }
@@ -87,30 +162,39 @@ public class AbilityController : MonoBehaviour
         {
             case Abilities.Spring:
                 Spring(null, false);
+                
                 break;
             case Abilities.AutoGearbox:
                 AutoGearbox(null, false);
+                
                 break;
             case Abilities.Bumper:
                 Bumper(null, false);
+                
                 break;
             case Abilities.Dolorean:
                 Dolorean(null, false);
+                
                 break;
             case Abilities.Grip:
                 Grip(null, false);
+                
                 break;
             case Abilities.Nail:
                 Nail(null, false);
+
                 break;
             case Abilities.Suspension:
                 Suspension(null, false);
+                
                 break;
             case Abilities.Swim:
                 Swim(null, false);
+                
                 break;
             case Abilities.Turbo:
                 Turbo(null, false);
+                
                 break;
 
 
@@ -119,26 +203,45 @@ public class AbilityController : MonoBehaviour
     #region Trigger Ability
     public void ClickEngine()
     {
-        TriggerAbility(abilityEngine.ability);
-
+        if (utilisationEngine < abilityEngine.ability.utilisationNumber && engineRdy)
+        {
+            utilisationEngine++;
+            TriggerAbility(abilityEngine.ability);
+        }
+        else
+        {
+            engineButtonImage.color = Color.gray;
+        }
+        
     }
 
     public void ClickTire()
     {
-        TriggerAbility(abilityTire.ability);
+        if (utilisationTire < abilityEngine.ability.utilisationNumber && tireRdy)
+        {
+            utilisationTire++;
+            TriggerAbility(abilityTire.ability);
+        }
+            
 
     }
 
 
     public void ClickChassis()
     {
-        TriggerAbility(abilityChassis.ability);
+        if (utilisationChassis < abilityEngine.ability.utilisationNumber && chassisRdy)
+        {
+            utilisationChassis++;
+            TriggerAbility(abilityChassis.ability);
+        }
+            
     }
     #endregion
 
     #region Engine Ability
     private void Grip(PieceAbility ability, bool enabled)//Done
     {
+        
         if (enabled)
         {
             GripLaneChange = car.changingLaneSpeedLossConcrete;

@@ -19,4 +19,5 @@ MonoBehaviour:
   efficiencyIce: 1
   efficiencyBump: 1
   moduleDistance: 6
-  utilisationNumber: 1000
+  utilisationNumber: 3
+  cooldown: 0

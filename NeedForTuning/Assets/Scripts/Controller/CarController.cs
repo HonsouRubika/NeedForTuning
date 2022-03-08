@@ -180,7 +180,6 @@ public class CarController : MonoBehaviour
                     break;
                 case "ChunkLaunchingPad(Clone)":
                     CarJumping();
-                    Debug.Log("boing");
 
                     break;
                 case "ChunkIce(Clone)":
@@ -315,7 +314,7 @@ public class CarController : MonoBehaviour
     {
         if (abilityController.currentAbilityChassis != Abilities.Bumper && !collideWithModule)
         {
-            Debug.Log("la mamacita");
+            
             collideWithModule = true;
             ChunkManager.Instance.speedActu = minSpd;
         }
