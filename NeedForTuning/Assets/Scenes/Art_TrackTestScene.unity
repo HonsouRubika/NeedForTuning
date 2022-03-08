@@ -1819,8 +1819,8 @@ ParticleSystem:
         m_NumAlphaKeys: 2
   UVModule:
     serializedVersion: 2
-    enabled: 0
-    mode: 0
+    enabled: 1
+    mode: 1
     timeMode: 0
     fps: 30
     frameOverTime:
@@ -1938,6 +1938,10 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
+    - sprite: {fileID: 21300000, guid: 482540fdd857b0049b2fe5ebe5ff0948, type: 3}
+    - sprite: {fileID: 21300000, guid: 8e1e03eef139474449528f5626735b77, type: 3}
+    - sprite: {fileID: 21300000, guid: 039a6b79faf167f488353709879fcbcf, type: 3}
+    - sprite: {fileID: 0}
     - sprite: {fileID: 0}
     flipU: 0
     flipV: 0
@@ -5689,6 +5693,18 @@ PrefabInstance:
       propertyPath: engineMinimumSpeed
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4838167358133670672, guid: eedc6f96c838e804389e90b089072f3f, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5718861215002432821, guid: eedc6f96c838e804389e90b089072f3f, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7661834247992453036, guid: eedc6f96c838e804389e90b089072f3f, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8629115605035993648, guid: eedc6f96c838e804389e90b089072f3f, type: 3}
       propertyPath: m_Name
       value: Car
@@ -5712,6 +5728,10 @@ PrefabInstance:
     - target: {fileID: 8629115605035993652, guid: eedc6f96c838e804389e90b089072f3f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9124603300278019663, guid: eedc6f96c838e804389e90b089072f3f, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eedc6f96c838e804389e90b089072f3f, type: 3}
