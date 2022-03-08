@@ -16,7 +16,7 @@ public class TourneySelectionManager : MonoBehaviour
 
         if (!TourneyManager.Instance.testIsFinished)
         {
-            LevelProfile[] testTourneyLevels = { existantLevels[1], existantLevels[1], existantLevels[1] };
+            LevelProfile[] testTourneyLevels = { existantLevels[0], existantLevels[0], existantLevels[0] };
             Tourney testTourney = new Tourney("test", testTourneyLevels);
             PickTourney(testTourney);
         }

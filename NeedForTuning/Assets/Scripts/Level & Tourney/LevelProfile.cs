@@ -7,11 +7,13 @@ public class LevelProfile : ScriptableObject
 {
     public int levelID;
     public int nbOfLine;
-    public ChunkManager.RoadType levelType;
     public ChunkManager.Modules[] chunks;
+    public ChunkManager.RoadType[] grounds;
 #if UNITY_EDITOR
     public ChunkManager.Modules currentChunkSelected;
+    public ChunkManager.RoadType currentGroundSelected;
     public Color[] modules;
+    public Color[] sols;
 #endif
 
 }

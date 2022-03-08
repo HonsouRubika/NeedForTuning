@@ -82,6 +82,7 @@ public class ChunkManager : MonoBehaviour
 
         if(startTimerActu != 0 && !isRuning && Time.time > startTimer && !isFinished)
         {
+            /// TODO:  start timer
             isRuning = true;
         }
 
@@ -114,6 +115,7 @@ public class ChunkManager : MonoBehaviour
         {
             //run is finished
             //Debug.Log("finished");
+            /// TODO:  stop timer
             isFinished = true;
             isRuning = false;
             ChunkManager.Instance.speedActu = 0;
@@ -186,7 +188,7 @@ public class ChunkManager : MonoBehaviour
         GameObject chunk1 = chunkPrefabs[(int)Modules.empty];
         GameObject newChunk1 = Instantiate(chunk1, new Vector3(spawn.x - 5, spawn.y, spawn.z), chunk1.transform.rotation);
         //ground
-        GameObject newGround1 = Instantiate<GameObject>(getGround(selectedLevel.levelType), new Vector3(spawn.x - 5, spawn.y, spawn.z), chunk1.transform.rotation);
+        GameObject newGround1 = Instantiate<GameObject>(chunkPrefabs[(int)Modules.empty], new Vector3(spawn.x - 5, spawn.y, spawn.z), chunk1.transform.rotation);
         newGround1.GetComponent<Chunk>().isGround = true;
         chunksInLD.Add(newChunk1);
         groundsInLD.Add(newGround1);
@@ -195,7 +197,7 @@ public class ChunkManager : MonoBehaviour
         GameObject chunk2 = chunkPrefabs[(int)Modules.empty];
         GameObject newChunk2 = Instantiate<GameObject>(chunk2, new Vector3(spawn.x, spawn.y, spawn.z), chunk2.transform.rotation);
         //ground
-        GameObject newGround2 = Instantiate<GameObject>(getGround(selectedLevel.levelType), new Vector3(spawn.x, spawn.y, spawn.z), chunk2.transform.rotation);
+        GameObject newGround2 = Instantiate<GameObject>(chunkPrefabs[(int)Modules.empty], new Vector3(spawn.x, spawn.y, spawn.z), chunk2.transform.rotation);
         newGround2.GetComponent<Chunk>().isGround = true;
 
         chunksInLD.Add(newChunk2);
@@ -205,7 +207,7 @@ public class ChunkManager : MonoBehaviour
         GameObject chunk3 = chunkPrefabs[(int)Modules.empty];
         GameObject newChunk3 = Instantiate<GameObject>(chunk3, new Vector3(spawn.x + 5, spawn.y, spawn.z), chunk3.transform.rotation);
         //ground
-        GameObject newGround3 = Instantiate<GameObject>(getGround(selectedLevel.levelType), new Vector3(spawn.x + 5, spawn.y, spawn.z), chunk3.transform.rotation);
+        GameObject newGround3 = Instantiate<GameObject>(chunkPrefabs[(int)Modules.empty], new Vector3(spawn.x + 5, spawn.y, spawn.z), chunk3.transform.rotation);
         newGround3.GetComponent<Chunk>().isGround = true;
 
         chunksInLD.Add(newChunk3);
@@ -244,7 +246,7 @@ public class ChunkManager : MonoBehaviour
         GameObject chunk1 = PickChunk();
         GameObject newChunk1 = Instantiate<GameObject>(chunk1, new Vector3(spawn.x - 5, spawn.y, zPos), chunk1.transform.rotation);
         //ground
-        GameObject newGround1 = Instantiate<GameObject>(getGround(selectedLevel.levelType), new Vector3(spawn.x - 5, spawn.y, zPos), chunk1.transform.rotation);
+        GameObject newGround1 = Instantiate<GameObject>(getGround(), new Vector3(spawn.x - 5, spawn.y, zPos), chunk1.transform.rotation);
         newGround1.GetComponent<Chunk>().isGround = true;
         chunksInLD.Add(newChunk1);
         groundsInLD.Add(newGround1);
@@ -253,7 +255,7 @@ public class ChunkManager : MonoBehaviour
         GameObject chunk2 = PickChunk();
         GameObject newChunk2 = Instantiate<GameObject>(chunk2, new Vector3(spawn.x, spawn.y, zPos), chunk2.transform.rotation);
         //ground
-        GameObject newGround2 = Instantiate<GameObject>(getGround(selectedLevel.levelType), new Vector3(spawn.x, spawn.y, zPos), chunk2.transform.rotation);
+        GameObject newGround2 = Instantiate<GameObject>(getGround(), new Vector3(spawn.x, spawn.y, zPos), chunk2.transform.rotation);
         newGround2.GetComponent<Chunk>().isGround = true;
 
         chunksInLD.Add(newChunk2);
@@ -263,7 +265,7 @@ public class ChunkManager : MonoBehaviour
         GameObject chunk3 = PickChunk();
         GameObject newChunk3 = Instantiate<GameObject>(chunk3, new Vector3(spawn.x + 5, spawn.y, zPos), chunk3.transform.rotation);
         //ground
-        GameObject newGround3 = Instantiate<GameObject>(getGround(selectedLevel.levelType), new Vector3(spawn.x + 5, spawn.y, zPos), chunk3.transform.rotation);
+        GameObject newGround3 = Instantiate<GameObject>(getGround(), new Vector3(spawn.x + 5, spawn.y, zPos), chunk3.transform.rotation);
         newGround3.GetComponent<Chunk>().isGround = true;
 
         chunksInLD.Add(newChunk3);
@@ -301,14 +303,14 @@ public class ChunkManager : MonoBehaviour
                     //Debug.Log((totalNbOfChunkActu) + " launchingPad");
                     totalNbOfChunkActu++;
                     return chunkPrefabs[(int)Modules.launchingPad];
-                case Modules.ice:
+                case Modules.wreakingBall:
                     //Debug.Log((totalNbOfChunkActu) + " launchingPad");
                     totalNbOfChunkActu++;
-                    return chunkPrefabs[(int)Modules.ice];
-                case Modules.sand:
+                    return chunkPrefabs[(int)Modules.wreakingBall];
+                case Modules.womp:
                     //Debug.Log((totalNbOfChunkActu) + " launchingPad");
                     totalNbOfChunkActu++;
-                    return chunkPrefabs[(int)Modules.sand];
+                    return chunkPrefabs[(int)Modules.womp];
                 default:
                     //Debug.Log((totalNbOfChunkActu) + " error");
                     totalNbOfChunkActu++;
@@ -339,21 +341,21 @@ public class ChunkManager : MonoBehaviour
         }
     }
 
-    public GameObject getGround(RoadType r)
+    public GameObject getGround()
     {
-        switch (r)
+        switch (selectedLevel.grounds[totalNbOfChunkActu - 1])
         {
-            case RoadType.beton:
-                return groundPrefabs[(int)RoadType.beton];
-            case RoadType.sable:
-                return groundPrefabs[(int)RoadType.sable];
-            case RoadType.glace:
-                return groundPrefabs[(int)RoadType.glace];
-            case RoadType.bosse:
-                return groundPrefabs[(int)RoadType.bosse];
+            case RoadType.concrete:
+                return groundPrefabs[(int)RoadType.concrete];
+            case RoadType.sand:
+                return groundPrefabs[(int)RoadType.sand];
+            case RoadType.ice:
+                return groundPrefabs[(int)RoadType.ice];
+            case RoadType.bumps:
+                return groundPrefabs[(int)RoadType.bumps];
 
             default:
-                return groundPrefabs[(int)RoadType.beton];
+                return groundPrefabs[(int)RoadType.concrete];
         }
     }
 
@@ -366,17 +368,17 @@ public class ChunkManager : MonoBehaviour
         treeTruck,
         junk,
         launchingPad,
-        ice, //debug
-        sand, //debug
+        wreakingBall, //debug
+        womp, //debug
         total
     }
 
     public enum RoadType
     {
-        beton,
-        sable,
-        glace,
-        bosse,
+        concrete,
+        sand,
+        ice,
+        bumps,
         total
     }
 
