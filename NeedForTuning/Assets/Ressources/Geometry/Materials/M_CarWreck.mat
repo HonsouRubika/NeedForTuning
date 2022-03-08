@@ -113,7 +113,7 @@ Material:
     - _gradInverse: 0
     - _gradOffset: 0
     - _gradPower: 0.8
-    - _offset: -0.02
+    - _offset: 0.59
     - _replaceBC: 0
     - _spread: 1.78
     - _texMask: 0
