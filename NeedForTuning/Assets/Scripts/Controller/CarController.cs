@@ -183,8 +183,8 @@ public class CarController : MonoBehaviour
                     inObtsacle = true;
 
                     break;
-                case "ChunkWaterfall":
-                case "ChunkWaterfall(Clone)":
+                case "ChunkWaterHole":
+                case "ChunkWaterHole(Clone)":
                     if (abilityController.currentAbilityChassis != Abilities.Swim)
                     {
                         CarInObstacle(minSpdObstacle);

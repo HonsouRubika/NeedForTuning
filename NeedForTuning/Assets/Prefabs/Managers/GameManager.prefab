@@ -78,18 +78,18 @@ MonoBehaviour:
   chunkPrefabs:
   - {fileID: 5901674732227060463, guid: b33266959d5f9984d9a0924539bb8e5e, type: 3}
   - {fileID: 5901674732227060463, guid: ae30d8221dd891c429f9b4990937bbb1, type: 3}
-  - {fileID: 5901674732227060463, guid: 2295afd321b30874f9b9195720859958, type: 3}
+  - {fileID: 5901674732227060463, guid: 21f235dab4c772f4c88501ff480eb24f, type: 3}
   - {fileID: 5901674732227060463, guid: 27be2aa2bee37dd4389e858a1e73e6bf, type: 3}
-  - {fileID: 5901674732227060463, guid: aa3dc2a8bd028b74481174be36b3a4a5, type: 3}
+  - {fileID: 5901674732227060463, guid: 84ba39bc50952c840ac5ab80f6b90123, type: 3}
   - {fileID: 5901674732227060463, guid: 8f066880e5efb3b40b577b1c8c465dcb, type: 3}
-  - {fileID: 5901674732227060463, guid: 26fe3127de6448d499606df11e3cc675, type: 3}
-  - {fileID: 5901674732227060463, guid: f680111218262bb40854cf7437c2ef51, type: 3}
+  - {fileID: 5901674732227060463, guid: d684681f7bdb3074fa385132bc577de8, type: 3}
+  - {fileID: 5901674732227060463, guid: 8b7756ae34c52b74da6ce9994800b289, type: 3}
   groundPrefabs:
-  - {fileID: 5901674732227060463, guid: b33266959d5f9984d9a0924539bb8e5e, type: 3}
+  - {fileID: 5901674732227060463, guid: 95e20e619f9eaf94bb7bf99e12d532cd, type: 3}
   - {fileID: 5901674732227060463, guid: f680111218262bb40854cf7437c2ef51, type: 3}
   - {fileID: 5901674732227060463, guid: 26fe3127de6448d499606df11e3cc675, type: 3}
-  - {fileID: 5901674732227060463, guid: b33266959d5f9984d9a0924539bb8e5e, type: 3}
-  selectedLevel: {fileID: 11400000, guid: 1fe895eb019f1244a8f6466bce114365, type: 2}
+  - {fileID: 5901674732227060463, guid: 88b1096e3fc1ffc48bd94f3706cb4c35, type: 3}
+  selectedLevel: {fileID: 0}
   spawn: {x: 0, y: -1.51, z: 0}
   depopLine: {x: 0, y: -1.51, z: -15}
   chunksInLD:
@@ -102,7 +102,9 @@ MonoBehaviour:
   totalNbOfLine: 50
   totalNbOfLineActu: 0
   totalNbOfChunkActu: 0
-  modulesToCross: 0
+  modulesToCrossEngine: 0
+  modulesToCrossTire: 0
+  modulesToCrossChassis: 0
   modulesToCrossLaunchPad: 0
   nbLineInLD: 8
   speedActu: 6
