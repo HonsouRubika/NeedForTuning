@@ -13,8 +13,9 @@ public class TemporaryManager : MonoBehaviour
     public Text[] textBook;
     [Space(10)]
     public int indexText;
-    public bool displayingText = false;
+    private bool displayingFirstText = false;
 
+    [Space(10)]
     public GameObject blackScreen;
 
     // Start is called before the first frame update
@@ -42,25 +43,24 @@ public class TemporaryManager : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         anim.SetBool("fadeInBlackScreen", false);
         yield return new WaitForSeconds(1f);
-        displayingText = true;
+        displayingFirstText = true;
     }
 
     public void DisplayText(Text text)
     {
-        for (int i = indexText; i < textBook.Length; i++)
-        {
-            //Activer la bulle de dialogue
-            Debug.Log("Displaying Text");
-        }
+        GameObject textObject = text.gameObject;
+        textObject.SetActive(true);
+        indexText++;
+        Debug.Log("Displaying Text");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (displayingText)
+        if (displayingFirstText)
         {
             DisplayText(textBook[indexText]);
-            displayingText = false;
+            displayingFirstText = false;
         }
     }
 }
