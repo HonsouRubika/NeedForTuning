@@ -5,6 +5,7 @@ Shader "Unlit/CardsBackground"
         _MainTex ("Texture", 2D) = "white" {}
         _Color("Color", Color) = (1,1,1,1)
         _Color2("Color2", Color) = (0,0,0,1)
+        _Speed("SpeedMovement", float) = 1
         _NbPattern("NbPattern", float) = 50
         _ThicknessPattern("ThicknessPattern", float) = 0.1
         _OpacityMask("OpacityMask", float) = 0.1
@@ -46,6 +47,7 @@ Shader "Unlit/CardsBackground"
             float4 _MainTex_ST;
             float4 _Color;
             float4 _Color2;
+            float _Speed;
             float _Pattern;
             float2 _UVPattern;
             float _MaskPattern;
@@ -95,7 +97,7 @@ Shader "Unlit/CardsBackground"
 
             fixed4 frag(v2f i) : SV_Target
             {
-                _UVPattern = Unity_PolarCoordinates_float(Unity_Rotate_Radians_float(i.uv, float2(0.5,0.5), _Time.g), float2(0.5,0.5), 1, 1);
+                _UVPattern = Unity_PolarCoordinates_float(Unity_Rotate_Radians_float(i.uv, float2(0.5,0.5), _Time.g* _Speed), float2(0.5,0.5), 1, 1);
                 _MaskPattern = (1 - _UVPattern.r) + _OpacityMask;
                 _Pattern = step(_ThicknessPattern, sin(_UVPattern.g * _NbPattern));
                 _ColoredPattern = lerp(_Color, _Color2,_Pattern) * _MaskPattern;

@@ -2,10 +2,10 @@ Shader "Unlit/ParticlesInCards"
 {
     Properties
     {
-        _Tex ("InputTex", 2D) = "white" {}
-        _Color("Color", Color) = (1,1,1,1)
+        _Tex("InputTex", 2D) = "white" {}
+        //_Color("Color", Color) = (1,1,1,1)
         _Contrast("Contrast", float) = 1
-        _Transparency("Transparency", Range(0.0,0.5)) = 0.25
+        _Intensity("HDRIntesity", float) = 1
     }
     SubShader
     {
@@ -34,6 +34,7 @@ Shader "Unlit/ParticlesInCards"
             {
                 float4 vertex : POSITION;
                 float2 uv : TEXCOORD0;
+                fixed4 color : COLOR;
             };
 
             struct v2f
@@ -41,28 +42,30 @@ Shader "Unlit/ParticlesInCards"
                 float2 uv : TEXCOORD0;
                 UNITY_FOG_COORDS(1)
                 float4 vertex : SV_POSITION;
+                fixed4 color : COLOR;
             };
 
             sampler2D _Tex;
             float4 _Tex_ST;
-            float4 _Color;
+            //float4 _Color;
             float _Contrast;
-            float _Transparency;
+            float _Intensity;
 
             v2f vert (appdata v)
             {
                 v2f o;
                 o.vertex = UnityObjectToClipPos(v.vertex);
                 o.uv = TRANSFORM_TEX(v.uv, _Tex);
+                o.color = v.color* _Intensity;
                 UNITY_TRANSFER_FOG(o,o.vertex);
                 return o;
             }
 
-            fixed4 frag (v2f i) : SV_Target
+            fixed4 frag(v2f i) : SV_Target
             {
                 // sample the texture
-                fixed4 col = _Color*tex2D(_Tex, i.uv)*_Contrast;
-                col.rgb *= col.a;
+                fixed4 col = i.color*tex2D(_Tex, i.uv)*_Contrast;
+                //col.rgb *= col.a;
      
                 // apply fog
                 UNITY_APPLY_FOG(i.fogCoord, col);
