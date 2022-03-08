@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.SceneManagement;
 
+public enum Surface { Concrete,Ice,Sand,Bumps }
 public class CarController : MonoBehaviour
 {
 
@@ -17,25 +18,37 @@ public class CarController : MonoBehaviour
         arrived //a termine la course
     }
 
+    private Surface currentSurface;
     //ref
     private AbilityController abilityController;
 
     //input
     private Vector2 movementInput = Vector2.zero;
     private uint carState = (uint)CarState.idle;
-    private bool inObsacle = false;
-    
+    private bool inObtsacle = false;
+    private bool collideWithModule = false;
+
     private uint lanePosition = 1; //value between 0 and 2 : {0,1,2}
 
     //speed
     public float changingLaneSpeed = 100f;
-    public float changingLaneSpeedLoss = 33f;
-    public float engineAcceleration = 150f; // with deltaTime
+    public float changingLaneSpeedLossConcrete = 33f;
+    public float changingLaneSpeedLossIce = 33f;
+    public float changingLaneSpeedLossSand = 33f;
+    public float changingLaneSpeedLossBumps = 33f;
+    public float obstacleSpeedLoss = 33f;
+    public float surfaceSpeedLoss = 33f;
+    public float engineAccelerationConcrete = 150f; // with deltaTime
+    public float engineAccelerationIce = 100f; // with deltaTime
+    public float engineAccelerationSand = 60f; // with deltaTime
+    public float engineAccelerationBumps = 40f; // with deltaTime
     public float engineMaxSpeed = 10f;
     public float engineMinimumSpeed = 1f;
     public float minSpdIce = 6f;
     public float minSpdSand = 3f;
-    public float minSpdBarrel = 1f;
+    public float minSpdBumps = 2f;
+    public float minSpdObstacle = 1f;
+    public float minSpdLanding = 5f;
 
     //component
     private Rigidbody rb;
@@ -49,8 +62,26 @@ public class CarController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         abilityController = GetComponent<AbilityController>();
+        ApplyPiecesStats();
+        
     }
 
+    void ApplyPiecesStats()
+    {
+        engineMaxSpeed = engineMaxSpeed * InventoryManager.Instance.maxSpeedConcrete*4;
+        minSpdIce = minSpdIce * InventoryManager.Instance.maxSpeedIce*4;
+        minSpdSand = minSpdSand * InventoryManager.Instance.maxSpeedSand*4;
+        minSpdBumps = minSpdBumps * InventoryManager.Instance.maxSpeedBump*4;
+        engineAccelerationConcrete = engineAccelerationConcrete * InventoryManager.Instance.accelerationConcrete*4;
+        engineAccelerationIce = engineAccelerationIce * InventoryManager.Instance.accelerationIce*4;
+        engineAccelerationSand = engineAccelerationSand * InventoryManager.Instance.accelerationSand*4;
+        engineAccelerationBumps = engineAccelerationBumps * InventoryManager.Instance.accelerationBump*4;
+        changingLaneSpeedLossConcrete = changingLaneSpeedLossConcrete / (InventoryManager.Instance.gripConcrete*2);
+        changingLaneSpeedLossIce = changingLaneSpeedLossIce / (InventoryManager.Instance.gripIce*2);
+        changingLaneSpeedLossSand = changingLaneSpeedLossSand / (InventoryManager.Instance.gripSand*2);
+        changingLaneSpeedLossBumps = changingLaneSpeedLossBumps / (InventoryManager.Instance.gripBump*2);
+        minSpdObstacle += minSpdObstacle * InventoryManager.Instance.resistance*4;
+    }
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -75,8 +106,8 @@ public class CarController : MonoBehaviour
             case (uint)CarState.idle:
 
                 //TODO : accelerate
-                if (!inObsacle) CarAccelerate();
-                
+                if (!inObtsacle) CarAccelerate();
+
 
                 break;
             case (uint)CarState.using_capacity:
@@ -126,91 +157,179 @@ public class CarController : MonoBehaviour
             {
                 case "ChunkBarrel(Clone)":
                     //abilityController.StopAbility();
-                    CarInObstacle(minSpdBarrel);
-                    inObsacle = true;
+                    CarInObstacle(minSpdObstacle);
+                    inObtsacle = true;
+
                     break;
                 case "ChunkWaterFall(Clone)":
-                    CarInObstacle(engineMinimumSpeed);
-                    inObsacle = true;
+                    if (abilityController.currentAbilityChassis != Abilities.Swim)
+                    {
+                        CarInObstacle(minSpdObstacle);
+                        inObtsacle = true;
+                    }
                     break;
                 case "ChunkTreeTrunk(Clone)":
-                    CarInObstacle(engineMinimumSpeed);
-                    inObsacle = true;
+                    CarInObstacle(minSpdObstacle);
+                    inObtsacle = true;
+
                     break;
                 case "ChunkJunk(Clone)":
-                    CarInObstacle(engineMinimumSpeed);
-                    inObsacle = true;
+                    CarInObstacle(minSpdObstacle);
+                    inObtsacle = true;
+
                     break;
                 case "ChunkLaunchingPad(Clone)":
                     CarJumping();
-                    Debug.Log("boing");
+
                     break;
                 case "ChunkIce(Clone)":
-                    CarInObstacle(minSpdIce);
-                    inObsacle = true;
+                    if (abilityController.currentAbilityTire != Abilities.Nail)
+                    {
+                        CarInSurface(minSpdIce);
+                        currentSurface = Surface.Ice;
+                        inObtsacle = true;
+                    }
+
                     break;
                 case "ChunkSand(Clone)":
-                    CarInObstacle(minSpdSand);
-                    inObsacle = true;
+                    CarInSurface(minSpdSand);
+                    inObtsacle = true;
+                    currentSurface = Surface.Sand;
                     break;
                 default:
                     Debug.Log(module[0].gameObject.name);
-                    CarInObstacle(minSpdIce);
-                    inObsacle = true;
+                    CarInSurface(minSpdIce);
+                    inObtsacle = true;
                     break;
             }
         }
         else
         {
-            inObsacle = false;
-            
+            currentSurface = Surface.Concrete;
+            inObtsacle = false;
+            collideWithModule = false;
         }
     }
 
     public void CarAccelerate()
     {
-        if (abilityController.currentAbility != Abilities.Turbo)
+        if (abilityController.currentAbilityEngine != Abilities.Turbo)
         {
-            ChunkManager.Instance.speedActu += engineAcceleration * Time.deltaTime;
-            if (ChunkManager.Instance.speedActu > engineMaxSpeed)
+            switch (currentSurface)
             {
-                ChunkManager.Instance.speedActu = engineMaxSpeed;
+                case Surface.Concrete:
+                    ChunkManager.Instance.speedActu += engineAccelerationConcrete * Time.deltaTime;
+                    if (ChunkManager.Instance.speedActu > engineMaxSpeed)
+                    {
+                        ChunkManager.Instance.speedActu = engineMaxSpeed;
+                    }
+                    break;
+                case Surface.Ice:
+                    ChunkManager.Instance.speedActu += engineAccelerationIce * Time.deltaTime;
+                    if (ChunkManager.Instance.speedActu > minSpdIce)
+                    {
+                        ChunkManager.Instance.speedActu = minSpdIce;
+                    }
+                    break;
+                case Surface.Sand:
+                    ChunkManager.Instance.speedActu += engineAccelerationSand * Time.deltaTime;
+                    if (ChunkManager.Instance.speedActu > minSpdSand)
+                    {
+                        ChunkManager.Instance.speedActu = minSpdSand;
+                    }
+                    break;
+                case Surface.Bumps:
+                    ChunkManager.Instance.speedActu += engineAccelerationBumps * Time.deltaTime;
+                    if (ChunkManager.Instance.speedActu > minSpdBumps)
+                    {
+                        ChunkManager.Instance.speedActu = minSpdBumps;
+                    }
+                    break;
+                default:
+                    break;
             }
+            
         }
     }
 
     public void CarDecelerate()
     {
-        ChunkManager.Instance.speedActu -= changingLaneSpeedLoss * Time.deltaTime;
-        if (ChunkManager.Instance.speedActu < 0)
+        switch (currentSurface)
         {
-            ChunkManager.Instance.speedActu = 0;
+            case Surface.Concrete:
+                ChunkManager.Instance.speedActu -= changingLaneSpeedLossConcrete * Time.deltaTime;
+                if (ChunkManager.Instance.speedActu < 0)
+                {
+                    ChunkManager.Instance.speedActu = 0;
+                }
+                break;
+            case Surface.Ice:
+                ChunkManager.Instance.speedActu -= changingLaneSpeedLossIce * Time.deltaTime;
+                if (ChunkManager.Instance.speedActu < 0)
+                {
+                    ChunkManager.Instance.speedActu = 0;
+                }
+                break;
+            case Surface.Sand:
+                ChunkManager.Instance.speedActu -= changingLaneSpeedLossSand * Time.deltaTime;
+                if (ChunkManager.Instance.speedActu < 0)
+                {
+                    ChunkManager.Instance.speedActu = 0;
+                }
+                break;
+            case Surface.Bumps:
+                ChunkManager.Instance.speedActu -= changingLaneSpeedLossBumps * Time.deltaTime;
+                if (ChunkManager.Instance.speedActu < 0)
+                {
+                    ChunkManager.Instance.speedActu = 0;
+                }
+                break;
+            default:
+                break;
         }
+        
     }
-    
-    public void CarInObstacle(float minSpd)
+    public void CarLanding()
     {
-        if (abilityController.currentAbility != Abilities.Bumper)
+        if (abilityController.currentAbilityChassis != Abilities.Suspension)
         {
-            ChunkManager.Instance.speedActu -= changingLaneSpeedLoss * Time.deltaTime;
+            ChunkManager.Instance.speedActu = minSpdLanding;
+        }
+
+    }
+
+    public void CarInSurface(float minSpd)
+    {
+        if (abilityController.currentAbilityTire != Abilities.Dolorean)
+        {
+            ChunkManager.Instance.speedActu -= surfaceSpeedLoss * Time.deltaTime;
             if (ChunkManager.Instance.speedActu < minSpd)
             {
                 ChunkManager.Instance.speedActu = minSpd;
             }
         }
+
+    }
+    public void CarInObstacle(float minSpd)
+    {
+        if (abilityController.currentAbilityChassis != Abilities.Bumper && !collideWithModule)
+        {
+            
+            collideWithModule = true;
+            ChunkManager.Instance.speedActu = minSpd;
+        }
         else
         {
-           
             CarAccelerate();
         }
-        
+
     }
     public void CarJumping()
     {
         gameObject.transform.position = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + abilityController.jumpHeight);
 
-        if (abilityController.currentAbility != Abilities.Turbo)
-        {    
+        if (abilityController.currentAbilityEngine != Abilities.Turbo)
+        {
             ChunkManager.Instance.modulesToCrossLaunchPad = ChunkManager.Instance.totalNbOfLineActu + jumpPadDistance;
         }
         else
@@ -223,6 +342,7 @@ public class CarController : MonoBehaviour
     public void EndJump()
     {
         gameObject.transform.position = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - abilityController.jumpHeight);
+        CarLanding();
     }
 
     public void ChangeLane()
@@ -314,6 +434,6 @@ public class CarController : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.DrawCube(transform.position, transform.localScale+ new Vector3(0.1f,0.1f,0.1f));
+        Gizmos.DrawCube(transform.position, transform.localScale + new Vector3(0.1f, 0.1f, 0.1f));
     }
 }

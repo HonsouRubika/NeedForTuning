@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc58bd786dc5f494cb4e548cf1bc665b, type: 3}
   m_Name: CyberPunkTire
   m_EditorClassIdentifier: 
+  type: 0
   name: CyberPunkTire
   image: {fileID: 0}
+  cardPrefab: {fileID: 0}
   maxSpeedConcrete: 4
   maxSpeedSand: 2
   maxSpeedIce: 4
@@ -22,8 +24,9 @@ MonoBehaviour:
   accelerationSand: 2
   accelerationIce: 3
   accelerationBump: 1
-  adhesionConcrete: 4
-  adhesionSand: 2
-  adhesionIce: 0
-  adhesionBump: 1
+  gripConcrete: 4
+  gripSand: 2
+  gripIce: 4
+  gripBump: 2
   resistance: 2
+  ability: {fileID: 0}

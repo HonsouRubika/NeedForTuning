@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc58bd786dc5f494cb4e548cf1bc665b, type: 3}
   m_Name: SmoothTire
   m_EditorClassIdentifier: 
+  type: 0
   name: SmoothTire
   image: {fileID: 0}
+  cardPrefab: {fileID: 0}
   maxSpeedConcrete: 5
   maxSpeedSand: 2
   maxSpeedIce: 4
@@ -22,9 +24,9 @@ MonoBehaviour:
   accelerationSand: 2
   accelerationIce: 3
   accelerationBump: 1
-  gripConcrete: 0
-  gripSand: 0
-  gripIce: 0
-  gripBump: 0
+  gripConcrete: 5
+  gripSand: 2
+  gripIce: 4
+  gripBump: 2
   resistance: 1
   ability: {fileID: 11400000, guid: 30f36686e5bead3499678f0dea667402, type: 2}

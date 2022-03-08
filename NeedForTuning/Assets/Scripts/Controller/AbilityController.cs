@@ -1,200 +1,323 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public enum Abilities {Default,Spring,AutoGearbox,Dolorean,Grip,Nail,Swim,Suspension,Turbo,Bumper}
+public enum Abilities { Default, Spring, AutoGearbox, Dolorean, Grip, Nail, Swim, Suspension, Turbo, Bumper }
 public class AbilityController : MonoBehaviour
 {
     private CarController car;
-    /*[HideInInspector]*/ public CarPiece abilityEngine;
-    /*[HideInInspector]*/ public CarPiece abilityTire;
-    /*[HideInInspector]*/ public CarPiece abilityChassis;
-    public Abilities currentAbility;
+    /*[HideInInspector]*/
+    public CarPiece abilityEngine;
+    /*[HideInInspector]*/
+    public CarPiece abilityTire;
+    /*[HideInInspector]*/
+    public CarPiece abilityChassis;
+    public Abilities currentAbilityEngine;
+    public Abilities currentAbilityTire;
+    public Abilities currentAbilityChassis;
 
-    [Header ("Abilities")]
+    [Header("Images")]
+    public Image engineButtonImage;
+    public Image ChassisButtonImage;
+    public Image TireButtonImage;
+
+    [Header("Abilities")]
     public float turboMultiplier;
     public float jumpHeight;
+    public float AutoGearBoxRatio;
+    private float GripLaneChange;
+    private int utilisationEngine;
+    private int utilisationTire;
+    private int utilisationChassis;
+    private float cdEngine;
+    private float cdTire;
+    private float cdChassis;
+    private bool engineRdy = true;
+    private bool tireRdy = true;
+    private bool chassisRdy = true;
 
     private void Start()
     {
         car = GetComponent<CarController>();
+        AttributePieces();
     }
-    
-    private void TriggerAbility(PieceAbility ability)
+    void AttributePieces()
     {
-        if (currentAbility == Abilities.Default)
+        abilityEngine = InventoryManager.Instance.engine;
+        abilityTire = InventoryManager.Instance.tire;
+        abilityChassis = InventoryManager.Instance.chassis;
+    }
+
+    private void Update()
+    {
+        ReloadCooldown();
+    }
+
+    private void ReloadCooldown()
+    {
+        if (!engineRdy)
         {
-            switch (ability.name)
+            if (cdEngine < abilityEngine.ability.cooldown)
             {
-                case "Spring":
-                    Spring(ability, true);
-                    currentAbility = Abilities.Spring;
-                    break;
-                case "AutoGearbox":
-                    AutoGearbox(ability, true);
-                    currentAbility = Abilities.AutoGearbox;
-                    break;
-                case "Bumper":
-                    Bumper(ability, true);
-                    currentAbility = Abilities.Bumper;
-                    break;
-                case "Dolorean":
-                    Dolorean(ability, true);
-                    currentAbility = Abilities.Dolorean;
-                    break;
-                case "Grip":
-                    Grip(ability, true);
-                    currentAbility = Abilities.Grip;
-                    break;
-                case "Nail":
-                    Nail(ability, true);
-                    currentAbility = Abilities.Nail;
-                    break;
-                case "Suspension":
-                    Suspension(ability, true);
-                    currentAbility = Abilities.Suspension;
-                    break;
-                case "Swim":
-                    Swim(ability, true);
-                    currentAbility = Abilities.Swim;
-                    break;
-                case "Turbo":
-                    Turbo(ability, true);
-                    currentAbility = Abilities.Turbo;
-                    break;
+                cdEngine += Time.deltaTime;
+                engineButtonImage.fillAmount = cdEngine / abilityEngine.ability.cooldown;
+            }
+            else
+            {
+                engineRdy = true;
+                cdEngine = 0;
             }
         }
-        
+
+        if (!chassisRdy)
+        {
+            if (cdChassis < abilityEngine.ability.cooldown)
+            {
+                cdChassis += Time.deltaTime;
+                ChassisButtonImage.fillAmount = cdChassis / abilityEngine.ability.cooldown;
+            }
+            else
+            {
+                chassisRdy = true;
+                cdChassis = 0;
+            }
+        }
+
+        if (!tireRdy)
+        {
+            if (cdTire < abilityEngine.ability.cooldown)
+            {
+                cdTire += Time.deltaTime;
+                TireButtonImage.fillAmount = cdTire / abilityEngine.ability.cooldown;
+            }
+            else
+            {
+                tireRdy = true;
+                cdTire = 0;
+            }
+        }
     }
-    
-    public void StopAbility()
+
+    private void TriggerAbility(PieceAbility ability)
     {
-        switch (currentAbility)
+
+
+        switch (ability.name)
+        {
+            case "Spring":
+                Spring(ability, true);
+                tireRdy = false;
+                currentAbilityTire = Abilities.Spring;
+                break;
+            case "AutoGearbox":
+                AutoGearbox(ability, true);
+                engineRdy = false;
+                currentAbilityEngine = Abilities.AutoGearbox;
+                break;
+            case "Bumper":
+                Bumper(ability, true);
+                chassisRdy = false;
+                currentAbilityChassis = Abilities.Bumper;
+                break;
+            case "Dolorean":
+                Dolorean(ability, true);
+                tireRdy = false;
+                currentAbilityTire = Abilities.Dolorean;
+                break;
+            case "Grip":
+                Grip(ability, true);
+                engineRdy = false;
+                currentAbilityEngine = Abilities.Grip;
+                break;
+            case "Nail":
+                Nail(ability, true);
+                tireRdy = false;
+                currentAbilityTire = Abilities.Nail;
+                break;
+            case "Suspension":
+                Suspension(ability, true);
+                chassisRdy = false;
+                currentAbilityChassis = Abilities.Suspension;
+                break;
+            case "Swim":
+                Swim(ability, true);
+                chassisRdy = false;
+                currentAbilityChassis = Abilities.Swim;
+                break;
+            case "Turbo":
+                Turbo(ability, true);
+                engineRdy = false;
+                currentAbilityEngine = Abilities.Turbo;
+                break;
+        }
+
+
+    }
+
+    public void StopAbility(Abilities abilities)
+    {
+        
+        switch (abilities)
         {
             case Abilities.Spring:
                 Spring(null, false);
+                
                 break;
             case Abilities.AutoGearbox:
                 AutoGearbox(null, false);
+                
                 break;
             case Abilities.Bumper:
                 Bumper(null, false);
+                
                 break;
             case Abilities.Dolorean:
                 Dolorean(null, false);
+                
                 break;
             case Abilities.Grip:
                 Grip(null, false);
+                
                 break;
             case Abilities.Nail:
                 Nail(null, false);
+
                 break;
             case Abilities.Suspension:
                 Suspension(null, false);
+                
                 break;
             case Abilities.Swim:
                 Swim(null, false);
+                
                 break;
             case Abilities.Turbo:
-                Turbo(null,false);
+                Turbo(null, false);
+                
                 break;
 
-            
+
         }
     }
     #region Trigger Ability
     public void ClickEngine()
     {
-        TriggerAbility(abilityEngine.ability);
+        if (utilisationEngine < abilityEngine.ability.utilisationNumber && engineRdy)
+        {
+            utilisationEngine++;
+            TriggerAbility(abilityEngine.ability);
+        }
+        else
+        {
+            engineButtonImage.color = Color.gray;
+        }
         
     }
 
     public void ClickTire()
     {
-        TriggerAbility(abilityTire.ability);
-        
+        if (utilisationTire < abilityEngine.ability.utilisationNumber && tireRdy)
+        {
+            utilisationTire++;
+            TriggerAbility(abilityTire.ability);
+        }
+            
+
     }
 
 
     public void ClickChassis()
     {
-        TriggerAbility(abilityChassis.ability);
+        if (utilisationChassis < abilityEngine.ability.utilisationNumber && chassisRdy)
+        {
+            utilisationChassis++;
+            TriggerAbility(abilityChassis.ability);
+        }
+            
     }
     #endregion
 
     #region Engine Ability
-    private void Grip(PieceAbility ability, bool enabled)
-    {
-        if (enabled)
-        {
-            ChunkManager.Instance.modulesToCross = ChunkManager.Instance.totalNbOfLineActu + ability.moduleDistance;
-        }
-        else
-        {
-            ChunkManager.Instance.speedActu = car.engineMaxSpeed;
-            currentAbility = Abilities.Default;
-        }
-    }
-
-    private void AutoGearbox(PieceAbility ability, bool enabled)
-    {
-        if (enabled)
-        {
-            ChunkManager.Instance.modulesToCross = ChunkManager.Instance.totalNbOfLineActu + ability.moduleDistance;
-        }
-        else
-        {
-            ChunkManager.Instance.speedActu = car.engineMaxSpeed;
-            currentAbility = Abilities.Default;
-        }
-    }
-
-    private void Turbo(PieceAbility ability,bool enabled)
+    private void Grip(PieceAbility ability, bool enabled)//Done
     {
         
         if (enabled)
         {
-            
-            ChunkManager.Instance.modulesToCross = ChunkManager.Instance.totalNbOfLineActu + ability.moduleDistance;
-            
+            GripLaneChange = car.changingLaneSpeedLossConcrete;
+            ChunkManager.Instance.modulesToCrossEngine = ChunkManager.Instance.totalNbOfLineActu + ability.moduleDistance;
+            car.changingLaneSpeedLossConcrete -= GripLaneChange;
+        }
+        else
+        {
+            car.changingLaneSpeedLossConcrete += GripLaneChange;
+            ChunkManager.Instance.speedActu = car.engineMaxSpeed;
+            currentAbilityEngine = Abilities.Default;
+        }
+    }
+
+    private void AutoGearbox(PieceAbility ability, bool enabled)//Done
+    {
+        if (enabled)
+        {
+            ChunkManager.Instance.modulesToCrossEngine = ChunkManager.Instance.totalNbOfLineActu + ability.moduleDistance;
+            car.engineAccelerationConcrete *= AutoGearBoxRatio;
+        }
+        else
+        {
+            ChunkManager.Instance.speedActu = car.engineMaxSpeed;
+            car.engineAccelerationConcrete /= AutoGearBoxRatio;
+            currentAbilityEngine = Abilities.Default;
+        }
+    }
+
+    private void Turbo(PieceAbility ability, bool enabled)//Done
+    {
+
+        if (enabled)
+        {
+
+            ChunkManager.Instance.modulesToCrossEngine = ChunkManager.Instance.totalNbOfLineActu + ability.moduleDistance;
+
             ChunkManager.Instance.speedActu = car.engineMaxSpeed * turboMultiplier;
-            
+
         }
         else
         {
             ChunkManager.Instance.speedActu = car.engineMaxSpeed;
-            currentAbility = Abilities.Default;
+            currentAbilityEngine = Abilities.Default;
         }
-        
+
     }
     #endregion
 
     #region Tire Ability
-    private void Spring(PieceAbility ability, bool enabled)
+    private void Spring(PieceAbility ability, bool enabled)//Done
     {
-        
+
         if (enabled)
         {
-            
-            ChunkManager.Instance.modulesToCross = ChunkManager.Instance.totalNbOfLineActu + ability.moduleDistance;
+
+            ChunkManager.Instance.modulesToCrossTire = ChunkManager.Instance.totalNbOfLineActu + ability.moduleDistance;
             gameObject.transform.position = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + jumpHeight);
         }
         else
         {
             gameObject.transform.position = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - jumpHeight);
-            currentAbility = Abilities.Default;
+            car.CarLanding();
+            currentAbilityTire = Abilities.Default;
         }
     }
 
-    private void Dolorean(PieceAbility ability, bool enabled)
+    private void Dolorean(PieceAbility ability, bool enabled)//Done
     {
         if (enabled)
         {
-            ChunkManager.Instance.modulesToCross = ChunkManager.Instance.totalNbOfLineActu + ability.moduleDistance;
+            ChunkManager.Instance.modulesToCrossTire = ChunkManager.Instance.totalNbOfLineActu + ability.moduleDistance;
         }
         else
         {
-            currentAbility = Abilities.Default;
+            currentAbilityTire = Abilities.Default;
         }
     }
 
@@ -202,49 +325,49 @@ public class AbilityController : MonoBehaviour
     {
         if (enabled)
         {
-            ChunkManager.Instance.modulesToCross = ChunkManager.Instance.totalNbOfLineActu + ability.moduleDistance;
+            ChunkManager.Instance.modulesToCrossTire = ChunkManager.Instance.totalNbOfLineActu + ability.moduleDistance;
         }
         else
         {
-            currentAbility = Abilities.Default;
+            currentAbilityTire = Abilities.Default;
         }
     }
     #endregion
 
     #region Chassis Ability
-    private void Bumper(PieceAbility ability, bool enabled)
+    private void Bumper(PieceAbility ability, bool enabled) //Done
     {
         if (enabled)
         {
-            ChunkManager.Instance.modulesToCross = ChunkManager.Instance.totalNbOfLineActu + ability.moduleDistance;
+            ChunkManager.Instance.modulesToCrossChassis = ChunkManager.Instance.totalNbOfLineActu + ability.moduleDistance;
         }
         else
         {
-            currentAbility = Abilities.Default;
+            currentAbilityChassis = Abilities.Default;
         }
     }
 
-    private void Swim(PieceAbility ability, bool enabled)
+    private void Swim(PieceAbility ability, bool enabled) //Done
     {
         if (enabled)
         {
-            ChunkManager.Instance.modulesToCross = ChunkManager.Instance.totalNbOfLineActu + ability.moduleDistance;
+            ChunkManager.Instance.modulesToCrossChassis = ChunkManager.Instance.totalNbOfLineActu + ability.moduleDistance;
         }
         else
         {
-            currentAbility = Abilities.Default;
+            currentAbilityChassis = Abilities.Default;
         }
     }
 
-    private void Suspension(PieceAbility ability, bool enabled)
+    private void Suspension(PieceAbility ability, bool enabled)//Done
     {
         if (enabled)
         {
-            ChunkManager.Instance.modulesToCross = ChunkManager.Instance.totalNbOfLineActu + ability.moduleDistance;
+            ChunkManager.Instance.modulesToCrossChassis = ChunkManager.Instance.totalNbOfLineActu + ability.moduleDistance;
         }
         else
         {
-            currentAbility = Abilities.Default;
+            currentAbilityChassis = Abilities.Default;
         }
     }
     #endregion

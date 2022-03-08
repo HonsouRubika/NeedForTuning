@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc58bd786dc5f494cb4e548cf1bc665b, type: 3}
   m_Name: OldEngine
   m_EditorClassIdentifier: 
+  type: 0
   name: OldEngine
   image: {fileID: 0}
+  cardPrefab: {fileID: 0}
   maxSpeedConcrete: 4
   maxSpeedSand: 3
   maxSpeedIce: 2
@@ -22,8 +24,9 @@ MonoBehaviour:
   accelerationSand: 3
   accelerationIce: 3
   accelerationBump: 2
-  adhesionConcrete: 3
-  adhesionSand: 2
-  adhesionIce: 2
-  adhesionBump: 2
+  gripConcrete: 3
+  gripSand: 2
+  gripIce: 2
+  gripBump: 2
   resistance: 1
+  ability: {fileID: 0}

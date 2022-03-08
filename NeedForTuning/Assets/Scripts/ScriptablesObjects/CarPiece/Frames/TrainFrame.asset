@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc58bd786dc5f494cb4e548cf1bc665b, type: 3}
   m_Name: TrainFrame
   m_EditorClassIdentifier: 
+  type: 0
   name: TrainFrame
   image: {fileID: 0}
+  cardPrefab: {fileID: 0}
   maxSpeedConcrete: 3
   maxSpeedSand: 3
   maxSpeedIce: 3
@@ -22,8 +24,9 @@ MonoBehaviour:
   accelerationSand: 1
   accelerationIce: 2
   accelerationBump: 1
-  adhesionConcrete: 3
-  adhesionSand: 2
-  adhesionIce: 2
-  adhesionBump: 2
+  gripConcrete: 3
+  gripSand: 3
+  gripIce: 3
+  gripBump: 3
   resistance: 4
+  ability: {fileID: 0}
