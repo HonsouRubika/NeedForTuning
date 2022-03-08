@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 
 public class CarController : MonoBehaviour
 {
-
     public enum CarState
     {
         idle, //going strait
@@ -41,7 +40,14 @@ public class CarController : MonoBehaviour
     private Rigidbody rb;
 
     //level ref
-    public float lineWidth = 5;
+    public float lineWidth = 5; 
+    public LevelState currentState;
+    public enum LevelState
+    {
+        preview,
+        play,
+        total
+    }
 
     //JumpPad
     public int jumpPadDistance = 2;
@@ -58,6 +64,21 @@ public class CarController : MonoBehaviour
         {
             movementInput = context.ReadValue<Vector2>();
             carState = (uint)CarState.changing_lane;
+        }
+    }
+    public void OnSpace(InputAction.CallbackContext context)
+    {
+        if (context.started && currentState == LevelState.preview)
+        {
+            currentState = LevelState.play;
+            //passer en game
+            //Debug.Log("play");
+            ChunkManager.Instance.InitLD();
+        }
+        else if (context.started && currentState == LevelState.play && ChunkManager.Instance.isFinished)
+        {
+            currentState = LevelState.preview;
+            TourneyManager.Instance.NextLevel();
         }
     }
 
