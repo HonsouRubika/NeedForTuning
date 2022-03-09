@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_ParticlesInCardsStars
-  m_Shader: {fileID: 4800000, guid: 6e3d4bae59e73584ca7951cee6baef6b, type: 3}
+  m_Name: M_CardsBackgroundParticles
+  m_Shader: {fileID: 4800000, guid: 0415698e130d0c046a8ae930f7ea9c9e, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -19,26 +19,22 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _Alpha:
-        m_Texture: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Mask:
+    - _MainTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _Tex:
-        m_Texture: {fileID: 2800000, guid: d99181f55cd0ffa4aacc6dd6f4f34396, type: 3}
+    - _MaskTexture:
+        m_Texture: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _BoolMask: 0
-    - _Contrast: 1.18
-    - _Intensity: 2
-    - _MaskIntensity: 1
-    - _Opacity: 1.6
-    - _RGB: 0
-    - _Transparency: 0.415
+    - _Intensity: 0.8
+    - _NbPattern: 60
+    - _OpacityMask: 2
+    - _Scale: 1
+    - _Speed: -1
+    - _ThicknessPattern: -0.19
     m_Colors:
-    - _Color: {r: 1, g: 0, b: 0.010437012, a: 1}
+    - _Color: {r: 0.9716981, g: 0.94792426, b: 0.1787558, a: 1}
+    - _Color2: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
