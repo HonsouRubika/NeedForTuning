@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8629115605035993649}
   - component: {fileID: 8629115605035993655}
   - component: {fileID: 8629115605035993654}
+  - component: {fileID: 1547584708871773630}
   m_Layer: 0
   m_Name: Car
   m_TagString: Untagged
@@ -68,8 +69,11 @@ MonoBehaviour:
   minSpdBumps: 2
   minSpdObstacle: 1
   minSpdLanding: 5
+  explosion: {fileID: 7531543392527008925, guid: c4d49c799788db84bb920c35d59d790d, type: 3}
   lineWidth: 5
   currentState: 0
+  durationCamShake: 0.2
+  magnitudeCamShake: 0.01
   jumpPadDistance: 2
 --- !u!114 &8516897327813733363
 MonoBehaviour:
@@ -271,6 +275,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1547584708871773630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8629115605035993648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6133048352949344922a126eac07b81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1772458456599906562
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -21,6 +21,7 @@ public class CarController : MonoBehaviour
     //ref
     private AbilityController abilityController;
     private CameraController cameraController;
+    private CameraShake cameraShake;
 
     //input
     private Vector2 movementInput = Vector2.zero;
@@ -52,10 +53,19 @@ public class CarController : MonoBehaviour
 
     //component
     private Rigidbody rb;
+    public ParticleSystem explosion;
 
     //level ref
     public float lineWidth = 5; 
     public LevelState currentState;
+
+    //camera shake
+    public float durationCamShake = 0.15f;
+    public float magnitudeCamShake = 0.4f;
+
+    //explosion
+    private bool explosionDone = false;
+
     public enum LevelState
     {
         preview,
@@ -70,6 +80,7 @@ public class CarController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         abilityController = GetComponent<AbilityController>();
         cameraController = GetComponent<CameraController>();
+        cameraShake = GetComponent<CameraShake>();
         ApplyPiecesStats();
         
     }
@@ -195,6 +206,7 @@ public class CarController : MonoBehaviour
                     //abilityController.StopAbility();
                     CarInObstacle(minSpdObstacle);
                     inObtsacle = true;
+                    CameraShake();
 
                     break;
                 case "ChunkWaterHole":
@@ -203,18 +215,21 @@ public class CarController : MonoBehaviour
                     {
                         CarInObstacle(minSpdObstacle);
                         inObtsacle = true;
+                        CameraShake();
                     }
                     break;
                 case "ChunkTreeTrunk":
                 case "ChunkTreeTrunk(Clone)":
                     CarInObstacle(minSpdObstacle);
                     inObtsacle = true;
+                    CameraShake();
 
                     break;
                 case "ChunkJunk":
                 case "ChunkJunk(Clone)":
                     CarInObstacle(minSpdObstacle);
                     inObtsacle = true;
+                    CameraShake();
 
                     break;
                 case "ChunkLaunchingPad":
@@ -236,12 +251,14 @@ public class CarController : MonoBehaviour
                 case "ChunkSand(Clone)":
                     CarInSurface(minSpdSand);
                     inObtsacle = true;
+                    CameraShake();
                     currentSurface = Surface.Sand;
                     break;
                 case "ChunkBumps":
                 case "ChunkBumps(Clone)":
                     CarInSurface(minSpdBumps);
                     inObtsacle = true;
+                    CameraShake();
                     currentSurface = Surface.Bumps;
                     break;
                 case "BigBall":
@@ -249,6 +266,7 @@ public class CarController : MonoBehaviour
                     
                     CarInObstacle(minSpdObstacle);
                     inObtsacle = true;
+                    CameraShake();
 
                     break;
                 case "SM_Whomp":
@@ -276,6 +294,21 @@ public class CarController : MonoBehaviour
             inObtsacle = false;
             collideWithModule = false;
         }
+    }
+
+    public void CameraShake()
+    {
+        if (!explosionDone)
+        {
+            ParticleSystem particles = Instantiate(explosion, transform.localPosition, transform.localRotation);
+            particles.transform.localScale *= Random.Range(1f, 2f);
+            explosionDone = true;
+            //Debug.Log("BOOM");
+            Destroy(particles, 5.0f);
+        }
+        StartCoroutine(cameraShake.Shake(durationCamShake, magnitudeCamShake* Random.Range(0.85f, 1.25f)));
+        Invoke("ResetExplosion", 0.25f);
+
     }
 
     public void CarAccelerate()
@@ -315,7 +348,6 @@ public class CarController : MonoBehaviour
                 default:
                     break;
             }
-            
         }
     }
 
@@ -502,5 +534,11 @@ public class CarController : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawCube(transform.position, transform.localScale + new Vector3(0.1f, 0.1f, 0.1f));
+    }
+
+    void ResetExplosion()
+    {
+        explosionDone = false;
+        //Debug.Log("RESET");
     }
 }
