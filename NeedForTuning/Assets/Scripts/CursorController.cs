@@ -73,6 +73,7 @@ public class CursorController : MonoBehaviour
                 //Debug.Log("3D Hit: " + hit.collider.tag);
                 if (hit.collider.tag == "Card")
                 {
+                    Debug.Log("So6");
                     if (canInteractWithCards)
                     {
                         Debug.Log("Showing The Card");
@@ -85,11 +86,9 @@ public class CursorController : MonoBehaviour
                     }                    
                 }                
             }                                
-
         }
         if (hit.collider == null)
         {
-            Debug.Log("So6");
             if (cardHit != null)
             {
                 Debug.Log("Cho7");
