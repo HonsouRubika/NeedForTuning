@@ -29,6 +29,6 @@ Material:
     - _Speed: 1
     - _ThicknessPattern: 0.1
     m_Colors:
-    - _Color: {r: 0.9150943, g: 0.47912958, b: 0.6649406, a: 1}
+    - _Color: {r: 1, g: 0.7783019, b: 0.8184792, a: 1}
     - _Color2: {r: 0.65882355, g: 0.28235295, b: 0.5137255, a: 1}
   m_BuildTextureStacks: []
