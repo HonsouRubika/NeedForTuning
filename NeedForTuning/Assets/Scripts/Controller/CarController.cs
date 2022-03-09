@@ -20,6 +20,7 @@ public class CarController : MonoBehaviour
     private Surface currentSurface;
     //ref
     private AbilityController abilityController;
+    private CameraController cameraController;
 
     //input
     private Vector2 movementInput = Vector2.zero;
@@ -68,6 +69,7 @@ public class CarController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         abilityController = GetComponent<AbilityController>();
+        cameraController = GetComponent<CameraController>();
         ApplyPiecesStats();
         
     }
@@ -91,10 +93,15 @@ public class CarController : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        if (context.started && carState == (uint)CarState.idle)
+        if (context.started && carState == (uint)CarState.idle && currentState == LevelState.play)
         {
             movementInput = context.ReadValue<Vector2>();
             carState = (uint)CarState.changing_lane;
+        }
+        else if (currentState == LevelState.preview)
+        {
+            movementInput = context.ReadValue<Vector2>();
+            cameraController.SetCameraDirection(movementInput);
         }
     }
     public void OnSpace(InputAction.CallbackContext context)
@@ -102,11 +109,15 @@ public class CarController : MonoBehaviour
         if (context.started && currentState == LevelState.preview)
         {
             currentState = LevelState.play;
+
+            //reset cam position
+            cameraController.ResetCameraPosition();
+
             //passer en game
             //Debug.Log("play");
             ChunkManager.Instance.InitLD();
         }
-        else if (context.started && currentState == LevelState.play && ChunkManager.Instance.isFinished)
+        else if (currentState == LevelState.play && ChunkManager.Instance.isFinished)
         {
             currentState = LevelState.preview;
             TourneyManager.Instance.NextLevel();
@@ -176,6 +187,9 @@ public class CarController : MonoBehaviour
             //Debug.Log("module detected");
             switch (module[0].gameObject.name)
             {
+                case "Car":
+
+                    break;
                 case "ChunkBarrel":
                 case "ChunkBarrel(Clone)":
                     //abilityController.StopAbility();
