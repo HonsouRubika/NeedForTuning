@@ -10,15 +10,18 @@ public class TemporaryManager : MonoBehaviour
     public GameObject clickableStartText;
 
     [Header("Opening First Booster")]
-    public Text[] textBook;
+    public GameObject buttonText;
+    public Text displayingText;
     [Space(10)]
     public int indexText;
+    public Text[] textBook;
+    [Space(10)]
     private bool displayingFirstText = false;
+    public OpeningBooster openingBooster;
 
     [Space(10)]
     public GameObject blackScreen;
 
-    // Start is called before the first frame update
     void Start()
     {
         indexText = 0;
@@ -46,15 +49,21 @@ public class TemporaryManager : MonoBehaviour
         displayingFirstText = true;
     }
 
-    public void DisplayText(Text text)
+    public void DisplayText(Text text) //Mettre DisplayingText si référencement manuel
     {
-        GameObject textObject = text.gameObject;
-        textObject.SetActive(true);
+        text = textBook[indexText];
+        buttonText.SetActive(true);
+        displayingText.text = text.text;
         indexText++;
         Debug.Log("Displaying Text");
+
+        if (indexText == 4)
+        {
+            openingBooster.ShowingBooster();
+            buttonText.SetActive(false);
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (displayingFirstText)
