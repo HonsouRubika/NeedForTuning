@@ -45,7 +45,7 @@ public class TemporaryManager : MonoBehaviour
         buttonStart.SetActive(false);
         yield return new WaitForSeconds(1.5f);
         anim.SetBool("fadeInBlackScreen", false);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2.5f);
         displayingFirstText = true;
     }
 
@@ -60,6 +60,10 @@ public class TemporaryManager : MonoBehaviour
         if (indexText == 4)
         {
             openingBooster.ShowingBooster();
+            buttonText.SetActive(false);
+        }
+        else if (indexText == 6)
+        {
             buttonText.SetActive(false);
         }
     }

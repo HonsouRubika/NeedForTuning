@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class OpeningBooster : MonoBehaviour
 {
     public CursorController cursorController;
-   
+    public TemporaryManager temporaryManager;
 
     public GameObject button;
 
@@ -42,14 +42,25 @@ public class OpeningBooster : MonoBehaviour
 
             card01.transform.position = Vector3.MoveTowards(card01.transform.position, targetCard01.position, step);
             card03.transform.position = Vector3.MoveTowards(card03.transform.position, targetCard03.position, step);
-        }        
+        }
+
+        if (temporaryManager.indexText == 6)
+        {
+            canOpenTheBooster = true;
+        }
     }
 
     public void ShowingBooster()
     {
         anim.SetBool("moveBooster", true);
-        canOpenTheBooster = true;
+        StartCoroutine(ShowingTheBooster());
         Debug.Log("Showing Booster");
+    }
+
+    IEnumerator ShowingTheBooster()
+    {
+        yield return new WaitForSeconds(1f);
+        temporaryManager.DisplayText(temporaryManager.textBook[temporaryManager.indexText]);
     }
 
     public void OpenBooster()
