@@ -7,6 +7,7 @@ public class CursorController : MonoBehaviour
     [Header("CURSOR")]
     public Texture2D cursor;
     public Texture2D cursorClicked;
+    private bool clicking;
 
     private CursorControls controls;
 
@@ -50,11 +51,13 @@ public class CursorController : MonoBehaviour
     private void StartedClick()
     {
         ChangeCursor(cursorClicked);
+        clicking = true;
     }
 
     private void EndedClick()
     {
         ChangeCursor(cursor);
+        clicking = false;
     }
 
 
@@ -75,6 +78,10 @@ public class CursorController : MonoBehaviour
                         Debug.Log("Showing The Card");
                         cardHit = hit.collider.gameObject;
                         cardHit.GetComponent<Animator>().SetBool("upScale", true);
+                        if (clicking)
+                        {
+                            cardHit.GetComponent<CardBehaviour>().assignPiece();
+                        }
                     }                    
                 }                
             }                                

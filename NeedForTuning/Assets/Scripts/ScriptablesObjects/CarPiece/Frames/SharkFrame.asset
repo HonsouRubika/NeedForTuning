@@ -16,6 +16,7 @@ MonoBehaviour:
   name: SharkFrame
   image: {fileID: 0}
   cardPrefab: {fileID: 0}
+  piecePrefab: {fileID: 502161495655889318, guid: 0e1bf56b008293e48b3ab7a12e5f96ea, type: 3}
   maxSpeedConcrete: 3
   maxSpeedSand: 4
   maxSpeedIce: 2

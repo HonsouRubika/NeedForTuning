@@ -22,6 +22,6 @@ public class CardBehaviour : MonoBehaviour
             default:
                 break;
         }
-        
+        GetComponentInParent<CustomizeCar>().UpdateVisual();
     }
 }

@@ -16,6 +16,7 @@ MonoBehaviour:
   name: BrokenFrame
   image: {fileID: 0}
   cardPrefab: {fileID: 0}
+  piecePrefab: {fileID: 3335188088787806222, guid: 8eb0bff22f2bd474a9d7d920824d4e42, type: 3}
   maxSpeedConcrete: 3
   maxSpeedSand: 2
   maxSpeedIce: 2

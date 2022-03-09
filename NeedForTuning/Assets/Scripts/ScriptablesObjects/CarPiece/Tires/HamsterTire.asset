@@ -16,6 +16,7 @@ MonoBehaviour:
   name: HamsterTire
   image: {fileID: 0}
   cardPrefab: {fileID: 0}
+  piecePrefab: {fileID: 919132149155446097, guid: 22dd96be225da214b83a490f741b0747, type: 3}
   maxSpeedConcrete: 3
   maxSpeedSand: 4
   maxSpeedIce: 2
