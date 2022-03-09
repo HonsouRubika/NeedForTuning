@@ -224,6 +224,26 @@ public class CarController : MonoBehaviour
                     inObtsacle = true;
                     currentSurface = Surface.Sand;
                     break;
+                case "ChunkBumps":
+                case "ChunkBumps(Clone)":
+                    CarInSurface(minSpdBumps);
+                    inObtsacle = true;
+                    currentSurface = Surface.Bumps;
+                    break;
+                case "BigBall":
+                case "BigBall(Clone)":
+                    
+                    CarInObstacle(minSpdObstacle);
+                    inObtsacle = true;
+
+                    break;
+                case "ChunkWomp":
+                case "ChunkWomp(Clone)":
+                    //abilityController.StopAbility();
+                    CarInObstacle(minSpdObstacle);
+                    inObtsacle = true;
+
+                    break;
                 default:
                     Debug.Log(module[0].gameObject.name);
                     CarInSurface(minSpdIce);
