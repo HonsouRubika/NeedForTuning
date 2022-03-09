@@ -33,8 +33,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _BoolMask: 1
-    - _Contrast: 0.29
-    - _Intensity: 3.02
+    - _Contrast: 0.19
+    - _Intensity: 7.13
     - _MaskIntensity: 1
     - _Opacity: 1.6
     - _RGB: 1
