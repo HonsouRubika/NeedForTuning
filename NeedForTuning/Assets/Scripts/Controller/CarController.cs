@@ -109,11 +109,15 @@ public class CarController : MonoBehaviour
         if (context.started && currentState == LevelState.preview)
         {
             currentState = LevelState.play;
+
+            //reset cam position
+            cameraController.ResetCameraPosition();
+
             //passer en game
             //Debug.Log("play");
             ChunkManager.Instance.InitLD();
         }
-        else if (context.started && currentState == LevelState.play && ChunkManager.Instance.isFinished)
+        else if (currentState == LevelState.play && ChunkManager.Instance.isFinished)
         {
             currentState = LevelState.preview;
             TourneyManager.Instance.NextLevel();
@@ -183,6 +187,9 @@ public class CarController : MonoBehaviour
             //Debug.Log("module detected");
             switch (module[0].gameObject.name)
             {
+                case "Car":
+
+                    break;
                 case "ChunkBarrel":
                 case "ChunkBarrel(Clone)":
                     //abilityController.StopAbility();

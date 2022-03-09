@@ -84,7 +84,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
-  cameraSpeed: 150
+  cameraSpeed: 75
   chunkWidth: 5
   originPos: {x: 0, y: 0, z: 0}
   minPos: {x: 0, y: 0, z: 0}
