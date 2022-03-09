@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8629115605035993652}
   - component: {fileID: 2484660007687885031}
+  - component: {fileID: 8516897327813733363}
   - component: {fileID: 4757020060118075399}
   - component: {fileID: 8268997289470524645}
   - component: {fileID: 8629115605035993649}
@@ -50,16 +51,44 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changingLaneSpeed: 100
-  changingLaneSpeedLoss: 33
-  engineAcceleration: 50
+  changingLaneSpeedLossConcrete: 33
+  changingLaneSpeedLossIce: 33
+  changingLaneSpeedLossSand: 33
+  changingLaneSpeedLossBumps: 33
+  obstacleSpeedLoss: 33
+  surfaceSpeedLoss: 33
+  engineAccelerationConcrete: 150
+  engineAccelerationIce: 100
+  engineAccelerationSand: 60
+  engineAccelerationBumps: 40
   engineMaxSpeed: 10
   engineMinimumSpeed: 1
   minSpdIce: 6
   minSpdSand: 3
-  minSpdBarrel: 1
+  minSpdBumps: 2
+  minSpdObstacle: 1
+  minSpdLanding: 5
   lineWidth: 5
   currentState: 0
   jumpPadDistance: 2
+--- !u!114 &8516897327813733363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8629115605035993648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 517358704892b904d87f271572c9227d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 0}
+  cameraSpeed: 150
+  chunkWidth: 5
+  originPos: {x: 0, y: 0, z: 0}
+  minPos: {x: 0, y: 0, z: 0}
+  maxPos: {x: 0, y: 0, z: 0}
 --- !u!114 &4757020060118075399
 MonoBehaviour:
   m_ObjectHideFlags: 0
