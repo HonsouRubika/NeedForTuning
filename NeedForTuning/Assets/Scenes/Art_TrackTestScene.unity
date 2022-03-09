@@ -1354,8 +1354,20 @@ PrefabInstance:
       value: 1.07
       objectReference: {fileID: 0}
     - target: {fileID: 4199145068290705541, guid: aabf0638375b1794090bc46afc82041d, type: 3}
+      propertyPath: TrailModule.lifetime.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4199145068290705541, guid: aabf0638375b1794090bc46afc82041d, type: 3}
+      propertyPath: TrailModule.lifetime.minScalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4199145068290705541, guid: aabf0638375b1794090bc46afc82041d, type: 3}
+      propertyPath: TrailModule.lifetime.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4199145068290705541, guid: aabf0638375b1794090bc46afc82041d, type: 3}
       propertyPath: TrailModule.widthOverTrail.scalar
-      value: 0.2
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4199145068290705541, guid: aabf0638375b1794090bc46afc82041d, type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
