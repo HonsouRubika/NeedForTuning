@@ -242,6 +242,10 @@ public class LdGenerator : EditorWindow
                             //Debug.Log("changement détécté dans la taille de la grid");
                             //Debug.Log("actualisation de la grid size");
                             //update array size
+                            Debug.Log("Avant : " + nbOfLine.intValue);
+                            Debug.Log(chunks.arraySize);
+                            Debug.Log(grounds.arraySize);
+
                             for (int z = chunks.arraySize - 1; z < 3 * nbOfLine.intValue; z++)
                             {
                                 chunks.InsertArrayElementAtIndex(z);
@@ -251,6 +255,10 @@ public class LdGenerator : EditorWindow
                             {
                                 grounds.InsertArrayElementAtIndex(z);
                             }
+
+                            Debug.Log("Après : " + nbOfLine.intValue);
+                            Debug.Log(chunks.arraySize);
+                            Debug.Log(grounds.arraySize);
 
                         }
                     }

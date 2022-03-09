@@ -42,6 +42,8 @@ public class TourneyManager : MonoBehaviour
         {
             //TODO : override on equal
             //Debug.Log("start");
+            //Debug.Log(levels[levelActu].chunks.Length);
+            //Debug.Log(levels[levelActu].nbOfLine);
             ChunkManager.Instance.selectedLevel = levels[levelActu++];
             SceneManager.LoadScene(levelScene);
         }

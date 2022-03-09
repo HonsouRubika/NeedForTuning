@@ -187,7 +187,12 @@ public class CarController : MonoBehaviour
             //Debug.Log("module detected");
             switch (module[0].gameObject.name)
             {
+                //to ignore
+                case "ChunkStart":
+                case "ChunkStart (1)":
+                case "ChunkStart (2)":
                 case "Car":
+                case "Car(Clone)":
 
                     break;
                 case "ChunkBarrel":
