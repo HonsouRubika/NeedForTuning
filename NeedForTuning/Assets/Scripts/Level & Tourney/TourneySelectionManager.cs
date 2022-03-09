@@ -9,23 +9,6 @@ public class TourneySelectionManager : MonoBehaviour
 
     public Tourney[] tourneys;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        //test
-
-        if (!TourneyManager.Instance.testIsFinished)
-        {
-            LevelProfile[] testTourneyLevels = { existantLevels[0], existantLevels[0], existantLevels[0] };
-            Tourney testTourney = new Tourney("test", testTourneyLevels);
-            PickTourney(testTourney);
-        }
-        else
-        {
-            Debug.Log("test finished");
-        }
-    }
-
     void Awake()
     {
         #region Make Singleton
@@ -39,6 +22,20 @@ public class TourneySelectionManager : MonoBehaviour
             return;
         }
         #endregion
+    }
+
+    public void StartRace()
+    {
+        if (!TourneyManager.Instance.testIsFinished)
+        {
+            LevelProfile[] testTourneyLevels = { existantLevels[0], existantLevels[0], existantLevels[0] };
+            Tourney testTourney = new Tourney("test", testTourneyLevels);
+            PickTourney(testTourney);
+        }
+        else
+        {
+            Debug.Log("test finished");
+        }
     }
 
     public void PickTourney(Tourney t)

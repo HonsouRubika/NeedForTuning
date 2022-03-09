@@ -11,6 +11,7 @@ public class CarPiece : ScriptableObject
     public new string name;
     public Sprite image;
     public GameObject cardPrefab;
+    public GameObject piecePrefab;
 
     [Header("MaxSpeed")]
     [Range(0,5)]

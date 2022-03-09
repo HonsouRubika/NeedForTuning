@@ -86,6 +86,7 @@ MonoBehaviour:
   cam: {fileID: 0}
   cameraSpeed: 75
   cameraMaxSpeed: 100
+  originPos: {x: 0, y: 0, z: 0}
 --- !u!114 &4757020060118075399
 MonoBehaviour:
   m_ObjectHideFlags: 0

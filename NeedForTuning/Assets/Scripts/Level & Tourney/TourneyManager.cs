@@ -38,16 +38,19 @@ public class TourneyManager : MonoBehaviour
 
     public void NextLevel()
     {
+        GetComponent<Timer>().resetTimer();
+
         if (levelActu == 0)
         {
             //TODO : override on equal
-            //Debug.Log("start");
+            
             ChunkManager.Instance.selectedLevel = levels[levelActu++];
             SceneManager.LoadScene(levelScene);
         }
         else if(levelActu < levels.Length)
         {
             //TODO : override on equal
+            
             ChunkManager.Instance.selectedLevel = levels[levelActu++];
             ChunkManager.Instance.Preview();
         }
