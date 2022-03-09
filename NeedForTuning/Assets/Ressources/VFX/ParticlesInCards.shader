@@ -64,7 +64,7 @@ Shader "Unlit/ParticlesInCards"
                 v2f o;
                 o.vertex = UnityObjectToClipPos(v.vertex);
                 o.uv = TRANSFORM_TEX(v.uv, _Tex);
-                o.color = v.color* _Intensity;
+                o.color = abs(v.color* _Intensity);
                 UNITY_TRANSFER_FOG(o,o.vertex);
                 return o;
             }

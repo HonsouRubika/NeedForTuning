@@ -34,7 +34,7 @@ Material:
     m_Floats:
     - _BoolMask: 0
     - _Contrast: 1.18
-    - _Intensity: 2
+    - _Intensity: 1
     - _MaskIntensity: 1
     - _Opacity: 1.6
     - _RGB: 0
