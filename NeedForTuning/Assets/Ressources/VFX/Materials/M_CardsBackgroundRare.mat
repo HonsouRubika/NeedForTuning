@@ -26,8 +26,9 @@ Material:
     m_Floats:
     - _NbPattern: 50
     - _OpacityMask: 0.4
+    - _Speed: 1
     - _ThicknessPattern: 0.1
     m_Colors:
-    - _Color: {r: 0.9921569, g: 0.8470589, b: 0.9686275, a: 1}
+    - _Color: {r: 0.9150943, g: 0.47912958, b: 0.6649406, a: 1}
     - _Color2: {r: 0.65882355, g: 0.28235295, b: 0.5137255, a: 1}
   m_BuildTextureStacks: []
