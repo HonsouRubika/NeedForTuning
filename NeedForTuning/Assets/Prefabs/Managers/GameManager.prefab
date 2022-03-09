@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2943223231595409667}
   - component: {fileID: 2757450621306407987}
   - component: {fileID: 494678336}
+  - component: {fileID: 2522098158053720552}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -47,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 521b61abeb6a7bd4cb23eaf370d9b1c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  car: {fileID: 0}
+  car: {fileID: 8629115605035993648, guid: eedc6f96c838e804389e90b089072f3f, type: 3}
 --- !u!114 &2943223231595409667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,6 +125,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerRounded: 0
   timeText: {fileID: 2309877508647358778}
+--- !u!114 &2522098158053720552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783166034375803580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84886d7e62610e34b9ff9b377ccd9970, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownedPiecesEngine: []
+  ownedPiecesTire: []
+  ownedPiecesChassis: []
+  engine: {fileID: 11400000, guid: 2da5136f79c0765489b2967a309a3ad0, type: 2}
+  tire: {fileID: 11400000, guid: 307d00b9a011524428593ceb42e962df, type: 2}
+  chassis: {fileID: 11400000, guid: a88ddc27178156b419d02d26a4bd9eeb, type: 2}
+  maxSpeedConcrete: 0.8
+  maxSpeedSand: 0.4
+  maxSpeedIce: 0.8
+  maxSpeedBump: 0.4
+  accelerationConcrete: 0.8
+  accelerationSand: 0.6
+  accelerationIce: 0.6
+  accelerationBump: 0.4
+  gripConcrete: 0.8
+  gripSand: 0.4
+  gripIce: 0.6
+  gripBump: 0.4
+  resistance: 0.4
 --- !u!1 &3898334177351436177
 GameObject:
   m_ObjectHideFlags: 0

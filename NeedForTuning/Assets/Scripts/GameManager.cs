@@ -23,10 +23,4 @@ public class GameManager : MonoBehaviour
         }
         #endregion
     }
-
-
-    void Update()
-    {
-        
-    }
 }
