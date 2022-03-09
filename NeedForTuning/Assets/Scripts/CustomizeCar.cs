@@ -53,6 +53,7 @@ public class CustomizeCar : MonoBehaviour
     [ContextMenu("boom")]
     public void UpdateVisual()
     {
+        
         Destroy(GameManager.Instance.car.transform.GetChild(0).gameObject);
         GameObject newChassis = Instantiate(chassis.piecePrefab, GameManager.Instance.car.transform.position, GameManager.Instance.car.transform.rotation, GameManager.Instance.car.transform);
         Instantiate(engine.piecePrefab, newChassis.transform.GetChild(2).transform.position, newChassis.transform.GetChild(2).transform.rotation, newChassis.transform.GetChild(2).transform);

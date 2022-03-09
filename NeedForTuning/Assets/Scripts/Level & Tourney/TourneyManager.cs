@@ -48,6 +48,7 @@ public class TourneyManager : MonoBehaviour
             //Debug.Log(levels[levelActu].nbOfLine);
             ChunkManager.Instance.selectedLevel = levels[levelActu++];
             SceneManager.LoadScene(levelScene);
+            
         }
         else if(levelActu < levels.Length)
         {
@@ -63,6 +64,11 @@ public class TourneyManager : MonoBehaviour
             Debug.Log("tourney is finished");
             SceneManager.LoadScene("TourneySelection");
         }
+    }
+    public void SpawnCar()
+    {
+        GameManager.Instance.car = FindObjectOfType<CarController>().gameObject;
+        GameManager.Instance.gameObject.GetComponent<CustomizeCar>().UpdateVisual();
     }
 
 }

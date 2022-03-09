@@ -19,6 +19,7 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
+        cam = FindObjectOfType<Camera>();
         originPos = cam.transform.position;
         camRb = cam.GetComponent<Rigidbody>();
         carController = GetComponent<CarController>();
