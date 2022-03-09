@@ -70,10 +70,14 @@ MonoBehaviour:
   minSpdObstacle: 1
   minSpdLanding: 5
   explosion: {fileID: 7531543392527008925, guid: c4d49c799788db84bb920c35d59d790d, type: 3}
+  bc: {fileID: 8629115605035993649}
   lineWidth: 5
   currentState: 0
   durationCamShake: 0.2
   magnitudeCamShake: 0.01
+  modulesLayer:
+    serializedVersion: 2
+    m_Bits: 0
   jumpPadDistance: 2
 --- !u!114 &8516897327813733363
 MonoBehaviour:
