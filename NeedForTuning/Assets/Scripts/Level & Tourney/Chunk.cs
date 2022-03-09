@@ -42,4 +42,11 @@ public class Chunk : MonoBehaviour
             }
         }
     }
+
+    public void SetInvisible()
+    {
+        foreach (MeshRenderer mr in gameObject.GetComponentsInChildren<MeshRenderer>()){
+            mr.enabled = false;
+        }
+    }
 }

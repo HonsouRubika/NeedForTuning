@@ -54,6 +54,7 @@ public class CarController : MonoBehaviour
     //component
     private Rigidbody rb;
     public ParticleSystem explosion;
+    public BoxCollider bc;
 
     //level ref
     public float lineWidth = 5; 
@@ -65,6 +66,8 @@ public class CarController : MonoBehaviour
 
     //explosion
     private bool explosionDone = false;
+
+    public LayerMask modulesLayer;
 
     public enum LevelState
     {
@@ -191,18 +194,27 @@ public class CarController : MonoBehaviour
 
     public void DetectModule()
     {
-        Collider[] module = Physics.OverlapBox(transform.position, transform.localScale);
+        Collider[] module = Physics.OverlapBox(transform.position + bc.center, bc.size, Quaternion.identity, modulesLayer);
+
+        //Debug.Log(module.Length);
 
         if (module.Length > 0)
         {
-            //Debug.Log("module detected");
+            Debug.Log("module detected");
             switch (module[0].gameObject.name)
             {
+                //to ignore
+                case "ChunkStart":
+                case "ChunkStart (1)":
+                case "ChunkStart (2)":
                 case "Car":
+                case "Car(Clone)":
 
                     break;
                 case "ChunkBarrel":
                 case "ChunkBarrel(Clone)":
+                case "SM_barrel_01":
+                case "SM_barrel_01 (1)":
                     //abilityController.StopAbility();
                     CarInObstacle(minSpdObstacle);
                     inObtsacle = true;
@@ -234,6 +246,7 @@ public class CarController : MonoBehaviour
                     break;
                 case "ChunkLaunchingPad":
                 case "ChunkLaunchingPad(Clone)":
+                case "Tremplin_01":
                     CarJumping();
 
                     break;
@@ -283,13 +296,14 @@ public class CarController : MonoBehaviour
                     break;
                 default:
                     Debug.Log(module[0].gameObject.name);
-                    CarInSurface(minSpdIce);
+                    CarInObstacle(minSpdObstacle);
                     inObtsacle = true;
                     break;
             }
         }
         else
         {
+            Debug.Log("no module detected");
             currentSurface = Surface.Concrete;
             inObtsacle = false;
             collideWithModule = false;
@@ -533,7 +547,7 @@ public class CarController : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.DrawCube(transform.position, transform.localScale + new Vector3(0.1f, 0.1f, 0.1f));
+        Gizmos.DrawCube(transform.position + bc.center, bc.size);
     }
 
     void ResetExplosion()

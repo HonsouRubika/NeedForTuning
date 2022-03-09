@@ -191,12 +191,6 @@ public class ChunkManager : MonoBehaviour
         //ground
         GameObject newGround1 = Instantiate<GameObject>(chunkPrefabs[(int)Modules.empty], new Vector3(spawn.x - 5, spawn.y, spawn.z), chunk1.transform.rotation);
         newGround1.GetComponent<Chunk>().isGround = true;
-
-        //exeption : waterfall already has ground
-        if (chunk1 == chunkPrefabs[(int)Modules.waterfall])
-        {
-            newGround1.GetComponent<MeshRenderer>().enabled = false;
-        }
         groundsInLD.Add(newGround1);
 
         //column 2
@@ -205,12 +199,6 @@ public class ChunkManager : MonoBehaviour
         //ground
         GameObject newGround2 = Instantiate<GameObject>(chunkPrefabs[(int)Modules.empty], new Vector3(spawn.x, spawn.y, spawn.z), chunk2.transform.rotation);
         newGround2.GetComponent<Chunk>().isGround = true;
-
-        //exeption : waterfall already has ground
-        if (chunk2 == chunkPrefabs[(int)Modules.waterfall])
-        {
-            newGround2.GetComponent<MeshRenderer>().enabled = false;
-        }
 
         chunksInLD.Add(newChunk2);
         groundsInLD.Add(newGround2);
@@ -221,12 +209,6 @@ public class ChunkManager : MonoBehaviour
         //ground
         GameObject newGround3 = Instantiate<GameObject>(chunkPrefabs[(int)Modules.empty], new Vector3(spawn.x + 5, spawn.y, spawn.z), chunk3.transform.rotation);
         newGround3.GetComponent<Chunk>().isGround = true;
-
-        //exeption : waterfall already has ground
-        if (chunk3 == chunkPrefabs[(int)Modules.waterfall])
-        {
-            newGround3.GetComponent<MeshRenderer>().enabled = false;
-        }
 
         chunksInLD.Add(newChunk3);
         groundsInLD.Add(newGround3);
@@ -268,9 +250,9 @@ public class ChunkManager : MonoBehaviour
         newGround1.GetComponent<Chunk>().isGround = true;
 
         //exeption : waterfall already has ground
-        if (getGround() == chunkPrefabs[(int)Modules.waterfall])
+        if (chunk1 == chunkPrefabs[(int)Modules.waterfall])
         {
-            newGround1.GetComponent<MeshRenderer>().enabled = false;
+            newGround1.GetComponent<Chunk>().SetInvisible();
         }
 
         chunksInLD.Add(newChunk1);
@@ -284,9 +266,9 @@ public class ChunkManager : MonoBehaviour
         newGround2.GetComponent<Chunk>().isGround = true;
 
         //exeption : waterfall already has ground
-        if (getGround() == chunkPrefabs[(int)Modules.waterfall])
+        if (chunk2 == chunkPrefabs[(int)Modules.waterfall])
         {
-            newGround2.GetComponent<MeshRenderer>().enabled = false;
+            newGround2.GetComponent<Chunk>().SetInvisible();
         }
 
         chunksInLD.Add(newChunk2);
@@ -297,12 +279,12 @@ public class ChunkManager : MonoBehaviour
         GameObject newChunk3 = Instantiate<GameObject>(chunk3, new Vector3(spawn.x + 5, spawn.y, zPos), chunk3.transform.rotation);
         //ground
         GameObject newGround3 = Instantiate<GameObject>(getGround(), new Vector3(spawn.x + 5, spawn.y, zPos), chunk3.transform.rotation);
-        newGround3.GetComponent<Chunk>().isGround = true;
+        newGround3.GetComponentInChildren<Chunk>().isGround = true;
 
         //exeption : waterfall already has ground
-        if (getGround() == chunkPrefabs[(int)Modules.waterfall])
+        if (chunk3 == chunkPrefabs[(int)Modules.waterfall])
         {
-            newGround3.GetComponent<MeshRenderer>().enabled = false;
+            newGround3.GetComponent<Chunk>().SetInvisible();
         }
 
         chunksInLD.Add(newChunk3);
@@ -313,7 +295,6 @@ public class ChunkManager : MonoBehaviour
     {
         if (selectedLevel != null)
         {
-            //Debug.Log("oui");
             switch (selectedLevel.chunks[totalNbOfChunkActu])
             {
                 case Modules.empty:
@@ -380,6 +361,7 @@ public class ChunkManager : MonoBehaviour
 
     public GameObject getGround()
     {
+        //Debug.Log(totalNbOfChunkActu - 1);
         switch (selectedLevel.grounds[totalNbOfChunkActu - 1])
         {
             case RoadType.concrete:
