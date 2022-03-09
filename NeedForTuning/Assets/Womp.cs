@@ -5,19 +5,31 @@ using UnityEngine;
 public class Womp : MonoBehaviour
 {
     private int willFall;
+    [Range (0,30)]
     public float fallSpeed;
+    public BoxCollider boxCollider;
+    public int chunkDetectionRange;
     // Start is called before the first frame update
     void Start()
     {
         willFall = Random.Range(0, 2);
-        GetComponent<Rigidbody>().mass = fallSpeed;
+        
+        SetDetectionSize();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void Fall()
     {
-        if (collision.gameObject.name == "car" && willFall == 1)
+        if (willFall == 1)
         {
             GetComponent<Rigidbody>().useGravity = true;
+            GetComponent<Rigidbody>().AddForce(0, -fallSpeed, 0);
+            
         }
+    }
+
+    void SetDetectionSize()
+    {
+        boxCollider.size = new Vector3(1, 1, chunkDetectionRange);
+        boxCollider.center = new Vector3(0, 1, ((float)-(chunkDetectionRange - 1) / 2) - 1f);
     }
 }

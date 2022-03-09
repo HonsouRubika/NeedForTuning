@@ -237,11 +237,16 @@ public class CarController : MonoBehaviour
                     inObtsacle = true;
 
                     break;
-                case "ChunkWomp":
-                case "ChunkWomp(Clone)":
+                case "SM_Whomp":
+                case "SM_Whomp(Clone)":
                     //abilityController.StopAbility();
                     CarInObstacle(minSpdObstacle);
                     inObtsacle = true;
+
+                    break;
+                case "WhompDetection":
+                case "WhompDetection(Clone)":
+                    module[0].GetComponentInParent<Womp>().Fall();
 
                     break;
                 default:
