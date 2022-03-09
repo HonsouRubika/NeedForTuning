@@ -9,7 +9,7 @@ public class CameraController : MonoBehaviour
     public float cameraMaxSpeed = 100;
     private float chunkWidth = 5;
 
-    private Vector3 originPos;
+    public Vector3 originPos;
     private Vector3 minPos;
     private Vector3 maxPos;
     private Vector2 currentDirection;

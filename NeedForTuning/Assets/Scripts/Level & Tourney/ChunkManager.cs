@@ -33,7 +33,7 @@ public class ChunkManager : MonoBehaviour
     public int modulesToCrossTire;
     public int modulesToCrossChassis;
     public int modulesToCrossLaunchPad;
-    
+
     public int nbLineInLD = 5;
 
     //movement
@@ -80,7 +80,7 @@ public class ChunkManager : MonoBehaviour
     void Update()
     {
 
-        if(startTimerActu != 0 && !isRuning && Time.time > startTimer && !isFinished)
+        if (startTimerActu != 0 && !isRuning && Time.time > startTimer && !isFinished)
         {
             /// TODO:  start timer
             isRuning = true;
@@ -88,7 +88,7 @@ public class ChunkManager : MonoBehaviour
 
         //if (isRuning)
         //{
-            //Debug.Log(speedActu);
+        //Debug.Log(speedActu);
         //}
 
         //test
@@ -111,7 +111,7 @@ public class ChunkManager : MonoBehaviour
         {
             NewLine();
         }
-        else if(isRuning && totalNbOfLineActu >= totalNbOfLine && chunksInLD.Count() > 0 && chunksInLD.Last().transform.position.z + 5 <= car.transform.position.z)
+        else if (isRuning && totalNbOfLineActu >= totalNbOfLine && chunksInLD.Count() > 0 && chunksInLD.Last().transform.position.z + 5 <= car.transform.position.z)
         {
             //run is finished
             //Debug.Log("finished");
@@ -142,7 +142,7 @@ public class ChunkManager : MonoBehaviour
         //load level
         totalNbOfLine = selectedLevel.nbOfLine;
 
-        for (int i = 0; i< totalNbOfLine; i++)
+        for (int i = 0; i < totalNbOfLine; i++)
         {
             NewLine();
         }
@@ -157,7 +157,7 @@ public class ChunkManager : MonoBehaviour
         }
         chunksInLD.Clear();
 
-        for (int j=0; j< groundsInLD.Count(); j++)
+        for (int j = 0; j < groundsInLD.Count(); j++)
         {
             Destroy(groundsInLD[j].gameObject);
         }
@@ -187,10 +187,16 @@ public class ChunkManager : MonoBehaviour
         totalNbOfLineActu++;
         GameObject chunk1 = chunkPrefabs[(int)Modules.empty];
         GameObject newChunk1 = Instantiate(chunk1, new Vector3(spawn.x - 5, spawn.y, spawn.z), chunk1.transform.rotation);
+        chunksInLD.Add(newChunk1);
         //ground
         GameObject newGround1 = Instantiate<GameObject>(chunkPrefabs[(int)Modules.empty], new Vector3(spawn.x - 5, spawn.y, spawn.z), chunk1.transform.rotation);
         newGround1.GetComponent<Chunk>().isGround = true;
-        chunksInLD.Add(newChunk1);
+
+        //exeption : waterfall already has ground
+        if (chunk1 == chunkPrefabs[(int)Modules.waterfall])
+        {
+            newGround1.GetComponent<MeshRenderer>().enabled = false;
+        }
         groundsInLD.Add(newGround1);
 
         //column 2
@@ -199,6 +205,12 @@ public class ChunkManager : MonoBehaviour
         //ground
         GameObject newGround2 = Instantiate<GameObject>(chunkPrefabs[(int)Modules.empty], new Vector3(spawn.x, spawn.y, spawn.z), chunk2.transform.rotation);
         newGround2.GetComponent<Chunk>().isGround = true;
+
+        //exeption : waterfall already has ground
+        if (chunk2 == chunkPrefabs[(int)Modules.waterfall])
+        {
+            newGround2.GetComponent<MeshRenderer>().enabled = false;
+        }
 
         chunksInLD.Add(newChunk2);
         groundsInLD.Add(newGround2);
@@ -209,6 +221,12 @@ public class ChunkManager : MonoBehaviour
         //ground
         GameObject newGround3 = Instantiate<GameObject>(chunkPrefabs[(int)Modules.empty], new Vector3(spawn.x + 5, spawn.y, spawn.z), chunk3.transform.rotation);
         newGround3.GetComponent<Chunk>().isGround = true;
+
+        //exeption : waterfall already has ground
+        if (chunk3 == chunkPrefabs[(int)Modules.waterfall])
+        {
+            newGround3.GetComponent<MeshRenderer>().enabled = false;
+        }
 
         chunksInLD.Add(newChunk3);
         groundsInLD.Add(newGround3);
@@ -248,6 +266,13 @@ public class ChunkManager : MonoBehaviour
         //ground
         GameObject newGround1 = Instantiate<GameObject>(getGround(), new Vector3(spawn.x - 5, spawn.y, zPos), chunk1.transform.rotation);
         newGround1.GetComponent<Chunk>().isGround = true;
+
+        //exeption : waterfall already has ground
+        if (getGround() == chunkPrefabs[(int)Modules.waterfall])
+        {
+            newGround1.GetComponent<MeshRenderer>().enabled = false;
+        }
+
         chunksInLD.Add(newChunk1);
         groundsInLD.Add(newGround1);
 
@@ -258,6 +283,12 @@ public class ChunkManager : MonoBehaviour
         GameObject newGround2 = Instantiate<GameObject>(getGround(), new Vector3(spawn.x, spawn.y, zPos), chunk2.transform.rotation);
         newGround2.GetComponent<Chunk>().isGround = true;
 
+        //exeption : waterfall already has ground
+        if (getGround() == chunkPrefabs[(int)Modules.waterfall])
+        {
+            newGround2.GetComponent<MeshRenderer>().enabled = false;
+        }
+
         chunksInLD.Add(newChunk2);
         groundsInLD.Add(newGround2);
 
@@ -267,6 +298,12 @@ public class ChunkManager : MonoBehaviour
         //ground
         GameObject newGround3 = Instantiate<GameObject>(getGround(), new Vector3(spawn.x + 5, spawn.y, zPos), chunk3.transform.rotation);
         newGround3.GetComponent<Chunk>().isGround = true;
+
+        //exeption : waterfall already has ground
+        if (getGround() == chunkPrefabs[(int)Modules.waterfall])
+        {
+            newGround3.GetComponent<MeshRenderer>().enabled = false;
+        }
 
         chunksInLD.Add(newChunk3);
         groundsInLD.Add(newGround3);
