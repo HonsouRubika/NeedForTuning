@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_TrailParticlest
-  m_Shader: {fileID: -6465566751694194690, guid: eadbb82c17d833545ab8871808335c22, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: d6e0791558804824dabc40f69538a785, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0

@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_HDRSquarecles
+  m_Name: M_HDRSquarecles_Alph
   m_Shader: {fileID: -6465566751694194690, guid: d6e0791558804824dabc40f69538a785, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4

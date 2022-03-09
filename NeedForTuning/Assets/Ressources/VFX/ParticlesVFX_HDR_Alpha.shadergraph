@@ -88,7 +88,7 @@
             "m_Id": "8c8f29d9cae04df3b6d38a98e7005172"
         },
         {
-            "m_Id": "eb8fdae986cf4da78d81b3cbe8d72cc9"
+            "m_Id": "596999bc806f40b7a9d46ae4ca253dbd"
         }
     ],
     "m_GroupDatas": [],
@@ -475,7 +475,7 @@
                 "m_Id": "a74fc14685ab476896d723543614a7d4"
             },
             {
-                "m_Id": "eb8fdae986cf4da78d81b3cbe8d72cc9"
+                "m_Id": "596999bc806f40b7a9d46ae4ca253dbd"
             }
         ]
     },
@@ -1218,6 +1218,39 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.BlockNode",
+    "m_ObjectId": "596999bc806f40b7a9d46ae4ca253dbd",
+    "m_Group": {
+        "m_Id": ""
+    },
+    "m_Name": "SurfaceDescription.AlphaClipThreshold",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": 0.0,
+            "y": 0.0,
+            "width": 0.0,
+            "height": 0.0
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "822bdb03279b40689a49c5c30cfc2717"
+        }
+    ],
+    "synonyms": [],
+    "m_Precision": 0,
+    "m_PreviewExpanded": true,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "m_SerializedDescriptor": "SurfaceDescription.AlphaClipThreshold"
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.NormalMaterialSlot",
     "m_ObjectId": "5e3c5fc487524a4e9316f02a7fa5e879",
     "m_Id": 0,
@@ -1270,8 +1303,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -3054.999755859375,
-            "y": 213.00001525878907,
+            "x": -3065.0,
+            "y": 208.00003051757813,
             "width": 163.0,
             "height": 34.0
         }
@@ -1728,6 +1761,21 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "822bdb03279b40689a49c5c30cfc2717",
+    "m_Id": 0,
+    "m_DisplayName": "Alpha Clip Threshold",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "AlphaClipThreshold",
+    "m_StageCapability": 2,
+    "m_Value": 0.5,
+    "m_DefaultValue": 0.5,
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.DynamicVectorMaterialSlot",
     "m_ObjectId": "85507ac8694a4637b4bd00fe39ea9e1e",
     "m_Id": 2,
@@ -1923,21 +1971,6 @@
         "a": 1.0
     },
     "m_ColorMode": 1
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
-    "m_ObjectId": "98922a6835514d1098df0bf7d52e5667",
-    "m_Id": 0,
-    "m_DisplayName": "Alpha Clip Threshold",
-    "m_SlotType": 0,
-    "m_Hidden": false,
-    "m_ShaderOutputName": "AlphaClipThreshold",
-    "m_StageCapability": 2,
-    "m_Value": 0.5,
-    "m_DefaultValue": 0.5,
-    "m_Labels": []
 }
 
 {
@@ -2490,7 +2523,7 @@
         "m_Id": "7eaef5d007df41c794ff4dbc4062552e"
     },
     "m_SurfaceType": 1,
-    "m_AlphaMode": 3,
+    "m_AlphaMode": 0,
     "m_TwoSided": false,
     "m_AlphaClip": true,
     "m_CustomEditorGUI": ""
@@ -2712,39 +2745,6 @@
 
 {
     "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.BlockNode",
-    "m_ObjectId": "eb8fdae986cf4da78d81b3cbe8d72cc9",
-    "m_Group": {
-        "m_Id": ""
-    },
-    "m_Name": "SurfaceDescription.AlphaClipThreshold",
-    "m_DrawState": {
-        "m_Expanded": true,
-        "m_Position": {
-            "serializedVersion": "2",
-            "x": 0.0,
-            "y": 0.0,
-            "width": 0.0,
-            "height": 0.0
-        }
-    },
-    "m_Slots": [
-        {
-            "m_Id": "98922a6835514d1098df0bf7d52e5667"
-        }
-    ],
-    "synonyms": [],
-    "m_Precision": 0,
-    "m_PreviewExpanded": true,
-    "m_PreviewMode": 0,
-    "m_CustomColors": {
-        "m_SerializableColors": []
-    },
-    "m_SerializedDescriptor": "SurfaceDescription.AlphaClipThreshold"
-}
-
-{
-    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.DynamicValueMaterialSlot",
     "m_ObjectId": "f2d7a2912bc64d8e882abc8dc04749e0",
     "m_Id": 1,
@@ -2935,9 +2935,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -2770.999755859375,
-            "y": -740.0,
-            "width": 207.99998474121095,
+            "x": -2780.0,
+            "y": -742.9999389648438,
+            "width": 208.0,
             "height": 278.0
         }
     },
