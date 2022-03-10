@@ -1611,13 +1611,14 @@ MonoBehaviour:
   card01: {fileID: 0}
   card02: {fileID: 0}
   card03: {fileID: 0}
-  pieceEngine: {fileID: 11400000, guid: b645f03dd158b8e4da2a81c04ae22993, type: 2}
-  pieceTire: {fileID: 11400000, guid: b645f03dd158b8e4da2a81c04ae22993, type: 2}
-  pieceChassis: {fileID: 11400000, guid: b645f03dd158b8e4da2a81c04ae22993, type: 2}
+  pieceEngine: {fileID: 11400000, guid: 873d1748a9dc1914e91f18baed5333f0, type: 2}
+  pieceTire: {fileID: 11400000, guid: 896f2813f24db564091c7629ec1998c5, type: 2}
+  pieceChassis: {fileID: 11400000, guid: e27f8f6895aa02c49a58fe4474ae8c4b, type: 2}
   initialCardPos: {fileID: 1699840793}
   targetCard01: {fileID: 1060920100}
   targetCard03: {fileID: 1961685972}
   speed: 828
+  canOpenTheBooster: 0
 --- !u!95 &1575931955
 Animator:
   serializedVersion: 3
@@ -1686,6 +1687,7 @@ MonoBehaviour:
   openingBooster: {fileID: 1575931954}
   firstBoosterIsOpen: 0
   blackScreen: {fileID: 875389340}
+  isOpenBoosterScene: 0
 --- !u!4 &1647196566
 Transform:
   m_ObjectHideFlags: 0
