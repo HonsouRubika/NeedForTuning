@@ -120,7 +120,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     - _holoOpacity: 0.5
-    - _holoSpeed: 0.1
+    - _holoSpeed: -0.4
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
@@ -129,5 +129,5 @@ Material:
     - _color1: {r: 0, g: 0.6514772, b: 0.8490566, a: 1}
     - _color2: {r: 0, g: 1.0196079, b: 1.4980392, a: 1}
     - _textureOffset: {r: 0, g: 0, b: 0, a: 0}
-    - _textureTiling: {r: 0.4, g: 0.4, b: 0, a: 0}
+    - _textureTiling: {r: 1, g: 0.12, b: 0, a: 0}
   m_BuildTextureStacks: []
