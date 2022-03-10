@@ -69,6 +69,8 @@ MonoBehaviour:
   minSpdBumps: 2
   minSpdObstacle: 1
   minSpdLanding: 5
+  jumpPadTimer: 0.5
+  jumpPadTimerActu: 0
   explosion: {fileID: 7531543392527008925, guid: c4d49c799788db84bb920c35d59d790d, type: 3}
   bc: {fileID: 8629115605035993649}
   lineWidth: 5

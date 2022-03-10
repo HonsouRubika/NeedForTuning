@@ -53,6 +53,10 @@ public class CarController : MonoBehaviour
     public float minSpdObstacle = 1f;
     public float minSpdLanding = 5f;
 
+    //launching pad
+    public float jumpPadTimer = 2;
+    public float jumpPadTimerActu = 0;
+
     //component
     private Rigidbody rb;
     public ParticleSystem explosion;
@@ -148,6 +152,9 @@ public class CarController : MonoBehaviour
 
         //angle the car back to normal
         AngleCar();
+
+        //set gravity back after a jump
+        CheckIfEndLaunchPadTimer();
 
         switch (carState)
         {
@@ -335,8 +342,7 @@ public class CarController : MonoBehaviour
         //int angle = (int)WrapAngle(transform.rotation.eulerAngles.x);
         int angle = (int)Quaternion.Angle(transform.rotation, angleOrigine);
 
-
-        if (angle < 50 && angle > -50)
+        if (angle < 50 && angle > 0)
         {
             //Debug.Log("safe");
 
@@ -460,7 +466,6 @@ public class CarController : MonoBehaviour
         {
             ChunkManager.Instance.speedActu = minSpdLanding;
         }
-
     }
 
     public void CarInSurface(float minSpd)
@@ -502,15 +507,18 @@ public class CarController : MonoBehaviour
     public void CarJumping()
     {
         //gameObject.transform.position = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + abilityController.jumpHeight);
-        //rb.useGravity = false;
+        rb.useGravity = false;
+        //bc.enabled = false;
 
         if (abilityController.currentAbilityEngine != Abilities.Turbo)
         {
-            ChunkManager.Instance.modulesToCrossLaunchPad = ChunkManager.Instance.totalNbOfLineActu + jumpPadDistance;
+            //ChunkManager.Instance.modulesToCrossLaunchPad = ChunkManager.Instance.totalNbOfLineActu + jumpPadDistance;
+            jumpPadTimerActu = jumpPadTimer + Time.time;
         }
         else
         {
-            ChunkManager.Instance.modulesToCrossLaunchPad = ChunkManager.Instance.totalNbOfLineActu + (int)(jumpPadDistance * abilityController.turboMultiplier);
+            //ChunkManager.Instance.modulesToCrossLaunchPad = ChunkManager.Instance.totalNbOfLineActu + (int)(jumpPadDistance * abilityController.turboMultiplier);
+            jumpPadTimerActu = (jumpPadTimer * abilityController.turboMultiplier) + Time.time;
         }
 
     }
@@ -518,8 +526,20 @@ public class CarController : MonoBehaviour
     public void EndJump()
     {
         //gameObject.transform.position = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - abilityController.jumpHeight);
-        //rb.useGravity = true;
+        Debug.Log("gravity is back");
+        rb.useGravity = true;
+        rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
+        //bc.enabled = true;
         CarLanding();
+    }
+
+    public void CheckIfEndLaunchPadTimer()
+    {
+        if (jumpPadTimerActu != 0 && jumpPadTimerActu < Time.time)
+        {
+            jumpPadTimerActu = 0;
+            EndJump();
+        }
     }
 
     public void SetCarDirection(Vector2 movementInput)
