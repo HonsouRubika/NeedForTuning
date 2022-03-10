@@ -81,7 +81,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5577652454155709372}
-  m_Text: Off 4x4
+  m_Text: Motor V8
   m_OffsetZ: 0
   m_CharacterSize: 0.03
   m_LineSpacing: 1
@@ -126,6 +126,7 @@ Transform:
   - {fileID: 2708325314177239102}
   - {fileID: 1308766816356821574}
   - {fileID: 3248240783942188764}
+  - {fileID: 5630390774509367277}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -189,7 +190,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6750091973d0c694da80709e5e92504c, type: 2}
+  - {fileID: 2100000, guid: 1c56347598f88e1479f8aa38082fa2c3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -285,7 +286,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 49047fa2e260b174b82508b6fac710ed, type: 2}
+  - {fileID: 2100000, guid: 24a847a57919ab74a86a8f11e2fb54fd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -432,6 +433,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Wheel_Common_4x4
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7fbaad802aeb17540a1edec32407bade, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fbaad802aeb17540a1edec32407bade, type: 3}
 --- !u!4 &1308766816356821574 stripped
@@ -508,6 +513,68 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ab8b365af9018334996ccb75d0e2526f, type: 3}
   m_PrefabInstance: {fileID: 2458788355325226965}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5307936266715203590
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6038673910147254353}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 70acd9284ffaf5b449f19c16d6a4fc10, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 70acd9284ffaf5b449f19c16d6a4fc10, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.009
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 70acd9284ffaf5b449f19c16d6a4fc10, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.056
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 70acd9284ffaf5b449f19c16d6a4fc10, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.32972726
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 70acd9284ffaf5b449f19c16d6a4fc10, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.29248336
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 70acd9284ffaf5b449f19c16d6a4fc10, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.16396205
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 70acd9284ffaf5b449f19c16d6a4fc10, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.6426997
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 70acd9284ffaf5b449f19c16d6a4fc10, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.68884474
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 70acd9284ffaf5b449f19c16d6a4fc10, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -78.918
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 70acd9284ffaf5b449f19c16d6a4fc10, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -51.328
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 70acd9284ffaf5b449f19c16d6a4fc10, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -90.829
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 70acd9284ffaf5b449f19c16d6a4fc10, type: 3}
+      propertyPath: m_Name
+      value: SM_Motor_V8
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 70acd9284ffaf5b449f19c16d6a4fc10, type: 3}
+--- !u!4 &5630390774509367277 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 70acd9284ffaf5b449f19c16d6a4fc10, type: 3}
+  m_PrefabInstance: {fileID: 5307936266715203590}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7475151414097681673
 PrefabInstance:
