@@ -113,9 +113,10 @@ Material:
     - _gradInverse: 1
     - _gradOffset: 0.75
     - _gradPower: 8
-    - _offset: -0.6
+    - _offset: 0
     - _replaceBC: 0
-    - _spread: 20
+    - _spread: 0.52
+    - _texMask: 0
     - _textureOnOFF: 0
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
