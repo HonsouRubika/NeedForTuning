@@ -15,7 +15,8 @@ MonoBehaviour:
   type: 0
   name: Used Tire
   image: {fileID: 0}
-  cardPrefab: {fileID: 0}
+  cardPrefab: {fileID: 6556219383127088620, guid: 9462d5db0d4c4f84aae370b72e50e043, type: 3}
+  piecePrefab: {fileID: 919132149155446097, guid: b66d5cbce6f5c004e8964f9622050e11, type: 3}
   maxSpeedConcrete: 3
   maxSpeedSand: 2
   maxSpeedIce: 2

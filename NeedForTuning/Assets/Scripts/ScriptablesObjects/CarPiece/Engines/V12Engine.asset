@@ -15,7 +15,7 @@ MonoBehaviour:
   type: 0
   name: V12Engine
   image: {fileID: 0}
-  cardPrefab: {fileID: 6556219383127088620, guid: 7cbee4641a1f47949b97534819ddbdb3, type: 3}
+  cardPrefab: {fileID: 6556219383127088620, guid: 153756fca10111c478ce23595518036f, type: 3}
   piecePrefab: {fileID: 919132149155446097, guid: 92fe11305a572c9448bde02d7e69981a, type: 3}
   maxSpeedConcrete: 5
   maxSpeedSand: 3

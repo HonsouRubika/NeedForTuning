@@ -25,21 +25,55 @@ public class CustomizeCar : MonoBehaviour
         switch (index)
         {
             case 1:
-                for (int i = 0; i < InventoryManager.Instance.ownedPiecesEngine.Count - 1; i++)
+                for (int i = 0; i < InventoryManager.Instance.ownedPiecesEngine.Count; i++)
                 {
-                    Instantiate(InventoryManager.Instance.ownedPiecesEngine[i].cardPrefab, cardPosEngine.position + new Vector3(offsetCard*i,0,0), cardPosEngine.rotation, cardPosEngine);
+                    switch (i)
+                    {
+                        case 1:
+                            Instantiate(InventoryManager.Instance.ownedPiecesEngine[i].cardPrefab, cardPosEngine.position + new Vector3(-offsetCard,0, 0), cardPosEngine.rotation * Quaternion.Euler(0,0,15f), cardPosEngine);
+                            break;
+                        case 2:
+                            Instantiate(InventoryManager.Instance.ownedPiecesEngine[i].cardPrefab, cardPosEngine.position + new Vector3(offsetCard,0, 0), cardPosEngine.rotation * Quaternion.Euler(0, 0, -15f), cardPosEngine);
+                            break;
+                        case 0:
+                            Instantiate(InventoryManager.Instance.ownedPiecesEngine[i].cardPrefab, cardPosEngine.position, cardPosEngine.rotation, cardPosEngine);
+                            break;
+                    }
+                    
                 }
                 break;
             case 2:
-                for (int i = 0; i < InventoryManager.Instance.ownedPiecesTire.Count - 1; i++)
+                for (int i = 0; i < InventoryManager.Instance.ownedPiecesTire.Count; i++)
                 {
-                    Instantiate(InventoryManager.Instance.ownedPiecesTire[i].cardPrefab, cardPosTire.position, cardPosTire.rotation, cardPosTire);
+                    switch (i)
+                    {
+                        case 1:
+                            Instantiate(InventoryManager.Instance.ownedPiecesTire[i].cardPrefab, cardPosTire.position + new Vector3(-offsetCard, 0, 0), cardPosTire.rotation * Quaternion.Euler(0, 0, 15f), cardPosTire);
+                            break;                                           
+                        case 2:                                              
+                            Instantiate(InventoryManager.Instance.ownedPiecesTire[i].cardPrefab, cardPosTire.position + new Vector3(offsetCard, 0, 0), cardPosTire.rotation * Quaternion.Euler(0, 0, -15f), cardPosTire);
+                            break;                                           
+                        case 0:                                              
+                            Instantiate(InventoryManager.Instance.ownedPiecesTire[i].cardPrefab, cardPosTire.position, cardPosTire.rotation, cardPosTire);
+                            break;
+                    }
                 }
                 break;
             case 3:
-                for (int i = 0; i < InventoryManager.Instance.ownedPiecesChassis.Count - 1; i++)
+                for (int i = 0; i < InventoryManager.Instance.ownedPiecesChassis.Count; i++)
                 {
-                    Instantiate(InventoryManager.Instance.ownedPiecesChassis[i].cardPrefab, cardPosChassis.position, cardPosChassis.rotation, cardPosChassis);
+                    switch (i)
+                    {
+                        case 1:
+                            Instantiate(InventoryManager.Instance.ownedPiecesChassis[i].cardPrefab, cardPosChassis.position + new Vector3(-offsetCard, 0, 0), cardPosChassis.rotation * Quaternion.Euler(0, 0, 15f), cardPosChassis);
+                            break;
+                        case 2:
+                            Instantiate(InventoryManager.Instance.ownedPiecesChassis[i].cardPrefab, cardPosChassis.position + new Vector3(offsetCard, 0, 0), cardPosChassis.rotation * Quaternion.Euler(0, 0, -15f), cardPosChassis);
+                            break;
+                        case 0:
+                            Instantiate(InventoryManager.Instance.ownedPiecesChassis[i].cardPrefab, cardPosChassis.position, cardPosChassis.rotation, cardPosChassis);
+                            break;
+                    }
                 }
                 break;
             default:

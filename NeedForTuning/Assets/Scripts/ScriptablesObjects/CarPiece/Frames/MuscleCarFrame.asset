@@ -15,7 +15,7 @@ MonoBehaviour:
   type: 0
   name: MuscleCarFrame
   image: {fileID: 0}
-  cardPrefab: {fileID: 0}
+  cardPrefab: {fileID: 6556219383127088620, guid: 041ff31d3858f4d42af7490786136f22, type: 3}
   piecePrefab: {fileID: 1105193239545419798, guid: af0fc94aa0f223a4fa39ec5aa2b11a71, type: 3}
   maxSpeedConcrete: 4
   maxSpeedSand: 3

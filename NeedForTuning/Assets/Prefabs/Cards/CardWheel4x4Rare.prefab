@@ -9844,7 +9844,7 @@ Transform:
   m_GameObject: {fileID: 6556219383127088620}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 450, y: 450, z: 450}
+  m_LocalScale: {x: 450, y: 450, z: 1}
   m_Children:
   - {fileID: 6831635007146632474}
   - {fileID: 2708325314177239102}
@@ -9963,7 +9963,6 @@ GameObject:
   - component: {fileID: 6831635007146632474}
   - component: {fileID: 8553999769125577014}
   - component: {fileID: 2835296884246720378}
-  - component: {fileID: 6587614388971780968}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -10034,20 +10033,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &6587614388971780968
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7822426026505067218}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &1559112991121149357
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10233,6 +10218,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_card 1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ab8b365af9018334996ccb75d0e2526f, type: 3}
+      propertyPath: m_TagString
+      value: Card
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab8b365af9018334996ccb75d0e2526f, type: 3}
 --- !u!4 &2708325314177239102 stripped
@@ -10240,6 +10229,57 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ab8b365af9018334996ccb75d0e2526f, type: 3}
   m_PrefabInstance: {fileID: 2458788355325226965}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3377197426334749316 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ab8b365af9018334996ccb75d0e2526f, type: 3}
+  m_PrefabInstance: {fileID: 2458788355325226965}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &5965496873258341221
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3377197426334749316}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3660652376195365350, guid: ab8b365af9018334996ccb75d0e2526f, type: 3}
+--- !u!95 &739561501965087176
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3377197426334749316}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dbfb584b8c55b964db9fc5529e164009, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4305470163876619414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3377197426334749316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f84f0e73c5f7fe419d98470f1b9d513, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  linkedPiece: {fileID: 11400000, guid: f7bebc5ffb5e23644ae9c60f926b65e9, type: 2}
 --- !u!1001 &5989379750457015215
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -11,17 +11,17 @@ public class CardBehaviour : MonoBehaviour
         switch (linkedPiece.type)
         {
             case Type.Engine:
-                GetComponentInParent<CustomizeCar>().engine = linkedPiece;
+                GameManager.Instance.GetComponent<CustomizeCar>().engine = linkedPiece;
                 break;
             case Type.Tire:
-                GetComponentInParent<CustomizeCar>().tire = linkedPiece;
+                GameManager.Instance.GetComponent<CustomizeCar>().tire = linkedPiece;
                 break;
             case Type.Chassis:
-                GetComponentInParent<CustomizeCar>().chassis = linkedPiece;
+                GameManager.Instance.GetComponent<CustomizeCar>().chassis = linkedPiece;
                 break;
             default:
                 break;
         }
-        GetComponentInParent<CustomizeCar>().UpdateVisual();
+        GameManager.Instance.GetComponent<CustomizeCar>().UpdateVisual();
     }
 }

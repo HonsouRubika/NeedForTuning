@@ -435,13 +435,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 363153180}
-  m_LocalRotation: {x: 0.16384248, y: 0, z: 0, w: 0.9864865}
+  m_LocalRotation: {x: 0.16504757, y: 0, z: 0, w: 0.9862857}
   m_LocalPosition: {x: 2.78, y: 2.09, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 18.86, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 19, y: 0, z: 0}
 --- !u!114 &363153184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -631,13 +631,43 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 547646123}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: -1.5, z: 1.25}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.16504757, y: 0, z: 0, w: 0.9862857}
+  m_LocalPosition: {x: -2.93, y: -2.1, z: -3}
+  m_LocalScale: {x: 0.004, y: 0.004, z: 0.004}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 19, y: 0, z: 0}
+--- !u!1 &752428378
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 752428379}
+  m_Layer: 0
+  m_Name: PosChasis
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &752428379
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 752428378}
+  m_LocalRotation: {x: 0.16504757, y: 0, z: 0, w: 0.9862857}
+  m_LocalPosition: {x: 5.72, y: -2.1, z: -3}
+  m_LocalScale: {x: 0.004, y: 0.004, z: 0.004}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 19, y: 0, z: 0}
 --- !u!1 &977677118
 GameObject:
   m_ObjectHideFlags: 0
@@ -667,8 +697,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 488634696}
-  - {fileID: 2009506519}
   - {fileID: 1445323113}
+  - {fileID: 2009506519}
   m_Father: {fileID: 1938182307}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -695,7 +725,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 100
+  m_Spacing: 200
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -950,9 +980,9 @@ MonoBehaviour:
   tire: {fileID: 11400000, guid: f7bebc5ffb5e23644ae9c60f926b65e9, type: 2}
   chassis: {fileID: 11400000, guid: e27f8f6895aa02c49a58fe4474ae8c4b, type: 2}
   cardPosEngine: {fileID: 547646124}
-  cardPosTire: {fileID: 0}
-  cardPosChassis: {fileID: 0}
-  offsetCard: 0
+  cardPosTire: {fileID: 1459398873}
+  cardPosChassis: {fileID: 752428379}
+  offsetCard: 1.3
 --- !u!1001 &1260385538
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1013,9 +1043,29 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2522098158053720552, guid: 6bedef4ae69662346b37399ffedc4dc3, type: 3}
+      propertyPath: ownedPiecesTire.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522098158053720552, guid: 6bedef4ae69662346b37399ffedc4dc3, type: 3}
       propertyPath: ownedPiecesEngine.Array.size
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2522098158053720552, guid: 6bedef4ae69662346b37399ffedc4dc3, type: 3}
+      propertyPath: ownedPiecesChassis.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522098158053720552, guid: 6bedef4ae69662346b37399ffedc4dc3, type: 3}
+      propertyPath: ownedPiecesTire.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 307d00b9a011524428593ceb42e962df, type: 2}
+    - target: {fileID: 2522098158053720552, guid: 6bedef4ae69662346b37399ffedc4dc3, type: 3}
+      propertyPath: ownedPiecesTire.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: f7bebc5ffb5e23644ae9c60f926b65e9, type: 2}
+    - target: {fileID: 2522098158053720552, guid: 6bedef4ae69662346b37399ffedc4dc3, type: 3}
+      propertyPath: ownedPiecesTire.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 77965bb1533eeec43807178f865edb2a, type: 2}
     - target: {fileID: 2522098158053720552, guid: 6bedef4ae69662346b37399ffedc4dc3, type: 3}
       propertyPath: ownedPiecesEngine.Array.data[0]
       value: 
@@ -1023,11 +1073,23 @@ PrefabInstance:
     - target: {fileID: 2522098158053720552, guid: 6bedef4ae69662346b37399ffedc4dc3, type: 3}
       propertyPath: ownedPiecesEngine.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: 873d1748a9dc1914e91f18baed5333f0, type: 2}
+      objectReference: {fileID: 11400000, guid: b645f03dd158b8e4da2a81c04ae22993, type: 2}
     - target: {fileID: 2522098158053720552, guid: 6bedef4ae69662346b37399ffedc4dc3, type: 3}
       propertyPath: ownedPiecesEngine.Array.data[2]
       value: 
       objectReference: {fileID: 11400000, guid: a4bd023b36365cf4682670bed133aa76, type: 2}
+    - target: {fileID: 2522098158053720552, guid: 6bedef4ae69662346b37399ffedc4dc3, type: 3}
+      propertyPath: ownedPiecesChassis.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 17c84d32861d3544ab681ed98e33cc91, type: 2}
+    - target: {fileID: 2522098158053720552, guid: 6bedef4ae69662346b37399ffedc4dc3, type: 3}
+      propertyPath: ownedPiecesChassis.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: e27f8f6895aa02c49a58fe4474ae8c4b, type: 2}
+    - target: {fileID: 2522098158053720552, guid: 6bedef4ae69662346b37399ffedc4dc3, type: 3}
+      propertyPath: ownedPiecesChassis.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3f024ec34f503f043838cd43d331ced0, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bedef4ae69662346b37399ffedc4dc3, type: 3}
 --- !u!1 &1440029807
@@ -1109,6 +1171,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1440029807}
   m_CullTransparentMesh: 1
+--- !u!1 &1444694804
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1444694806}
+  - component: {fileID: 1444694805}
+  m_Layer: 0
+  m_Name: Cursor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1444694805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1444694804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd4a622f5d46d6849bbe14c89efa0345, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursor: {fileID: 2800000, guid: fa911b498fdf9d44db913f741c97bee0, type: 3}
+  cursorClicked: {fileID: 2800000, guid: cf3195994a2af274fa31a8e4e0263e5c, type: 3}
+  canInteractWithCards: 0
+  cardHit: {fileID: 0}
+--- !u!4 &1444694806
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1444694804}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 696}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1445323112
 GameObject:
   m_ObjectHideFlags: 0
@@ -1141,7 +1250,7 @@ RectTransform:
   m_Children:
   - {fileID: 181820312}
   m_Father: {fileID: 977677119}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1192,14 +1301,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: AbilityController, Assembly-CSharp
-        m_MethodName: ClickTire
-        m_Mode: 1
+      - m_Target: {fileID: 1195060487}
+        m_TargetAssemblyTypeName: CustomizeCar, Assembly-CSharp
+        m_MethodName: instantiateCards
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1242,6 +1351,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1445323112}
   m_CullTransparentMesh: 1
+--- !u!1 &1459398872
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1459398873}
+  m_Layer: 0
+  m_Name: PosTire
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1459398873
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1459398872}
+  m_LocalRotation: {x: 0.16504757, y: 0, z: 0, w: 0.9862857}
+  m_LocalPosition: {x: 1.36, y: -2.1, z: -3}
+  m_LocalScale: {x: 0.004, y: 0.004, z: 0.004}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 19, y: 0, z: 0}
 --- !u!1 &1493014756
 GameObject:
   m_ObjectHideFlags: 0
@@ -1471,7 +1610,7 @@ RectTransform:
   m_Children:
   - {fileID: 1440029808}
   m_Father: {fileID: 977677119}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1522,14 +1661,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: AbilityController, Assembly-CSharp
-        m_MethodName: ClickChassis
-        m_Mode: 1
+      - m_Target: {fileID: 1195060487}
+        m_TargetAssemblyTypeName: CustomizeCar, Assembly-CSharp
+        m_MethodName: instantiateCards
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
