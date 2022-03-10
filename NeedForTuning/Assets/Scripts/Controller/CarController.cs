@@ -308,7 +308,7 @@ public class CarController : MonoBehaviour
         }
         else
         {
-            Debug.Log("no module detected");
+            //Debug.Log("no module detected");
             currentSurface = Surface.Concrete;
             inObtsacle = false;
             collideWithModule = false;
@@ -317,16 +317,37 @@ public class CarController : MonoBehaviour
 
     public void AngleCar()
     {
-        float angle = (-transform.rotation.eulerAngles.x) % 180;
+        //float angle = transform.rotation.eulerAngles.x % 360;
+        //Debug.Log((int)angle);
+        int angle = (int)WrapAngle(transform.rotation.eulerAngles.x);
 
-        if (angle >= 90 || angle <= -90)
+        if (angle < 50 && angle > -50)
+        {
+            Debug.Log("safe");
+        }
+        else
+        {
+            //needs to be reset
+            Debug.Log("reset needed");
+        }
+
+        /*if (angle >= 90 || angle <= -90)
         {
             Debug.Log("aie" + (int)angle);
         }
         else
         {
             Debug.Log("yes : " + (int)angle);
-        }
+        }*/
+    }
+
+    private static float WrapAngle(float angle)
+    {
+        angle %= 360;
+        if (angle > 180)
+            return angle - 360;
+
+        return angle;
     }
 
     public void CameraShake()
