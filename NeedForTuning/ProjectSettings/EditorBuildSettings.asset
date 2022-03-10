@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SceneTestAbilities.unity
     guid: 535d9e1aa4a53a64b8c3c99237ca9f3e
+  - enabled: 1
+    path: Assets/Scenes/SceneTestController.unity
+    guid: c90f9797ee9d74448a7ad4130c975cd0
   m_configObjects: {}

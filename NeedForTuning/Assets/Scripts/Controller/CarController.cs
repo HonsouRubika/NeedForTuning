@@ -337,6 +337,7 @@ public class CarController : MonoBehaviour
             //transform.RotateAround(transform.position, Vector3.right, -angle);
             
             transform.rotation = angleOrigine;
+            rb.angularVelocity = Vector3.zero;
             //Debug.Log("reset needed");
         }
     }

@@ -100,7 +100,7 @@ public class ChunkManager : MonoBehaviour
         
         //CreateChunks
         //Debug.Log(scene.name);
-        if (scene.name == "SceneTestAbilities")
+        if (scene.name == "SceneTestController")
         {
             Preview();
             TourneyManager.Instance.SpawnCar();
