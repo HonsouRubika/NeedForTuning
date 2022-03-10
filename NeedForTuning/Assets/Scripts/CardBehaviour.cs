@@ -22,6 +22,6 @@ public class CardBehaviour : MonoBehaviour
             default:
                 break;
         }
-        GameManager.Instance.GetComponent<CustomizeCar>().UpdateVisual();
+        GameManager.Instance.GetComponent<CustomizeCar>().GarageUpdate();
     }
 }
