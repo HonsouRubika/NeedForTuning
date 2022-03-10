@@ -29,8 +29,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5901674732227060463}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.51, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 20, y: 20, z: 20}
   m_Children:
   - {fileID: 7168626923856163383}
   - {fileID: 2554819970793436302}
@@ -141,55 +141,55 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2b1c7655d093d5f4c8ba7429ac862575, type: 3}
       propertyPath: m_LocalScale.x
-      value: 20
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2b1c7655d093d5f4c8ba7429ac862575, type: 3}
       propertyPath: m_LocalScale.y
-      value: 20
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2b1c7655d093d5f4c8ba7429ac862575, type: 3}
       propertyPath: m_LocalScale.z
-      value: 20
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2b1c7655d093d5f4c8ba7429ac862575, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.5275546
+      value: 0.0153
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2b1c7655d093d5f4c8ba7429ac862575, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.5887072
+      value: 0.0563
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2b1c7655d093d5f4c8ba7429ac862575, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.26950505
+      value: -0.0026
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2b1c7655d093d5f4c8ba7429ac862575, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.5962352
+      value: 0.59610164
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2b1c7655d093d5f4c8ba7429ac862575, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.12740354
+      value: -0.29516974
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2b1c7655d093d5f4c8ba7429ac862575, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.69553465
+      value: 0.63185537
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2b1c7655d093d5f4c8ba7429ac862575, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.38013625
+      value: 0.39786503
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2b1c7655d093d5f4c8ba7429ac862575, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -42.9
+      value: -58.725
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2b1c7655d093d5f4c8ba7429ac862575, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
+      value: 86.989
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2b1c7655d093d5f4c8ba7429ac862575, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 22.14
+      value: 11.255
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 2b1c7655d093d5f4c8ba7429ac862575, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -249,7 +249,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 2447185429404257720, guid: 2b1c7655d093d5f4c8ba7429ac862575, type: 3}
---- !u!114 &6750711138083953020
+--- !u!114 &7971629789921954496
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -258,7 +258,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2900137387579878964}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77c07c47c6e0d6647bd6bf6c3f8b230e, type: 3}
+  m_Script: {fileID: 11500000, guid: c87427f86e852cc45acf611fd1242b34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &7275192780144645596
@@ -274,27 +274,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2b1c7655d093d5f4c8ba7429ac862575, type: 3}
       propertyPath: m_LocalScale.x
-      value: 30
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2b1c7655d093d5f4c8ba7429ac862575, type: 3}
       propertyPath: m_LocalScale.y
-      value: 30
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2b1c7655d093d5f4c8ba7429ac862575, type: 3}
       propertyPath: m_LocalScale.z
-      value: 30
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2b1c7655d093d5f4c8ba7429ac862575, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.027554568
+      value: -0.0244
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2b1c7655d093d5f4c8ba7429ac862575, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.83870727
+      value: 0.0356
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2b1c7655d093d5f4c8ba7429ac862575, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.01950504
+      value: 0.0068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2b1c7655d093d5f4c8ba7429ac862575, type: 3}
       propertyPath: m_LocalRotation.w
@@ -382,7 +382,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 2447185429404257720, guid: 2b1c7655d093d5f4c8ba7429ac862575, type: 3}
---- !u!114 &5531422850060660755
+--- !u!114 &4086140709320713078
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -391,7 +391,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 7509687062137612429}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72cccbeaf5aa057469c974ea66027bd9, type: 3}
+  m_Script: {fileID: 11500000, guid: c87427f86e852cc45acf611fd1242b34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0

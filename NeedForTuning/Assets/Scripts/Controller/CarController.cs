@@ -295,6 +295,7 @@ public class CarController : MonoBehaviour
 
                         CarInObstacle(minSpdObstacle);
                         inObtsacle = true;
+                        chunk.enabled = false;
                         CameraShake();
 
                         break;
