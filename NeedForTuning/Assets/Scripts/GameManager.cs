@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     public GameObject car;
+    public Timer timerScript;
 
     void Awake()
     {
@@ -23,4 +24,5 @@ public class GameManager : MonoBehaviour
         }
         #endregion
     }
+    
 }

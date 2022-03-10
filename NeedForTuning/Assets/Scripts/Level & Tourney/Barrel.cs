@@ -30,7 +30,7 @@ public class Barrel : MonoBehaviour
                 //Debug.Log("yes");
                 rb.isKinematic = false;
                 mc.enabled = false;
-                col.gameObject.GetComponent<CarController>().CameraShake();
+                //col.gameObject.GetComponent<CarController>().CameraShake();
             }
             else
             {

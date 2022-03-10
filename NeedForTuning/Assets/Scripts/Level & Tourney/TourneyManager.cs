@@ -38,7 +38,7 @@ public class TourneyManager : MonoBehaviour
 
     public void NextLevel()
     {
-        GetComponent<Timer>().resetTimer();
+        
 
         if (levelActu == 0)
         {
@@ -53,7 +53,7 @@ public class TourneyManager : MonoBehaviour
         else if(levelActu < levels.Length)
         {
             //TODO : override on equal
-            
+            GameManager.Instance.timerScript.resetTimer();
             ChunkManager.Instance.selectedLevel = levels[levelActu++];
             ChunkManager.Instance.Preview();
         }
