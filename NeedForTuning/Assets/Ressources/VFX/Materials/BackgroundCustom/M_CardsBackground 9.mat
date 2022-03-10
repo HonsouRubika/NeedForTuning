@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_CardsBackground
-  m_Shader: {fileID: 4800000, guid: 478156334ec6cab4393358be063f2054, type: 3}
+  m_Name: M_CardsBackground 9
+  m_Shader: {fileID: 4800000, guid: 577a40fcd39af924281cde71a86a0dde, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -26,9 +26,9 @@ Material:
     m_Floats:
     - _NbPattern: 50
     - _OpacityMask: 0.4
-    - _Speed: 0.25
+    - _Speed: 1
     - _ThicknessPattern: 0.1
     m_Colors:
-    - _Color: {r: 0.8537736, g: 0.996981, b: 1, a: 1}
-    - _Color2: {r: 0.29307583, g: 0.6154101, b: 0.6981132, a: 1}
+    - _Color: {r: 1, g: 0.77647066, b: 0.8196079, a: 1}
+    - _Color2: {r: 0.65882355, g: 0.28235295, b: 0.5137255, a: 1}
   m_BuildTextureStacks: []

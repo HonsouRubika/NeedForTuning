@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_CardsBackground
-  m_Shader: {fileID: 4800000, guid: 478156334ec6cab4393358be063f2054, type: 3}
+  m_Name: M_CardsBackground 3
+  m_Shader: {fileID: 4800000, guid: 5d5685842429a2a4094b76950f61e3b4, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
