@@ -17,6 +17,8 @@ public class CursorController : MonoBehaviour
     public bool canInteractWithCards = false;
     [SerializeField]private GameObject cardHit;
 
+    public List<GameObject> cards = new List<GameObject>(2);
+
     private void Awake()
     {
         controls = new CursorControls();
@@ -79,14 +81,25 @@ public class CursorController : MonoBehaviour
                         Debug.Log("Showing The Card");
                         cardHit = hit.collider.gameObject;
                         cardHit.GetComponent<Animator>().SetBool("upScale", true);
+                        if (!cards.Contains(cardHit)) cards.Add(cardHit);
                         if (clicking)
                         {
+                            clicking = false;
                             cardHit.GetComponent<CardBehaviour>().assignPiece();
+                            
                         }
                     }                    
                 }                
             }                                
         }
+
+        if (cards.Count > 1)
+        {
+            cards[0].GetComponent<Animator>().SetBool("upScale", false);
+            cards.RemoveAt(0);
+            
+        }
+
         if (hit.collider == null)
         {
             if (cardHit != null)
@@ -94,9 +107,9 @@ public class CursorController : MonoBehaviour
                 Debug.Log("Cho7");
                 cardHit.GetComponent<Animator>().SetBool("upScale", false);
                 cardHit = null;
+                cards.Clear();
+                
             }
         }
-
-        RaycastHit[] hits = Physics.RaycastAll(ray, 200);
     }
 }

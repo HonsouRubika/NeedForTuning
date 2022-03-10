@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc58bd786dc5f494cb4e548cf1bc665b, type: 3}
   m_Name: HamsterTire
   m_EditorClassIdentifier: 
-  type: 0
+  type: 1
   name: HamsterTire
   image: {fileID: 0}
   cardPrefab: {fileID: 6556219383127088620, guid: 20680d77a4841e84ca87130470ce3286, type: 3}

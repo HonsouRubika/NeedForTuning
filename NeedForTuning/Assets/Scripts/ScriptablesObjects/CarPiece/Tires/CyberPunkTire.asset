@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc58bd786dc5f494cb4e548cf1bc665b, type: 3}
   m_Name: CyberPunkTire
   m_EditorClassIdentifier: 
-  type: 0
+  type: 1
   name: CyberPunkTire
   image: {fileID: 0}
   cardPrefab: {fileID: 6556219383127088620, guid: 2b233b806f55a9046aeac3fc13d150f3, type: 3}
-  piecePrefab: {fileID: 0}
+  piecePrefab: {fileID: 919132149155446097, guid: ddabf2461f372304bb3a4788a249eb5a, type: 3}
   maxSpeedConcrete: 4
   maxSpeedSand: 2
   maxSpeedIce: 4
