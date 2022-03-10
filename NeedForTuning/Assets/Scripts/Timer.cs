@@ -10,6 +10,10 @@ public class Timer : MonoBehaviour
     public float timerRounded;
     public TextMeshProUGUI timeText;
 
+    private void Start()
+    {
+        GameManager.Instance.timerScript = this;
+    }
     void Update()
     {
         if (ChunkManager.Instance.isRuning)

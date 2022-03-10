@@ -239,21 +239,21 @@ public class CarController : MonoBehaviour
                         {
                             CarInObstacle(minSpdIce);
                             inObtsacle = true;
-                            CameraShake();
+                            
                         }
                         break;
                     case "ChunkTreeTrunk":
                     case "ChunkTreeTrunk(Clone)":
                         CarInObstacle(minSpdObstacle);
                         inObtsacle = true;
-                        CameraShake();
+                        
 
                         break;
                     case "ChunkJunk":
                     case "ChunkJunk(Clone)":
                         CarInObstacle(minSpdObstacle);
                         inObtsacle = true;
-                        CameraShake();
+                        
 
                         break;
                     case "ChunkLaunchingPad":
@@ -279,14 +279,14 @@ public class CarController : MonoBehaviour
                     case "ChunkSand":
                     case "ChunkSand(Clone)":
                         inObtsacle = true;
-                        CameraShake();
+                        
                         currentSurface = Surface.Sand;
                         CarInSurface(minSpdSand);
                         break;
                     case "ChunkBosse":
                     case "ChunkBosse(Clone)":
                         inObtsacle = true;
-                        CameraShake();
+                       
                         currentSurface = Surface.Bumps;
                         CarInSurface(minSpdBumps);
                         break;
@@ -488,7 +488,8 @@ public class CarController : MonoBehaviour
         if (abilityController.currentAbilityChassis != Abilities.Bumper && !collideWithModule)
         {
             //Debug.Log("decrease speed");
-
+            
+            CameraShake();
             collideWithModule = true;
             ChunkManager.Instance.speedActu = minSpd;
         }
