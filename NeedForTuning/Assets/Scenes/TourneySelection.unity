@@ -2058,6 +2058,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1195060487, guid: 6bedef4ae69662346b37399ffedc4dc3, type: 3}
+      propertyPath: tire
+      value: 
+      objectReference: {fileID: 11400000, guid: 77965bb1533eeec43807178f865edb2a, type: 2}
+    - target: {fileID: 1195060487, guid: 6bedef4ae69662346b37399ffedc4dc3, type: 3}
+      propertyPath: engine
+      value: 
+      objectReference: {fileID: 11400000, guid: a4bd023b36365cf4682670bed133aa76, type: 2}
+    - target: {fileID: 1195060487, guid: 6bedef4ae69662346b37399ffedc4dc3, type: 3}
+      propertyPath: chassis
+      value: 
+      objectReference: {fileID: 11400000, guid: 17c84d32861d3544ab681ed98e33cc91, type: 2}
+    - target: {fileID: 1195060487, guid: 6bedef4ae69662346b37399ffedc4dc3, type: 3}
       propertyPath: cardPosTire
       value: 
       objectReference: {fileID: 1459398873}

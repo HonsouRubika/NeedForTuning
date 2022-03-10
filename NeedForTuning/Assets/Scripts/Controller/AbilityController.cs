@@ -37,6 +37,10 @@ public class AbilityController : MonoBehaviour
     private bool tireRdy = true;
     private bool chassisRdy = true;
 
+    public Text abilityEngineButton;
+    public Text abilityTireButton;
+    public Text abilityChassisButton;
+
     private void Start()
     {
         car = GetComponent<CarController>();
@@ -47,8 +51,15 @@ public class AbilityController : MonoBehaviour
         abilityEngine = InventoryManager.Instance.engine;
         abilityTire = InventoryManager.Instance.tire;
         abilityChassis = InventoryManager.Instance.chassis;
+        UpdateButtons();
     }
 
+    void UpdateButtons()
+    {
+        abilityEngineButton.text = GameManager.Instance.car.GetComponent<AbilityController>().abilityEngine.ability.name;
+        abilityTireButton.text = GameManager.Instance.car.GetComponent<AbilityController>().abilityTire.ability.name;
+        abilityChassisButton.text = GameManager.Instance.car.GetComponent<AbilityController>().abilityChassis.ability.name;
+    }
     private void Update()
     {
         ReloadCooldown();
@@ -231,6 +242,7 @@ public class AbilityController : MonoBehaviour
     {
         if (utilisationChassis < abilityEngine.ability.utilisationNumber && chassisRdy)
         {
+            Debug.Log("oogabooga");
             utilisationChassis++;
             TriggerAbility(abilityChassis.ability);
         }
@@ -297,13 +309,17 @@ public class AbilityController : MonoBehaviour
 
         if (enabled)
         {
-
+            car.rb.useGravity = false;
+            car.isInvicible = true;
             ChunkManager.Instance.modulesToCrossTire = ChunkManager.Instance.totalNbOfLineActu + ability.moduleDistance;
             gameObject.transform.position = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + jumpHeight);
         }
         else
         {
-            gameObject.transform.position = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - jumpHeight);
+            
+            car.isInvicible = false;
+            car.rb.useGravity = true;
+            //gameObject.transform.position = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - jumpHeight);
             car.CarLanding();
             currentAbilityTire = Abilities.Default;
         }
@@ -361,6 +377,7 @@ public class AbilityController : MonoBehaviour
 
     private void Suspension(PieceAbility ability, bool enabled)//Done
     {
+        Debug.Log("RUNNING");
         if (enabled)
         {
             ChunkManager.Instance.modulesToCrossChassis = ChunkManager.Instance.totalNbOfLineActu + ability.moduleDistance;
