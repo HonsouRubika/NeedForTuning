@@ -105,7 +105,8 @@ public class ChunkManager : MonoBehaviour
         if (scene.name == "SceneTestController")
         {
             Preview();
-            TourneyManager.Instance.SpawnCar();
+
+            TourneyManager.Instance.SpawnCar(car.gameObject);
         }
     }
 
