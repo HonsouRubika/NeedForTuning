@@ -10,7 +10,7 @@ public class TourneyManager : MonoBehaviour
     [HideInInspector]
     public LevelProfile[] levels;
     public int levelActu = 0;
-    public string levelScene = "SceneTestAbilities";
+    public string levelScene = "SceneTestController";
 
     //test for debug purposes
     public bool testIsFinished = false;

@@ -88,9 +88,10 @@ public class CustomizeCar : MonoBehaviour
     [ContextMenu("boom")]
     public void UpdateVisual()
     {
-        
+        Vector3 angle = new Vector3(0, 90, 0);
+
         Destroy(GameManager.Instance.car.transform.GetChild(0).gameObject);
-        GameObject newChassis = Instantiate(chassis.piecePrefab, GameManager.Instance.car.transform.position, GameManager.Instance.car.transform.rotation, GameManager.Instance.car.transform);
+        GameObject newChassis = Instantiate(chassis.piecePrefab, GameManager.Instance.car.transform.position, Quaternion.Euler(angle), GameManager.Instance.car.transform);
         Instantiate(engine.piecePrefab, newChassis.transform.GetChild(1).transform.position, newChassis.transform.GetChild(1).transform.rotation, newChassis.transform.GetChild(1).transform);
         Instantiate(tire.piecePrefab, newChassis.transform.GetChild(2).transform.position, newChassis.transform.GetChild(2).transform.rotation, newChassis.transform.GetChild(2).transform);
         Instantiate(tire.piecePrefab, newChassis.transform.GetChild(3).transform.position, newChassis.transform.GetChild(3).transform.rotation, newChassis.transform.GetChild(3).transform);

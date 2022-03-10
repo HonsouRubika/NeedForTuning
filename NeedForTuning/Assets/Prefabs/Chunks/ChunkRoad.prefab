@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5901674732227060460}
   - component: {fileID: 5766956273760319895}
   - component: {fileID: 4664611472413682655}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ChunkRoad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -184,6 +184,10 @@ PrefabInstance:
       value: ChunkTest
       objectReference: {fileID: 0}
     - target: {fileID: 5901674732227060463, guid: b33266959d5f9984d9a0924539bb8e5e, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5901674732227060463, guid: b33266959d5f9984d9a0924539bb8e5e, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -268,6 +272,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ed4fcae7b35f4644ba08a7f12043ae04, type: 3}
       propertyPath: m_Name
       value: SM_Road_Classic_1x1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ed4fcae7b35f4644ba08a7f12043ae04, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed4fcae7b35f4644ba08a7f12043ae04, type: 3}

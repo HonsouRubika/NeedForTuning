@@ -207,105 +207,115 @@ public class CarController : MonoBehaviour
 
         if (module.Length > 0)
         {
-            Debug.Log("module detected");
-            switch (module[0].gameObject.name)
+            foreach (Collider chunk in module)
             {
-                //to ignore
-                case "ChunkStart":
-                case "ChunkStart (1)":
-                case "ChunkStart (2)":
-                case "Car":
-                case "Car(Clone)":
+                switch (chunk.gameObject.name)
+                {
+                    //to ignore
+                    case "ChunkStart":
+                    case "ChunkStart (1)":
+                    case "ChunkStart (2)":
+                    case "Car":
+                    case "Car(Clone)":
+                    case "ChunkRoad(Clone)":
+                        //ignore
+                        currentSurface = Surface.Concrete;
+                        inObtsacle = false;
+                        collideWithModule = false;
+                        break;
+                    case "ChunkBarrel":
+                    case "ChunkBarrel(Clone)":
+                    case "SM_barrel_01":
+                    case "SM_barrel_01 (1)":
+                        //abilityController.StopAbility();
+                        CarInObstacle(minSpdObstacle);
+                        inObtsacle = true;
+                        //CameraShake();
 
-                    break;
-                case "ChunkBarrel":
-                case "ChunkBarrel(Clone)":
-                case "SM_barrel_01":
-                case "SM_barrel_01 (1)":
-                    //abilityController.StopAbility();
-                    CarInObstacle(minSpdObstacle);
-                    inObtsacle = true;
-                    CameraShake();
-
-                    break;
-                case "ChunkWaterHole":
-                case "ChunkWaterHole(Clone)":
-                    if (abilityController.currentAbilityChassis != Abilities.Swim)
-                    {
+                        break;
+                    case "ChunkWaterHole":
+                    case "ChunkWaterHole(Clone)":
+                        if (abilityController.currentAbilityChassis != Abilities.Swim)
+                        {
+                            CarInObstacle(minSpdIce);
+                            inObtsacle = true;
+                            CameraShake();
+                        }
+                        break;
+                    case "ChunkTreeTrunk":
+                    case "ChunkTreeTrunk(Clone)":
                         CarInObstacle(minSpdObstacle);
                         inObtsacle = true;
                         CameraShake();
-                    }
-                    break;
-                case "ChunkTreeTrunk":
-                case "ChunkTreeTrunk(Clone)":
-                    CarInObstacle(minSpdObstacle);
-                    inObtsacle = true;
-                    CameraShake();
 
-                    break;
-                case "ChunkJunk":
-                case "ChunkJunk(Clone)":
-                    CarInObstacle(minSpdObstacle);
-                    inObtsacle = true;
-                    CameraShake();
-
-                    break;
-                case "ChunkLaunchingPad":
-                case "ChunkLaunchingPad(Clone)":
-                case "Tremplin_01":
-                    CarJumping();
-
-                    break;
-                case "ChunkIce":
-                case "ChunkIce(Clone)":
-                    if (abilityController.currentAbilityTire != Abilities.Nail)
-                    {
-                        CarInSurface(minSpdIce);
-                        currentSurface = Surface.Ice;
+                        break;
+                    case "ChunkJunk":
+                    case "ChunkJunk(Clone)":
+                        CarInObstacle(minSpdObstacle);
                         inObtsacle = true;
-                    }
+                        CameraShake();
 
-                    break;
-                case "ChunkSand":
-                case "ChunkSand(Clone)":
-                    CarInSurface(minSpdSand);
-                    inObtsacle = true;
-                    CameraShake();
-                    currentSurface = Surface.Sand;
-                    break;
-                case "ChunkBumps":
-                case "ChunkBumps(Clone)":
-                    CarInSurface(minSpdBumps);
-                    inObtsacle = true;
-                    CameraShake();
-                    currentSurface = Surface.Bumps;
-                    break;
-                case "BigBall":
-                case "BigBall(Clone)":
-                    
-                    CarInObstacle(minSpdObstacle);
-                    inObtsacle = true;
-                    CameraShake();
+                        break;
+                    case "ChunkLaunchingPad":
+                    case "ChunkLaunchingPad(Clone)":
+                    case "Tremplin_01":
+                        CarJumping();
 
-                    break;
-                case "SM_Whomp":
-                case "SM_Whomp(Clone)":
-                    //abilityController.StopAbility();
-                    CarInObstacle(minSpdObstacle);
-                    inObtsacle = true;
+                        break;
+                    case "ChunkIce":
+                    case "ChunkIce(Clone)":
+                        if (abilityController.currentAbilityTire != Abilities.Nail)
+                        {
+                            currentSurface = Surface.Ice;
+                            CarInSurface(minSpdIce);
+                            inObtsacle = true;
+                        }
+                        else
+                        {
+                            Debug.Log("ability = Nail");
+                        }
 
-                    break;
-                case "WhompDetection":
-                case "WhompDetection(Clone)":
-                    module[0].GetComponentInParent<Womp>().Fall();
+                        break;
+                    case "ChunkSand":
+                    case "ChunkSand(Clone)":
+                        inObtsacle = true;
+                        CameraShake();
+                        currentSurface = Surface.Sand;
+                        CarInSurface(minSpdSand);
+                        break;
+                    case "ChunkBosse":
+                    case "ChunkBosse(Clone)":
+                        inObtsacle = true;
+                        CameraShake();
+                        currentSurface = Surface.Bumps;
+                        CarInSurface(minSpdBumps);
+                        break;
+                    case "BigBall":
+                    case "BigBall(Clone)":
 
-                    break;
-                default:
-                    Debug.Log(module[0].gameObject.name);
-                    CarInObstacle(minSpdObstacle);
-                    inObtsacle = true;
-                    break;
+                        CarInObstacle(minSpdObstacle);
+                        inObtsacle = true;
+                        CameraShake();
+
+                        break;
+                    case "SM_Whomp":
+                    case "SM_Whomp(Clone)":
+                        //abilityController.StopAbility();
+                        CarInObstacle(minSpdObstacle);
+                        inObtsacle = true;
+
+                        break;
+                    case "WhompDetection":
+                    case "WhompDetection(Clone)":
+                        chunk.GetComponentInParent<Womp>().Fall();
+
+                        break;
+                    default:
+                        Debug.Log(chunk.gameObject.name);
+                        CarInObstacle(minSpdObstacle);
+                        inObtsacle = true;
+                        break;
+                }
             }
         }
         else
@@ -337,6 +347,7 @@ public class CarController : MonoBehaviour
             //transform.RotateAround(transform.position, Vector3.right, -angle);
             
             transform.rotation = angleOrigine;
+            rb.angularVelocity = Vector3.zero;
             //Debug.Log("reset needed");
         }
     }
@@ -373,30 +384,30 @@ public class CarController : MonoBehaviour
             {
                 case Surface.Concrete:
                     ChunkManager.Instance.speedActu += engineAccelerationConcrete * Time.deltaTime;
-                    if (ChunkManager.Instance.speedActu > engineMaxSpeed)
+                    if (ChunkManager.Instance.speedActu >= engineMaxSpeed)
                     {
                         ChunkManager.Instance.speedActu = engineMaxSpeed;
                     }
                     break;
                 case Surface.Ice:
                     ChunkManager.Instance.speedActu += engineAccelerationIce * Time.deltaTime;
-                    if (ChunkManager.Instance.speedActu > minSpdIce)
+                    if (ChunkManager.Instance.speedActu >= engineMaxSpeed)
                     {
-                        ChunkManager.Instance.speedActu = minSpdIce;
+                        ChunkManager.Instance.speedActu = engineMaxSpeed;
                     }
                     break;
                 case Surface.Sand:
                     ChunkManager.Instance.speedActu += engineAccelerationSand * Time.deltaTime;
-                    if (ChunkManager.Instance.speedActu > minSpdSand)
+                    if (ChunkManager.Instance.speedActu >= engineMaxSpeed)
                     {
-                        ChunkManager.Instance.speedActu = minSpdSand;
+                        ChunkManager.Instance.speedActu = engineMaxSpeed;
                     }
                     break;
                 case Surface.Bumps:
                     ChunkManager.Instance.speedActu += engineAccelerationBumps * Time.deltaTime;
-                    if (ChunkManager.Instance.speedActu > minSpdBumps)
+                    if (ChunkManager.Instance.speedActu >= engineMaxSpeed)
                     {
-                        ChunkManager.Instance.speedActu = minSpdBumps;
+                        ChunkManager.Instance.speedActu = engineMaxSpeed;
                     }
                     break;
                 default:
@@ -410,11 +421,11 @@ public class CarController : MonoBehaviour
         switch (currentSurface)
         {
             case Surface.Concrete:
-                ChunkManager.Instance.speedActu -= changingLaneSpeedLossConcrete * Time.deltaTime;
-                if (ChunkManager.Instance.speedActu < engineMinimumSpeed)
-                {
-                    ChunkManager.Instance.speedActu = engineMinimumSpeed;
-                }
+                //ChunkManager.Instance.speedActu -= changingLaneSpeedLossConcrete * Time.deltaTime;
+                //if (ChunkManager.Instance.speedActu < engineMinimumSpeed)
+                //{
+                //    ChunkManager.Instance.speedActu = engineMinimumSpeed;
+                //}
                 break;
             case Surface.Ice:
                 ChunkManager.Instance.speedActu -= changingLaneSpeedLossIce * Time.deltaTime;
@@ -455,11 +466,19 @@ public class CarController : MonoBehaviour
     {
         if (abilityController.currentAbilityTire != Abilities.Dolorean)
         {
+            //Debug.Log("decrease speed");
+            CarDecelerate();
+            /*
             ChunkManager.Instance.speedActu -= surfaceSpeedLoss * Time.deltaTime;
             if (ChunkManager.Instance.speedActu < minSpd)
             {
                 ChunkManager.Instance.speedActu = minSpd;
             }
+            */
+        }
+        else
+        {
+
         }
 
     }
@@ -467,7 +486,8 @@ public class CarController : MonoBehaviour
     {
         if (abilityController.currentAbilityChassis != Abilities.Bumper && !collideWithModule)
         {
-            
+            //Debug.Log("decrease speed");
+
             collideWithModule = true;
             ChunkManager.Instance.speedActu = minSpd;
         }
@@ -479,7 +499,8 @@ public class CarController : MonoBehaviour
     }
     public void CarJumping()
     {
-        gameObject.transform.position = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + abilityController.jumpHeight);
+        //gameObject.transform.position = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + abilityController.jumpHeight);
+        //rb.useGravity = false;
 
         if (abilityController.currentAbilityEngine != Abilities.Turbo)
         {
@@ -494,7 +515,8 @@ public class CarController : MonoBehaviour
 
     public void EndJump()
     {
-        gameObject.transform.position = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - abilityController.jumpHeight);
+        //gameObject.transform.position = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - abilityController.jumpHeight);
+        //rb.useGravity = true;
         CarLanding();
     }
 
