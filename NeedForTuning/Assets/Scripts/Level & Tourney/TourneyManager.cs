@@ -19,6 +19,7 @@ public class TourneyManager : MonoBehaviour
     void Start()
     {
         DontDestroyOnLoad(this);
+        TourneySelectionManager.Instance.StartRace();
     }
 
     void Awake()
@@ -52,6 +53,7 @@ public class TourneyManager : MonoBehaviour
         }
         else if(levelActu < levels.Length)
         {
+            Debug.Log("reset next level");
             //TODO : override on equal
             GameManager.Instance.timerScript.resetTimer();
             ChunkManager.Instance.selectedLevel = levels[levelActu++];
@@ -61,7 +63,6 @@ public class TourneyManager : MonoBehaviour
         {
             //tourney finished
             testIsFinished = true;
-            Debug.Log("tourney is finished");
             SceneManager.LoadScene("TourneySelection");
         }
     }

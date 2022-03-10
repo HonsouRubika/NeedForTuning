@@ -133,8 +133,8 @@ GameObject:
   - component: {fileID: 1783166034375803581}
   - component: {fileID: 2943223231595409667}
   - component: {fileID: 2757450621306407987}
-  - component: {fileID: 494678336}
   - component: {fileID: 2522098158053720552}
+  - component: {fileID: 1195060487}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -169,7 +169,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 521b61abeb6a7bd4cb23eaf370d9b1c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  car: {fileID: 8629115605035993648, guid: eedc6f96c838e804389e90b089072f3f, type: 3}
+  car: {fileID: 0}
+  tourneyManagerScript: {fileID: 0}
+  timerScript: {fileID: 0}
+  nbOfTurney: 0
 --- !u!114 &2943223231595409667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,20 +235,6 @@ MonoBehaviour:
   isRuning: 0
   isFinished: 0
   startTimer: 1
---- !u!114 &494678336
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1783166034375803580}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2380d403e2472a04fb92531a89440971, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timerRounded: 0
-  timeText: {fileID: 0}
 --- !u!114 &2522098158053720552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,9 +247,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84886d7e62610e34b9ff9b377ccd9970, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ownedPiecesEngine: []
-  ownedPiecesTire: []
-  ownedPiecesChassis: []
+  ownedPiecesEngine:
+  - {fileID: 11400000, guid: 2da5136f79c0765489b2967a309a3ad0, type: 2}
+  - {fileID: 11400000, guid: b645f03dd158b8e4da2a81c04ae22993, type: 2}
+  - {fileID: 11400000, guid: a4bd023b36365cf4682670bed133aa76, type: 2}
+  ownedPiecesTire:
+  - {fileID: 11400000, guid: 307d00b9a011524428593ceb42e962df, type: 2}
+  - {fileID: 11400000, guid: f7bebc5ffb5e23644ae9c60f926b65e9, type: 2}
+  - {fileID: 11400000, guid: 77965bb1533eeec43807178f865edb2a, type: 2}
+  ownedPiecesChassis:
+  - {fileID: 11400000, guid: 17c84d32861d3544ab681ed98e33cc91, type: 2}
+  - {fileID: 11400000, guid: e27f8f6895aa02c49a58fe4474ae8c4b, type: 2}
+  - {fileID: 11400000, guid: 3f024ec34f503f043838cd43d331ced0, type: 2}
   engine: {fileID: 11400000, guid: 2da5136f79c0765489b2967a309a3ad0, type: 2}
   tire: {fileID: 11400000, guid: 307d00b9a011524428593ceb42e962df, type: 2}
   chassis: {fileID: 11400000, guid: a88ddc27178156b419d02d26a4bd9eeb, type: 2}
@@ -277,6 +275,25 @@ MonoBehaviour:
   gripIce: 0.6
   gripBump: 0.4
   resistance: 0.4
+--- !u!114 &1195060487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783166034375803580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2905b676c8fe16e46b3d05e8ed479038, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  engine: {fileID: 11400000, guid: a4bd023b36365cf4682670bed133aa76, type: 2}
+  tire: {fileID: 11400000, guid: f7bebc5ffb5e23644ae9c60f926b65e9, type: 2}
+  chassis: {fileID: 11400000, guid: e27f8f6895aa02c49a58fe4474ae8c4b, type: 2}
+  cardPosEngine: {fileID: 0}
+  cardPosTire: {fileID: 0}
+  cardPosChassis: {fileID: 0}
+  offsetCard: 1.3
 --- !u!1 &2482759418260567608
 GameObject:
   m_ObjectHideFlags: 0

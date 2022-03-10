@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject car;
     public Timer timerScript;
+    public uint nbOfTurney = 0;
 
     void Awake()
     {

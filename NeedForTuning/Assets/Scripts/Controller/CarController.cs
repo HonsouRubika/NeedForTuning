@@ -312,7 +312,6 @@ public class CarController : MonoBehaviour
 
                         break;
                     default:
-                        Debug.Log(chunk.gameObject.name);
                         CarInObstacle(minSpdObstacle);
                         inObtsacle = true;
                         break;
