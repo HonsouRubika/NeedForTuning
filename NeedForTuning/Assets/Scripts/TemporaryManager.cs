@@ -18,9 +18,13 @@ public class TemporaryManager : MonoBehaviour
     [Space(10)]
     private bool displayingFirstText = false;
     public OpeningBooster openingBooster;
+    public bool firstBoosterIsOpen = false;
 
-    [Space(10)]
+    [Header("Transition")]
     public GameObject blackScreen;
+
+    [Header("Opening Booster")]
+    public bool isOpenBoosterScene;
 
     void Start()
     {
@@ -46,7 +50,10 @@ public class TemporaryManager : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         anim.SetBool("fadeInBlackScreen", false);
         yield return new WaitForSeconds(2.5f);
-        displayingFirstText = true;
+        if (indexText == 0)
+        {
+            displayingFirstText = true;
+        }
     }
 
     public void DisplayText(Text text) //Mettre DisplayingText si référencement manuel
@@ -66,6 +73,15 @@ public class TemporaryManager : MonoBehaviour
         {
             buttonText.SetActive(false);
         }
+        else if (indexText == 8)
+        {
+            buttonText.SetActive(false);
+            openingBooster.card01.SetActive(false);
+            openingBooster.card02.SetActive(false);
+            openingBooster.card03.SetActive(false);
+            indexText++;
+            StartCoroutine(TransitionBlackScreen());
+        }
     }
 
     void Update()
@@ -74,6 +90,16 @@ public class TemporaryManager : MonoBehaviour
         {
             DisplayText(textBook[indexText]);
             displayingFirstText = false;
+        }
+
+        if (indexText == 6 && firstBoosterIsOpen)
+        {
+            DisplayText(textBook[indexText]);
+        }
+
+        if (isOpenBoosterScene)
+        {
+            openingBooster.canOpenTheBooster = true;
         }
     }
 }
