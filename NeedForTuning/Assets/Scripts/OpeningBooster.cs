@@ -26,7 +26,7 @@ public class OpeningBooster : MonoBehaviour
 
     private Animator anim;
     [Range(100,1000)] public float speed = 100.0f;
-    private bool canOpenTheBooster = false;
+    public bool canOpenTheBooster = false;
     private bool openBooster = false;
 
     void Start()
@@ -88,5 +88,7 @@ public class OpeningBooster : MonoBehaviour
         openBooster = true;
         yield return new WaitForSeconds(1f);
         cursorController.canInteractWithCards = true;
+        yield return new WaitForSeconds(10f);
+        temporaryManager.firstBoosterIsOpen = true;
     }
 }

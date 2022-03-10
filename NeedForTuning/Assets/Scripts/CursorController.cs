@@ -73,7 +73,7 @@ public class CursorController : MonoBehaviour
                 //Debug.Log("3D Hit: " + hit.collider.tag);
                 if (hit.collider.tag == "Card")
                 {
-                    Debug.Log("So6");
+                    //Debug.Log("So6");
                     if (canInteractWithCards)
                     {
                         Debug.Log("Showing The Card");
@@ -91,7 +91,7 @@ public class CursorController : MonoBehaviour
         {
             if (cardHit != null)
             {
-                Debug.Log("Cho7");
+                //Debug.Log("Cho7");
                 cardHit.GetComponent<Animator>().SetBool("upScale", false);
                 cardHit = null;
             }
