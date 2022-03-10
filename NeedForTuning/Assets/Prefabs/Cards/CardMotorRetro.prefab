@@ -86,7 +86,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5577652454155709372}
-  m_Text: Electric Motor
+  m_Text: Retro Motor
   m_OffsetZ: 0
   m_CharacterSize: 0.03
   m_LineSpacing: 1
