@@ -608,11 +608,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 488634695}
   m_CullTransparentMesh: 1
---- !u!4 &530438199 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 9124603300278019663, guid: eedc6f96c838e804389e90b089072f3f, type: 3}
-  m_PrefabInstance: {fileID: 2115812161}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &977677118
 GameObject:
   m_ObjectHideFlags: 0
@@ -1299,7 +1294,9 @@ MonoBehaviour:
   engine: {fileID: 11400000, guid: a4bd023b36365cf4682670bed133aa76, type: 2}
   tire: {fileID: 11400000, guid: f7bebc5ffb5e23644ae9c60f926b65e9, type: 2}
   chassis: {fileID: 11400000, guid: e27f8f6895aa02c49a58fe4474ae8c4b, type: 2}
-  enginePos: {fileID: 530438199}
+  cardPosEngine: {fileID: 0}
+  cardPosTire: {fileID: 0}
+  cardPosChassis: {fileID: 0}
 --- !u!4 &1611437483
 Transform:
   m_ObjectHideFlags: 0
@@ -1602,8 +1599,8 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8268997289470524645, guid: eedc6f96c838e804389e90b089072f3f, type: 3}
-      propertyPath: m_UseGravity
-      value: 0
+      propertyPath: m_IsKinematic
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8516897327813733363, guid: eedc6f96c838e804389e90b089072f3f, type: 3}
       propertyPath: m_Enabled

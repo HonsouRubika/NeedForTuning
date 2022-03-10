@@ -6,96 +6,11 @@ EditorUserSettings:
   serializedVersion: 4
   m_ConfigSettings:
     RecentlyUsedScenePath-0:
-      value: 22424703114646680e0b0227036c6c0417050c192f2d2835633c133af6f9
+      value: 22424703114646680e0b0227036c6c1313191d1e293b32112f20113af6e9312bacf238e0f323
       flags: 0
     RecentlyUsedScenePath-1:
-<<<<<<< HEAD
-<<<<<<< HEAD
-      value: 22424703114646680e0b0227036c7e0202231d39381b2535232c5326ece92021
-=======
-      value: 22424703114646680e0b0227036c6c0417050c192f2d2835633c133af6f9
->>>>>>> MVC_ImplementTracks
-      flags: 0
-    RecentlyUsedScenePath-2:
-      value: 22424703114646680e0b0227036c6c1313191d1e293b327e38271427fb
-      flags: 0
-    RecentlyUsedScenePath-3:
-      value: 22424703114646680e0b0227036c6c1313191d1e293b32112f20113af6e9312bacf238e0f323
-=======
-      value: 22424703114646680e0b0227036c7e0202282c382d2b2d04283a0900e1e53a3dacf238e0f323
-      flags: 0
-    RecentlyUsedScenePath-2:
-      value: 22424703114646680e0b0227036c7e0202231d39381b2535232c5326ece92021
-      flags: 0
-    RecentlyUsedScenePath-3:
-      value: 22424703114646680e0b0227036c6c1313191d072d3c2e39283c5326ece92021
->>>>>>> AuR_ScreenShake
-      flags: 0
-    RecentlyUsedScenePath-4:
-<<<<<<< HEAD
-      value: 22424703114646680e0b0227036c6b021714131e293b32032e2c1336acf53a31f6fe
-      flags: 0
-    RecentlyUsedScenePath-5:
-      value: 22424703114646680e0b0227036c6b15050357192f2d2835192c0e27c3e23d34ebf33fecf4742a323016f6
-      flags: 0
-    RecentlyUsedScenePath-6:
-<<<<<<< HEAD
-      value: 22424703114646680e0b0227036c6b150503571e3e29253b192c0e27d1e33136e7a923e7ee2e26
-      flags: 0
-    RecentlyUsedScenePath-7:
-      value: 22424703114646680e0b0227036c7c05050317270f29347e38271427fb
-      flags: 0
-    RecentlyUsedScenePath-8:
-      value: 22424703114646680e0b0227036c6b1f0305162f351b233c282a093aedee7a2decee22f0
-=======
       value: 22424703114646680e0b0227036c6b1f0305162f351b233c282a093aedee7a2decee22f0
       flags: 0
-<<<<<<< HEAD
-    RecentlyUsedScenePath-5:
-      value: 22424703114646680e0b0227036c7e052428342b2e66333e243d04
-      flags: 0
-    RecentlyUsedScenePath-6:
-      value: 22424703114646680e0b0227036c7e0202231d39381b2535232c5326ece92021
-      flags: 0
-    RecentlyUsedScenePath-7:
-      value: 22424703114646680e0b0227036c7e0202282c382d2b2d04283a0900e1e53a3dacf238e0f323
-      flags: 0
-    RecentlyUsedScenePath-8:
-<<<<<<< HEAD
-      value: 22424703114646680e0b0227036c6b021714131e293b32032e2c1336acf53a31f6fe
-=======
-      value: 22424703114646680e0b0227036c7e0202282c382d2b2d04283a0900e1e53a3dacf238e0f323
-=======
-      value: 22424703114646680e0b0227036c69110028342b2e66333e243d04
-      flags: 0
-    RecentlyUsedScenePath-7:
-      value: 22424703114646680e0b0227036c6b021714131e293b32032e2c1336acf53a31f6fe
-      flags: 0
-    RecentlyUsedScenePath-8:
-      value: 22424703114646680e0b0227036c6b1f0305162f351b233c282a093aedee7a2decee22f0
-      flags: 0
-    RecentlyUsedScenePath-9:
-      value: 22424703114646680e0b0227036c7e052428342b2e66333e243d04
->>>>>>> AuR_ScreenShake
-      flags: 0
-    UnityEditor.ShaderGraph.Blackboard:
-      value: 18135939215a0a5004000b0e15254b524c030a3f2964643d120d1230e9e93a3fd6e826abbd2e2d293c4ead313b08042de6030a0afa240c0d020be94c4ba75e435d8715fa32c70d15d11612dacc11fee5d3c5d1fe9ab1bf968e93e2ffcbc3e7e2f0b3ffe0e8b0be9af8ffaeffff8e85dd8390e3949c8899daa7
->>>>>>> VaV_VFXAttempt4
-      flags: 0
-    RecentlyUsedScenePath-9:
-      value: 22424703114646680e0b0227036c6c1313191d072d3c2e39283c5326ece92021
->>>>>>> MVC_ImplementTracks
-      flags: 0
-<<<<<<< HEAD
-    RecentlyUsedScenePath-9:
-      value: 22424703114646680e0b0227036c6c1313191d072d3c2e39283c5326ece92021
-=======
-    UnityEditor.ShaderGraph.InspectorWindow:
-      value: 18135939215a0a5004000b0e15254b524c1119263f2d6a722016393ce1eb3d36e5d339f9a5602b2e2c07a37e0901373ae01e0008f707250d171df81a53a541425f95548717f73713d91006c1c309d0effad0d2f9ddffa5828e91f0beb6fdd1cbfceba0b9f0b3bed8e8f5ade1ff8c978883d3f59e9e919c89eacfcc
->>>>>>> VaV_VFXAttempt4
-      flags: 0
-=======
->>>>>>> CarPhysiqueOnModules
     vcSharedLogLevel:
       value: 0d5e400f0650
       flags: 0
