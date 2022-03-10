@@ -84,7 +84,9 @@ public class CursorController : MonoBehaviour
                         if (!cards.Contains(cardHit)) cards.Add(cardHit);
                         if (clicking)
                         {
+                            clicking = false;
                             cardHit.GetComponent<CardBehaviour>().assignPiece();
+                            
                         }
                     }                    
                 }                
@@ -106,6 +108,7 @@ public class CursorController : MonoBehaviour
                 cardHit.GetComponent<Animator>().SetBool("upScale", false);
                 cardHit = null;
                 cards.Clear();
+                
             }
         }
     }
