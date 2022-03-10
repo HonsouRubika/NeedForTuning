@@ -9,16 +9,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8629115605035993652}
-  - component: {fileID: 2484660007687885031}
-  - component: {fileID: 8516897327813733363}
-  - component: {fileID: 4757020060118075399}
+  - component: {fileID: 1108953087270023437}
   - component: {fileID: 8268997289470524645}
   - component: {fileID: 8629115605035993649}
   - component: {fileID: 8629115605035993655}
   - component: {fileID: 8629115605035993654}
-  - component: {fileID: 1547584708871773630}
   m_Layer: 0
-  m_Name: Car
+  m_Name: GhostCar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39,7 +36,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2484660007687885031
+--- !u!114 &1108953087270023437
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -48,159 +45,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8629115605035993648}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da13c5c4879225d4a8e856e61f9ee232, type: 3}
+  m_Script: {fileID: 11500000, guid: 02eff57b692aa564aa03badec9dc2383, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changingLaneSpeed: 100
-  changingLaneSpeedLossConcrete: 33
-  changingLaneSpeedLossIce: 33
-  changingLaneSpeedLossSand: 33
-  changingLaneSpeedLossBumps: 33
-  obstacleSpeedLoss: 33
-  surfaceSpeedLoss: 33
-  engineAccelerationConcrete: 150
-  engineAccelerationIce: 100
-  engineAccelerationSand: 60
-  engineAccelerationBumps: 40
-  engineMaxSpeed: 10
-  engineMinimumSpeed: 1
-  minSpdIce: 6
-  minSpdSand: 3
-  minSpdBumps: 2
-  minSpdObstacle: 1
-  minSpdLanding: 5
-  explosion: {fileID: 7531543392527008925, guid: c4d49c799788db84bb920c35d59d790d, type: 3}
-  bc: {fileID: 8629115605035993649}
-  lineWidth: 5
-  currentState: 0
-  durationCamShake: 0.02
-  magnitudeCamShake: 0.01
-  modulesLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  jumpPadDistance: 2
---- !u!114 &8516897327813733363
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8629115605035993648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 517358704892b904d87f271572c9227d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 0}
-  cameraSpeed: 75
-  cameraMaxSpeed: 100
-  originPos: {x: 0, y: 0, z: 0}
---- !u!114 &4757020060118075399
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8629115605035993648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 0e32b4a3f72561b43b1f5dbd7fe5d435, type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2484660007687885031}
-        m_TargetAssemblyTypeName: CarController, Assembly-CSharp
-        m_MethodName: OnMove
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: b340086d-6863-45c9-9bec-a4c6ef2ed2f3
-    m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 675ac020-b11a-4cb1-ab11-4836d8958951
-    m_ActionName: Player/Fire[/Mouse/leftButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 373f9e4e-7a8c-4d3c-9ff3-39e20a1e5d8e
-    m_ActionName: UI/Navigate[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: b770ecd3-ba8a-405c-a81a-7013e64b3a41
-    m_ActionName: UI/Submit[/Keyboard/enter]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: e303679b-44c3-4ac0-ad01-ec22f35fecc5
-    m_ActionName: UI/Cancel[/Keyboard/escape]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 084db1d0-911f-4d04-b5de-65c580927614
-    m_ActionName: UI/Point[/Mouse/position]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 68a021cd-e69f-4ead-adc0-ccdf1b61a962
-    m_ActionName: UI/Click[/Mouse/leftButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 2fa96769-9646-46d9-b35a-835450096ecf
-    m_ActionName: UI/ScrollWheel[/Mouse/scroll]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 04f6df7b-60e0-4c13-adf1-be71c72506c0
-    m_ActionName: UI/MiddleClick[/Mouse/middleButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 1761275f-9471-4de8-afdc-2a4cfb41ee17
-    m_ActionName: UI/RightClick[/Mouse/rightButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 6ac2ac90-adfb-47d7-9c68-db99a6bb8248
-    m_ActionName: UI/TrackedDevicePosition
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 7da14ccf-b51b-4972-b278-8ae4b65fa83e
-    m_ActionName: UI/TrackedDeviceOrientation
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2484660007687885031}
-        m_TargetAssemblyTypeName: CarController, Assembly-CSharp
-        m_MethodName: OnSpace
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: e4b3bfcb-c7ef-44cc-a0b2-636a183afd4b
-    m_ActionName: Player/NextLevelPhase[/Keyboard/space]
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Keyboard&Mouse
-  m_DefaultActionMap: Player
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
+  ghostSpeed: 15
 --- !u!54 &8268997289470524645
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -279,18 +127,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1547584708871773630
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8629115605035993648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6133048352949344922a126eac07b81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1772458456599906562
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -345,7 +181,7 @@ PrefabInstance:
     - target: {fileID: -6850574003394767666, guid: 60fa60113ffdf1d478b599306e28a3ea, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: f88cc30140deb784b8bb04ff95d33595, type: 2}
+      objectReference: {fileID: 2100000, guid: beaca965019ebc942978e00fd9624f3e, type: 2}
     - target: {fileID: 919132149155446097, guid: 60fa60113ffdf1d478b599306e28a3ea, type: 3}
       propertyPath: m_Name
       value: SM_Chassis_Common_ClassicMuscle
@@ -426,7 +262,7 @@ PrefabInstance:
     - target: {fileID: -2801051729515018087, guid: 22dd96be225da214b83a490f741b0747, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 6859324791159361686, guid: 3c1d8b8e35fc2414c93257c2fa7e2898, type: 3}
+      objectReference: {fileID: 2100000, guid: beaca965019ebc942978e00fd9624f3e, type: 2}
     - target: {fileID: 919132149155446097, guid: 22dd96be225da214b83a490f741b0747, type: 3}
       propertyPath: m_Name
       value: SM_Wheel_Common_Hamster
@@ -434,19 +270,27 @@ PrefabInstance:
     - target: {fileID: 5934453519535166841, guid: 22dd96be225da214b83a490f741b0747, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 6859324791159361686, guid: 3c1d8b8e35fc2414c93257c2fa7e2898, type: 3}
+      objectReference: {fileID: 2100000, guid: beaca965019ebc942978e00fd9624f3e, type: 2}
     - target: {fileID: 6999343909602360236, guid: 22dd96be225da214b83a490f741b0747, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 6859324791159361686, guid: 3c1d8b8e35fc2414c93257c2fa7e2898, type: 3}
+      objectReference: {fileID: 2100000, guid: beaca965019ebc942978e00fd9624f3e, type: 2}
+    - target: {fileID: 6999343909602360236, guid: 22dd96be225da214b83a490f741b0747, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: beaca965019ebc942978e00fd9624f3e, type: 2}
     - target: {fileID: 7095913761947796997, guid: 22dd96be225da214b83a490f741b0747, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 6859324791159361686, guid: 3c1d8b8e35fc2414c93257c2fa7e2898, type: 3}
+      objectReference: {fileID: 2100000, guid: beaca965019ebc942978e00fd9624f3e, type: 2}
     - target: {fileID: 8965521622105769919, guid: 22dd96be225da214b83a490f741b0747, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 6859324791159361686, guid: 3c1d8b8e35fc2414c93257c2fa7e2898, type: 3}
+      objectReference: {fileID: 2100000, guid: beaca965019ebc942978e00fd9624f3e, type: 2}
+    - target: {fileID: 8965521622105769919, guid: 22dd96be225da214b83a490f741b0747, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: beaca965019ebc942978e00fd9624f3e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22dd96be225da214b83a490f741b0747, type: 3}
 --- !u!1001 &2865532918552053610
@@ -503,7 +347,7 @@ PrefabInstance:
     - target: {fileID: -2801051729515018087, guid: 22dd96be225da214b83a490f741b0747, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 6859324791159361686, guid: 3c1d8b8e35fc2414c93257c2fa7e2898, type: 3}
+      objectReference: {fileID: 2100000, guid: beaca965019ebc942978e00fd9624f3e, type: 2}
     - target: {fileID: 919132149155446097, guid: 22dd96be225da214b83a490f741b0747, type: 3}
       propertyPath: m_Name
       value: SM_Wheel_Common_Hamster
@@ -511,19 +355,27 @@ PrefabInstance:
     - target: {fileID: 5934453519535166841, guid: 22dd96be225da214b83a490f741b0747, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 6859324791159361686, guid: 3c1d8b8e35fc2414c93257c2fa7e2898, type: 3}
+      objectReference: {fileID: 2100000, guid: beaca965019ebc942978e00fd9624f3e, type: 2}
     - target: {fileID: 6999343909602360236, guid: 22dd96be225da214b83a490f741b0747, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 6859324791159361686, guid: 3c1d8b8e35fc2414c93257c2fa7e2898, type: 3}
+      objectReference: {fileID: 2100000, guid: beaca965019ebc942978e00fd9624f3e, type: 2}
+    - target: {fileID: 6999343909602360236, guid: 22dd96be225da214b83a490f741b0747, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: beaca965019ebc942978e00fd9624f3e, type: 2}
     - target: {fileID: 7095913761947796997, guid: 22dd96be225da214b83a490f741b0747, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 6859324791159361686, guid: 3c1d8b8e35fc2414c93257c2fa7e2898, type: 3}
+      objectReference: {fileID: 2100000, guid: beaca965019ebc942978e00fd9624f3e, type: 2}
     - target: {fileID: 8965521622105769919, guid: 22dd96be225da214b83a490f741b0747, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 6859324791159361686, guid: 3c1d8b8e35fc2414c93257c2fa7e2898, type: 3}
+      objectReference: {fileID: 2100000, guid: beaca965019ebc942978e00fd9624f3e, type: 2}
+    - target: {fileID: 8965521622105769919, guid: 22dd96be225da214b83a490f741b0747, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: beaca965019ebc942978e00fd9624f3e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22dd96be225da214b83a490f741b0747, type: 3}
 --- !u!1001 &7266075626745603295
@@ -580,7 +432,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 92fe11305a572c9448bde02d7e69981a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: f88cc30140deb784b8bb04ff95d33595, type: 2}
+      objectReference: {fileID: 2100000, guid: beaca965019ebc942978e00fd9624f3e, type: 2}
     - target: {fileID: 919132149155446097, guid: 92fe11305a572c9448bde02d7e69981a, type: 3}
       propertyPath: m_Name
       value: SM_Motor_Common_ClassicMuscle

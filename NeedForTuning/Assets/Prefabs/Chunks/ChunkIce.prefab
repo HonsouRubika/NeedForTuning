@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2041142450598573159}
   - component: {fileID: 4871615745389497838}
   - component: {fileID: 2501437314560982273}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_roadBlock_1x1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 5901674732227060460}
   - component: {fileID: 5766956273760319895}
   - component: {fileID: 4664611472413682655}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ChunkIce
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -207,3 +207,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2842ebd46d652bb41bda8349ca4ef533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGround: 0
