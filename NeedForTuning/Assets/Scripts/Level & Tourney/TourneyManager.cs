@@ -63,6 +63,7 @@ public class TourneyManager : MonoBehaviour
         {
             //tourney finished
             testIsFinished = true;
+            levelActu = 0;
             SceneManager.LoadScene("TourneySelection");
         }
     }

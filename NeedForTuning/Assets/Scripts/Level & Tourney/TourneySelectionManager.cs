@@ -42,6 +42,8 @@ public class TourneySelectionManager : MonoBehaviour
             tourneys[1] = saison1;
             tourneys[2] = saison2;
             tourneys[3] = saison3;
+
+            GameManager.Instance.tourneys = tourneys;
         }
         else
         {
@@ -51,12 +53,17 @@ public class TourneySelectionManager : MonoBehaviour
 
     public void PickTourney()
     {
+        Debug.Log("ici");
+        if (tourneys == null)
+        {
+            tourneys = GameManager.Instance.tourneys;
+        }
        
         TourneyManager.Instance.levels = new LevelProfile[tourneys[GameManager.Instance.nbOfTurney].GetNbOfLevel()];
+
         Debug.Log("hihih");
         for (uint i = 0; i< tourneys[GameManager.Instance.nbOfTurney].GetNbOfLevel(); i++)
         {
-            Debug.Log("hahah");
             TourneyManager.Instance.levels[i] = tourneys[GameManager.Instance.nbOfTurney].GetLevel(i);
         }
 

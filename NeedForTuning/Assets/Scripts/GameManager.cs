@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     public Timer timerScript;
     public uint nbOfTurney = 0;
 
+    public Tourney[] tourneys;
+
     void Awake()
     {
         #region Make Singleton

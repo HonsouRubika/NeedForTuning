@@ -531,12 +531,12 @@ public class CarController : MonoBehaviour
     public void EndJump()
     {
         //gameObject.transform.position = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - abilityController.jumpHeight);
-        Debug.Log("gravity is back");
+        //Debug.Log("gravity is back");
         rb.useGravity = true;
         rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
         isInvicible = false;
         //bc.enabled = true;
-        CarLanding();
+        //CarLanding();
     }
 
     public void CheckIfEndLaunchPadTimer()
