@@ -56,6 +56,7 @@ public class CarController : MonoBehaviour
     //launching pad
     public float jumpPadTimer = 2;
     public float jumpPadTimerActu = 0;
+    private bool isInvicible = false;
 
     //component
     private Rigidbody rb;
@@ -148,7 +149,10 @@ public class CarController : MonoBehaviour
 
     private void Update()
     {
-        DetectModule();
+        if (!isInvicible)
+        {
+            DetectModule();
+        }
 
         //angle the car back to normal
         AngleCar();
@@ -513,11 +517,13 @@ public class CarController : MonoBehaviour
         {
             //ChunkManager.Instance.modulesToCrossLaunchPad = ChunkManager.Instance.totalNbOfLineActu + jumpPadDistance;
             jumpPadTimerActu = jumpPadTimer + Time.time;
+            isInvicible = true;
         }
         else
         {
             //ChunkManager.Instance.modulesToCrossLaunchPad = ChunkManager.Instance.totalNbOfLineActu + (int)(jumpPadDistance * abilityController.turboMultiplier);
             jumpPadTimerActu = (jumpPadTimer * abilityController.turboMultiplier) + Time.time;
+            isInvicible = true;
         }
 
     }
@@ -528,6 +534,7 @@ public class CarController : MonoBehaviour
         Debug.Log("gravity is back");
         rb.useGravity = true;
         rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
+        isInvicible = false;
         //bc.enabled = true;
         CarLanding();
     }
