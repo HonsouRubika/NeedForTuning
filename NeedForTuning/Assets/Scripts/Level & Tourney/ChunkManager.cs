@@ -33,6 +33,8 @@ public class ChunkManager : MonoBehaviour
     public int modulesToCrossTire;
     public int modulesToCrossChassis;
     public int modulesToCrossLaunchPad;
+    public float jumpPadTimer = 2;
+    public float jumpPadTimerActu;
 
     public int nbLineInLD = 5;
 
@@ -235,10 +237,14 @@ public class ChunkManager : MonoBehaviour
             abilityCar.StopAbility(abilityCar.currentAbilityChassis);
 
         }
-        if (totalNbOfLineActu == modulesToCrossLaunchPad)
+        // || (totalNbOfLineActu == totalNbOfLine && car.currentState == CarController.LevelState.play)
+        /*
+        if (totalNbOfLineActu == modulesToCrossLaunchPad || (totalNbOfLineActu == totalNbOfLine && car.currentState == CarController.LevelState.play))
         {
             car.EndJump();
         }
+        */
+
         //reset var
         alreadyObstacleInLine = false;
 
