@@ -23,7 +23,7 @@ Shader "Unlit/CardsBackgroundParticles"
 
 
        Stencil{
-            Ref 1
+            Ref 6
             Comp equal
         }
 

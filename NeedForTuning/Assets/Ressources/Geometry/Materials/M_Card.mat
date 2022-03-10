@@ -64,5 +64,5 @@ Material:
     - Vector2_4dcc94266ac54a4b8fa29d65366d5c19: {r: -1.055, g: 0, b: 0, a: 0}
     - Vector2_5da62e1e35b2485e8ea3664654821e26: {r: 0, g: 0, b: 0, a: 0}
     - Vector2_8b80cf0a1a494137af46513794153609: {r: 1, g: 1, b: 0, a: 0}
-    - Vector2_de29cda0b0d04b658f40b893189187b4: {r: 1, g: 1, b: 0, a: 0}
+    - Vector2_de29cda0b0d04b658f40b893189187b4: {r: -114.72, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
