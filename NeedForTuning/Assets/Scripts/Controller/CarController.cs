@@ -29,6 +29,7 @@ public class CarController : MonoBehaviour
     private uint carState = (uint)CarState.idle;
     private bool inObtsacle = false;
     private bool collideWithModule = false;
+    private Quaternion angleOrigine;
 
     private uint lanePosition = 1; //value between 0 and 2 : {0,1,2}
 
@@ -86,7 +87,8 @@ public class CarController : MonoBehaviour
         cameraController = GetComponent<CameraController>();
         cameraShake = GetComponent<CameraShake>();
         ApplyPiecesStats();
-        
+
+        angleOrigine = transform.rotation;
     }
 
     void ApplyPiecesStats()
@@ -319,26 +321,24 @@ public class CarController : MonoBehaviour
     {
         //float angle = transform.rotation.eulerAngles.x % 360;
         //Debug.Log((int)angle);
-        int angle = (int)WrapAngle(transform.rotation.eulerAngles.x);
+        //int angle = (int)WrapAngle(transform.rotation.eulerAngles.x);
+        int angle = (int)Quaternion.Angle(transform.rotation, angleOrigine);
+
 
         if (angle < 50 && angle > -50)
         {
-            Debug.Log("safe");
+            //Debug.Log("safe");
+
+            //transform.RotateAround(transform.position, Vector3.right, -angle);
         }
         else
         {
             //needs to be reset
-            Debug.Log("reset needed");
+            //transform.RotateAround(transform.position, Vector3.right, -angle);
+            
+            transform.rotation = angleOrigine;
+            //Debug.Log("reset needed");
         }
-
-        /*if (angle >= 90 || angle <= -90)
-        {
-            Debug.Log("aie" + (int)angle);
-        }
-        else
-        {
-            Debug.Log("yes : " + (int)angle);
-        }*/
     }
 
     private static float WrapAngle(float angle)
