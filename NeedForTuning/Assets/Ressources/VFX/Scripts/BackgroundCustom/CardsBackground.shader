@@ -9,6 +9,7 @@ Shader "Unlit/CardsBackground"
         _NbPattern("NbPattern", float) = 50
         _ThicknessPattern("ThicknessPattern", float) = 0.1
         _OpacityMask("OpacityMask", float) = 0.1
+        _Speed("SpeedMovement", float) = 1
     }
     SubShader
     {
