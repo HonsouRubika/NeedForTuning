@@ -9829,7 +9829,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6038673910147254353}
   m_Layer: 0
-  m_Name: CardWheel4x4Rare 1
+  m_Name: CardWheel4x4Rare
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
