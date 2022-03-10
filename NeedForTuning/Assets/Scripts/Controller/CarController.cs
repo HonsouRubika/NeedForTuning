@@ -25,9 +25,11 @@ public class CarController : MonoBehaviour
 
     //input
     private Vector2 movementInput = Vector2.zero;
+    private Vector2 currentDirection;
     private uint carState = (uint)CarState.idle;
     private bool inObtsacle = false;
     private bool collideWithModule = false;
+    private Quaternion angleOrigine;
 
     private uint lanePosition = 1; //value between 0 and 2 : {0,1,2}
 
@@ -85,7 +87,8 @@ public class CarController : MonoBehaviour
         cameraController = GetComponent<CameraController>();
         cameraShake = GetComponent<CameraShake>();
         ApplyPiecesStats();
-        
+
+        angleOrigine = transform.rotation;
     }
 
     void ApplyPiecesStats()
@@ -111,6 +114,7 @@ public class CarController : MonoBehaviour
         {
             movementInput = context.ReadValue<Vector2>();
             carState = (uint)CarState.changing_lane;
+            SetCarDirection(movementInput);
         }
         else if (currentState == LevelState.preview)
         {
@@ -141,6 +145,9 @@ public class CarController : MonoBehaviour
     private void Update()
     {
         DetectModule();
+
+        //angle the car back to normal
+        AngleCar();
 
         switch (carState)
         {
@@ -303,11 +310,44 @@ public class CarController : MonoBehaviour
         }
         else
         {
-            Debug.Log("no module detected");
+            //Debug.Log("no module detected");
             currentSurface = Surface.Concrete;
             inObtsacle = false;
             collideWithModule = false;
         }
+    }
+
+    public void AngleCar()
+    {
+        //float angle = transform.rotation.eulerAngles.x % 360;
+        //Debug.Log((int)angle);
+        //int angle = (int)WrapAngle(transform.rotation.eulerAngles.x);
+        int angle = (int)Quaternion.Angle(transform.rotation, angleOrigine);
+
+
+        if (angle < 50 && angle > -50)
+        {
+            //Debug.Log("safe");
+
+            //transform.RotateAround(transform.position, Vector3.right, -angle);
+        }
+        else
+        {
+            //needs to be reset
+            //transform.RotateAround(transform.position, Vector3.right, -angle);
+            
+            transform.rotation = angleOrigine;
+            //Debug.Log("reset needed");
+        }
+    }
+
+    private static float WrapAngle(float angle)
+    {
+        angle %= 360;
+        if (angle > 180)
+            return angle - 360;
+
+        return angle;
     }
 
     public void CameraShake()
@@ -371,30 +411,30 @@ public class CarController : MonoBehaviour
         {
             case Surface.Concrete:
                 ChunkManager.Instance.speedActu -= changingLaneSpeedLossConcrete * Time.deltaTime;
-                if (ChunkManager.Instance.speedActu < 0)
+                if (ChunkManager.Instance.speedActu < engineMinimumSpeed)
                 {
-                    ChunkManager.Instance.speedActu = 0;
+                    ChunkManager.Instance.speedActu = engineMinimumSpeed;
                 }
                 break;
             case Surface.Ice:
                 ChunkManager.Instance.speedActu -= changingLaneSpeedLossIce * Time.deltaTime;
-                if (ChunkManager.Instance.speedActu < 0)
+                if (ChunkManager.Instance.speedActu < minSpdIce)
                 {
-                    ChunkManager.Instance.speedActu = 0;
+                    ChunkManager.Instance.speedActu = minSpdIce;
                 }
                 break;
             case Surface.Sand:
                 ChunkManager.Instance.speedActu -= changingLaneSpeedLossSand * Time.deltaTime;
-                if (ChunkManager.Instance.speedActu < 0)
+                if (ChunkManager.Instance.speedActu < minSpdSand)
                 {
-                    ChunkManager.Instance.speedActu = 0;
+                    ChunkManager.Instance.speedActu = minSpdSand;
                 }
                 break;
             case Surface.Bumps:
                 ChunkManager.Instance.speedActu -= changingLaneSpeedLossBumps * Time.deltaTime;
-                if (ChunkManager.Instance.speedActu < 0)
+                if (ChunkManager.Instance.speedActu < minSpdBumps)
                 {
-                    ChunkManager.Instance.speedActu = 0;
+                    ChunkManager.Instance.speedActu = minSpdBumps;
                 }
                 break;
             default:
@@ -458,12 +498,17 @@ public class CarController : MonoBehaviour
         CarLanding();
     }
 
+    public void SetCarDirection(Vector2 movementInput)
+    {
+        currentDirection = movementInput;
+    }
+
     public void ChangeLane()
     {
         switch (lanePosition)
         {
             case 0:
-                if (movementInput.x < 0) //left
+                if (currentDirection.x < 0) //left
                 {
                     //do not move
                     transform.position = new Vector3(-lineWidth, transform.position.y, transform.position.z);
@@ -471,7 +516,7 @@ public class CarController : MonoBehaviour
                     carState = (uint)CarState.idle;
 
                 }
-                else if (movementInput.x > 0) // right
+                else if (currentDirection.x > 0) // right
                 {
                     rb.velocity = new Vector3(rb.velocity.x + (changingLaneSpeed * Time.deltaTime), rb.velocity.y, rb.velocity.z);
                     CarDecelerate();
@@ -488,7 +533,7 @@ public class CarController : MonoBehaviour
                 }
                 break;
             case 1:
-                if (movementInput.x < 0) //left
+                if (currentDirection.x < 0) //left
                 {
                     rb.velocity = new Vector3(rb.velocity.x - (changingLaneSpeed * Time.deltaTime), rb.velocity.y, rb.velocity.z);
                     CarDecelerate();
@@ -503,7 +548,7 @@ public class CarController : MonoBehaviour
                         carState = (uint)CarState.idle;
                     }
                 }
-                else if (movementInput.x > 0) // right
+                else if (currentDirection.x > 0) // right
                 {
                     rb.velocity = new Vector3(rb.velocity.x + (changingLaneSpeed * Time.deltaTime), rb.velocity.y, rb.velocity.z);
                     CarDecelerate();
@@ -520,7 +565,7 @@ public class CarController : MonoBehaviour
                 }
                 break;
             case 2:
-                if (movementInput.x < 0) //left
+                if (currentDirection.x < 0) //left
                 {
                     rb.velocity = new Vector3(rb.velocity.x - (changingLaneSpeed * Time.deltaTime), rb.velocity.y, rb.velocity.z);
                     CarDecelerate();
@@ -535,7 +580,7 @@ public class CarController : MonoBehaviour
                         carState = (uint)CarState.idle;
                     }
                 }
-                else if (movementInput.x > 0) // right
+                else if (currentDirection.x > 0) // right
                 {
                     transform.position = new Vector3(lineWidth, transform.position.y, transform.position.z);
                     rb.velocity = new Vector3(0, rb.velocity.y, rb.velocity.z);
