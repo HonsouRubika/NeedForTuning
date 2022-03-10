@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc58bd786dc5f494cb4e548cf1bc665b, type: 3}
   m_Name: UsedTire
   m_EditorClassIdentifier: 
-  type: 0
+  type: 1
   name: Used Tire
   image: {fileID: 0}
   cardPrefab: {fileID: 6556219383127088620, guid: 9462d5db0d4c4f84aae370b72e50e043, type: 3}

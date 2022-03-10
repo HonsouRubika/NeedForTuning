@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc58bd786dc5f494cb4e548cf1bc665b, type: 3}
   m_Name: OffRoadTire
   m_EditorClassIdentifier: 
-  type: 0
+  type: 1
   name: OffRoadTire
   image: {fileID: 0}
   cardPrefab: {fileID: 6556219383127088620, guid: b548ae36f5dbd64488c43a79876dff99, type: 3}

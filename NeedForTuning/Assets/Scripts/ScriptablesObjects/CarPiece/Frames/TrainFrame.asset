@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc58bd786dc5f494cb4e548cf1bc665b, type: 3}
   m_Name: TrainFrame
   m_EditorClassIdentifier: 
-  type: 0
+  type: 2
   name: TrainFrame
   image: {fileID: 0}
   cardPrefab: {fileID: 0}
+  piecePrefab: {fileID: 0}
   maxSpeedConcrete: 3
   maxSpeedSand: 3
   maxSpeedIce: 3
