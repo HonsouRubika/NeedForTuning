@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_Bosses
+  m_Name: M_TrunkWood_Light
   m_Shader: {fileID: -6465566751694194690, guid: 4570d116a8cf9ab41b8e8abd003daf85, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -40,16 +40,16 @@ Material:
     - _fadeDistance: 50
     - _gradAngle: 0
     - _gradInverse: 0
-    - _offset: 1.95
+    - _offset: 1.41
     - _replaceBC: 0
-    - _spread: 25
+    - _spread: 1.17
     - _texMask: 0
     - _textureOnOFF: 0
     m_Colors:
-    - _color1: {r: 0.5058824, g: 0.4862745, b: 0.59607846, a: 0}
-    - _color2: {r: 0.19607843, g: 0.15294118, b: 0.20784314, a: 0}
+    - _color1: {r: 0.5660378, g: 0.25954756, b: 0.07742971, a: 0}
+    - _color2: {r: 0.6415094, g: 0.40699536, b: 0.1724813, a: 0}
     - _fadeColor: {r: 0.7725491, g: 0.8588236, b: 0.8588236, a: 1}
     - _gradAxis: {r: 0, g: 0, b: 1, a: 0}
     - _textureOffset: {r: 0, g: 0, b: 0, a: 0}
-    - _textureTiling: {r: 1, g: 1, b: 0, a: 0}
+    - _textureTiling: {r: 20, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []

@@ -114,8 +114,9 @@ Material:
     - _gradOffset: 0
     - _gradPower: 0.8
     - _offset: -1.58
-    - _replaceBC: 0.6
+    - _replaceBC: 0.639
     - _spread: -0.6
+    - _texMask: 0
     - _textureOnOFF: 1
     - _tilingX: 0
     - _tilingY: 0
