@@ -1119,6 +1119,7 @@ MonoBehaviour:
   cursorClicked: {fileID: 2800000, guid: cf3195994a2af274fa31a8e4e0263e5c, type: 3}
   canInteractWithCards: 0
   cardHit: {fileID: 0}
+  cards: []
 --- !u!4 &954423704
 Transform:
   m_ObjectHideFlags: 0
