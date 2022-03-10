@@ -170,7 +170,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   car: {fileID: 0}
-  tourneyManagerScript: {fileID: 0}
   timerScript: {fileID: 0}
   nbOfTurney: 0
 --- !u!114 &2943223231595409667
@@ -230,6 +229,8 @@ MonoBehaviour:
   modulesToCrossTire: 0
   modulesToCrossChassis: 0
   modulesToCrossLaunchPad: 0
+  jumpPadTimer: 2
+  jumpPadTimerActu: 0
   nbLineInLD: 8
   speedActu: 6
   isRuning: 0
@@ -247,21 +248,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84886d7e62610e34b9ff9b377ccd9970, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ownedPiecesEngine:
-  - {fileID: 11400000, guid: 2da5136f79c0765489b2967a309a3ad0, type: 2}
-  - {fileID: 11400000, guid: b645f03dd158b8e4da2a81c04ae22993, type: 2}
-  - {fileID: 11400000, guid: a4bd023b36365cf4682670bed133aa76, type: 2}
-  ownedPiecesTire:
-  - {fileID: 11400000, guid: 307d00b9a011524428593ceb42e962df, type: 2}
-  - {fileID: 11400000, guid: f7bebc5ffb5e23644ae9c60f926b65e9, type: 2}
-  - {fileID: 11400000, guid: 77965bb1533eeec43807178f865edb2a, type: 2}
-  ownedPiecesChassis:
-  - {fileID: 11400000, guid: 17c84d32861d3544ab681ed98e33cc91, type: 2}
-  - {fileID: 11400000, guid: e27f8f6895aa02c49a58fe4474ae8c4b, type: 2}
-  - {fileID: 11400000, guid: 3f024ec34f503f043838cd43d331ced0, type: 2}
-  engine: {fileID: 11400000, guid: 2da5136f79c0765489b2967a309a3ad0, type: 2}
-  tire: {fileID: 11400000, guid: 307d00b9a011524428593ceb42e962df, type: 2}
-  chassis: {fileID: 11400000, guid: a88ddc27178156b419d02d26a4bd9eeb, type: 2}
+  ownedPiecesEngine: []
+  ownedPiecesTire: []
+  ownedPiecesChassis: []
+  engine: {fileID: 0}
+  tire: {fileID: 0}
+  chassis: {fileID: 0}
   maxSpeedConcrete: 0.8
   maxSpeedSand: 0.4
   maxSpeedIce: 0.8
@@ -287,9 +279,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2905b676c8fe16e46b3d05e8ed479038, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  engine: {fileID: 11400000, guid: a4bd023b36365cf4682670bed133aa76, type: 2}
-  tire: {fileID: 11400000, guid: f7bebc5ffb5e23644ae9c60f926b65e9, type: 2}
-  chassis: {fileID: 11400000, guid: e27f8f6895aa02c49a58fe4474ae8c4b, type: 2}
+  engine: {fileID: 0}
+  tire: {fileID: 0}
+  chassis: {fileID: 0}
   cardPosEngine: {fileID: 0}
   cardPosTire: {fileID: 0}
   cardPosChassis: {fileID: 0}
