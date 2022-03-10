@@ -15,7 +15,8 @@ MonoBehaviour:
   type: 0
   name: CyberPunkTire
   image: {fileID: 0}
-  cardPrefab: {fileID: 0}
+  cardPrefab: {fileID: 6556219383127088620, guid: 2b233b806f55a9046aeac3fc13d150f3, type: 3}
+  piecePrefab: {fileID: 0}
   maxSpeedConcrete: 4
   maxSpeedSand: 2
   maxSpeedIce: 4

@@ -15,7 +15,8 @@ MonoBehaviour:
   type: 0
   name: SmoothTire
   image: {fileID: 0}
-  cardPrefab: {fileID: 0}
+  cardPrefab: {fileID: 6556219383127088620, guid: 9462d5db0d4c4f84aae370b72e50e043, type: 3}
+  piecePrefab: {fileID: 0}
   maxSpeedConcrete: 5
   maxSpeedSand: 2
   maxSpeedIce: 4

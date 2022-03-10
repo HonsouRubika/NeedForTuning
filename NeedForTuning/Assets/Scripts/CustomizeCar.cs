@@ -10,6 +10,7 @@ public class CustomizeCar : MonoBehaviour
     public Transform cardPosEngine;
     public Transform cardPosTire;
     public Transform cardPosChassis;
+    public float offsetCard;
 
     public void ConfirmSelection()
     {
@@ -26,19 +27,19 @@ public class CustomizeCar : MonoBehaviour
             case 1:
                 for (int i = 0; i < InventoryManager.Instance.ownedPiecesEngine.Count - 1; i++)
                 {
-                    Instantiate(InventoryManager.Instance.ownedPiecesEngine[i], cardPosEngine.position, cardPosEngine.rotation, cardPosEngine);
+                    Instantiate(InventoryManager.Instance.ownedPiecesEngine[i].cardPrefab, cardPosEngine.position + new Vector3(offsetCard*i,0,0), cardPosEngine.rotation, cardPosEngine);
                 }
                 break;
             case 2:
                 for (int i = 0; i < InventoryManager.Instance.ownedPiecesTire.Count - 1; i++)
                 {
-                    Instantiate(InventoryManager.Instance.ownedPiecesTire[i], cardPosTire.position, cardPosTire.rotation, cardPosTire);
+                    Instantiate(InventoryManager.Instance.ownedPiecesTire[i].cardPrefab, cardPosTire.position, cardPosTire.rotation, cardPosTire);
                 }
                 break;
             case 3:
                 for (int i = 0; i < InventoryManager.Instance.ownedPiecesChassis.Count - 1; i++)
                 {
-                    Instantiate(InventoryManager.Instance.ownedPiecesChassis[i], cardPosChassis.position, cardPosChassis.rotation, cardPosChassis);
+                    Instantiate(InventoryManager.Instance.ownedPiecesChassis[i].cardPrefab, cardPosChassis.position, cardPosChassis.rotation, cardPosChassis);
                 }
                 break;
             default:
@@ -53,6 +54,7 @@ public class CustomizeCar : MonoBehaviour
     [ContextMenu("boom")]
     public void UpdateVisual()
     {
+        
         Destroy(GameManager.Instance.car.transform.GetChild(0).gameObject);
         GameObject newChassis = Instantiate(chassis.piecePrefab, GameManager.Instance.car.transform.position, GameManager.Instance.car.transform.rotation, GameManager.Instance.car.transform);
         Instantiate(engine.piecePrefab, newChassis.transform.GetChild(2).transform.position, newChassis.transform.GetChild(2).transform.rotation, newChassis.transform.GetChild(2).transform);

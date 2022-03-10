@@ -15,7 +15,7 @@ MonoBehaviour:
   type: 0
   name: OffRoadTire
   image: {fileID: 0}
-  cardPrefab: {fileID: 0}
+  cardPrefab: {fileID: 6556219383127088620, guid: b548ae36f5dbd64488c43a79876dff99, type: 3}
   piecePrefab: {fileID: 919132149155446097, guid: 3c1d8b8e35fc2414c93257c2fa7e2898, type: 3}
   maxSpeedConcrete: 2
   maxSpeedSand: 3
