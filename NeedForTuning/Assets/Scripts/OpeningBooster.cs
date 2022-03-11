@@ -88,7 +88,7 @@ public class OpeningBooster : MonoBehaviour
         openBooster = true;
         yield return new WaitForSeconds(1f);
         cursorController.canInteractWithCards = true;
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(2f);
         temporaryManager.firstBoosterIsOpen = true;
     }
 }

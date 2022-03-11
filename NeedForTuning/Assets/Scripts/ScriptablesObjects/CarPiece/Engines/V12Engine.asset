@@ -30,4 +30,4 @@ MonoBehaviour:
   gripIce: 2
   gripBump: 2
   resistance: 4
-  ability: {fileID: 11400000, guid: dc489171c866d4146a214d99bd385538, type: 2}
+  ability: {fileID: 11400000, guid: c5a4331144665bd49ba3c20408dfa7c3, type: 2}
