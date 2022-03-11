@@ -56,9 +56,9 @@ public class AbilityController : MonoBehaviour
 
     void UpdateButtons()
     {
-        abilityEngineButton.text = GameManager.Instance.car.GetComponent<AbilityController>().abilityEngine.ability.name;
-        abilityTireButton.text = GameManager.Instance.car.GetComponent<AbilityController>().abilityTire.ability.name;
-        abilityChassisButton.text = GameManager.Instance.car.GetComponent<AbilityController>().abilityChassis.ability.name;
+        abilityEngineButton.text = GetComponent<AbilityController>().abilityEngine.ability.name;
+        abilityTireButton.text = GetComponent<AbilityController>().abilityTire.ability.name;
+        abilityChassisButton.text = GetComponent<AbilityController>().abilityChassis.ability.name;
     }
     private void Update()
     {

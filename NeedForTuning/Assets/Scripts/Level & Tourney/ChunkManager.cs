@@ -158,18 +158,23 @@ public class ChunkManager : MonoBehaviour
 
     public void DeleteAllLine()
     {
-        for (int i = 0; i < chunksInLD.Count(); i++)
+        if (chunksInLD != null)
         {
-            Destroy(chunksInLD[i].gameObject);
-            Destroy(groundsInLD[i].gameObject);
+            for (int i = 0; i < chunksInLD.Count(); i++)
+            {
+                if (chunksInLD[i] != null) Destroy(chunksInLD[i].gameObject);
+            }
+            chunksInLD.Clear();
         }
-        chunksInLD.Clear();
 
-        for (int j = 0; j < groundsInLD.Count(); j++)
+        if (groundsInLD != null)
         {
-            Destroy(groundsInLD[j].gameObject);
+            for (int j = 0; j < groundsInLD.Count(); j++)
+            {
+                if (groundsInLD[j] != null) Destroy(groundsInLD[j].gameObject);
+            }
+            groundsInLD.Clear();
         }
-        groundsInLD.Clear();
 
         totalNbOfLineActu = 0;
         totalNbOfChunkActu = 0;
