@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class Timer : MonoBehaviour
@@ -14,7 +15,14 @@ public class Timer : MonoBehaviour
 
     private void Start()
     {
-        GameManager.Instance.timerScript = this;
+        if (isGhostTimer)
+        {
+            GameManager.Instance.ghostTimerScript = this;
+        }
+        else
+        {
+            GameManager.Instance.timerScript = this;
+        }
     }
     void Update()
     {
@@ -30,12 +38,18 @@ public class Timer : MonoBehaviour
             timerRounded = Mathf.Round(currentTime * 100f) / 100f;
             timeText.text = timerRounded.ToString();
         }
+        else
+        {
+            //do nothing;
+        }
         
     }
     public void resetTimer()
     {
+        Debug.Log("reset timer");
         currentTime = 0;
         timerRounded = 0;
-        timeText.text = timerRounded.ToString();
+        timeText.text = "0";
+        Debug.Log("Time : " + timerRounded + "  ; actual time : " + timerRounded.ToString());
     }
 }

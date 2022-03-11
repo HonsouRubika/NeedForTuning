@@ -9,6 +9,7 @@ public class CardBehaviour : MonoBehaviour
 
     public void assignPiece()
     {
+
         switch (linkedPiece.type)
         {
             case Type.Engine:

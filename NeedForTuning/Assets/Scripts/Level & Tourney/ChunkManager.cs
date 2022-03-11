@@ -137,6 +137,7 @@ public class ChunkManager : MonoBehaviour
         //reset var
         isRuning = false;
         isFinished = false;
+        isGhostFinished = false;
         startTimerActu = 0;
 
         //get car

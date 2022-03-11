@@ -19,11 +19,14 @@ public class Womp : MonoBehaviour
 
     public void Fall()
     {
+        boxCollider.enabled = false;
+        Random.seed = (int)Time.time;
         if (willFall == 1)
         {
+            Debug.Log("whomp falls");
             GetComponent<Rigidbody>().useGravity = true;
+            GetComponent<Rigidbody>().isKinematic = false;
             GetComponent<Rigidbody>().AddForce(0, -fallSpeed, 0);
-            
         }
     }
 

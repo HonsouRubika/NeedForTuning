@@ -41,6 +41,7 @@ public class TourneySelectionManager : MonoBehaviour
     private void Start()
     {
         GameManager.Instance.car = FindObjectOfType<CarController>().gameObject;
+        GameManager.Instance.GetComponent<CustomizeCar>().ConfirmSelection();
         GameManager.Instance.GetComponent<CustomizeCar>().GarageUpdate();
         if (GameManager.Instance.tourneys == null) StartRace();
 
@@ -95,7 +96,6 @@ public class TourneySelectionManager : MonoBehaviour
 
     public void PickTourney()
     {
-        GameManager.Instance.GetComponent<CustomizeCar>().ConfirmSelection();
         Debug.Log("ici");
         if (tourneys == null)
         {
