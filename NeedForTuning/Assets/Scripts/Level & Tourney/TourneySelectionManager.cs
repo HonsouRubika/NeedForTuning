@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 
 public class TourneySelectionManager : MonoBehaviour
@@ -12,6 +13,14 @@ public class TourneySelectionManager : MonoBehaviour
     public LevelProfile[] saison3Tracks;
 
     public Tourney[] tourneys;
+
+    public Transform posEngine;
+    public Transform posTire;
+    public Transform posChasis;
+
+    public GameObject recapSeason1;
+    public GameObject recapSeason2;
+    public GameObject recapSeason3;
 
     void Awake()
     {
@@ -28,8 +37,40 @@ public class TourneySelectionManager : MonoBehaviour
         #endregion
     }
 
+    private void Start()
+    {
+        GameManager.Instance.car = FindObjectOfType<CarController>().gameObject;
+        GameManager.Instance.GetComponent<CustomizeCar>().GarageUpdate();
+        if (GameManager.Instance.tourneys == null) StartRace();
+
+        switch (GameManager.Instance.nbOfTurney)
+        {
+            case 0:
+                recapSeason1.GetComponent<TextMeshProUGUI>().enabled = true;
+                recapSeason2.GetComponent<TextMeshProUGUI>().enabled = false;
+                recapSeason3.GetComponent<TextMeshProUGUI>().enabled = false;
+                break;
+            case 1:
+                recapSeason1.GetComponent<TextMeshProUGUI>().enabled = false;
+                recapSeason2.GetComponent<TextMeshProUGUI>().enabled = true;
+                recapSeason3.GetComponent<TextMeshProUGUI>().enabled = false;
+                break;
+            case 2:
+                recapSeason1.GetComponent<TextMeshProUGUI>().enabled = false;
+                recapSeason2.GetComponent<TextMeshProUGUI>().enabled = false;
+                recapSeason3.GetComponent<TextMeshProUGUI>().enabled = true;
+                break;
+        }
+    }
+
+    public void OnClickAbilityButton(int nb)
+    {
+        GameManager.Instance.customizeCarScript.instantiateCards(nb);
+    }
+
     public void StartRace()
     {
+        //Debug.Log("start race");
         if (!TourneyManager.Instance.testIsFinished)
         {
             tourneys = new Tourney[4];
@@ -62,7 +103,7 @@ public class TourneySelectionManager : MonoBehaviour
        
         TourneyManager.Instance.levels = new LevelProfile[tourneys[GameManager.Instance.nbOfTurney].GetNbOfLevel()];
 
-        Debug.Log("hihih");
+        //Debug.Log("hihih");
         for (uint i = 0; i< tourneys[GameManager.Instance.nbOfTurney].GetNbOfLevel(); i++)
         {
             TourneyManager.Instance.levels[i] = tourneys[GameManager.Instance.nbOfTurney].GetLevel(i);

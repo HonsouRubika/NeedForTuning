@@ -29,12 +29,12 @@ public class CursorController : MonoBehaviour
 
     private void OnEnable()
     {
-        controls.Enable();
+        if (controls != null) controls.Enable();
     }
 
     private void OnDisable()
     {
-        controls.Disable();
+        if(controls != null) controls.Disable();
     }
 
     private void ChangeCursor(Texture2D cursorType)

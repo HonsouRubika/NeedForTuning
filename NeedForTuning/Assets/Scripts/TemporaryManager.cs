@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class TemporaryManager : MonoBehaviour
 {
+    public static TemporaryManager Instance;
+
     [Header("Start Menu")]
     public GameObject title;
     public GameObject buttonStart;
@@ -29,6 +32,21 @@ public class TemporaryManager : MonoBehaviour
     void Start()
     {
         indexText = 0;
+    }
+
+    void Awake()
+    {
+        #region Make Singleton
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+        #endregion
     }
 
     public void StartingGame()
@@ -81,6 +99,9 @@ public class TemporaryManager : MonoBehaviour
             openingBooster.card03.SetActive(false);
             indexText++;
             StartCoroutine(TransitionBlackScreen());
+
+            //opening terminés
+            SceneManager.LoadScene("TourneySelection");
         }
     }
 

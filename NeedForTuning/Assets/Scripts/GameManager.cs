@@ -11,7 +11,14 @@ public class GameManager : MonoBehaviour
     public Timer timerScript;
     public uint nbOfTurney = 0;
 
+    public CustomizeCar customizeCarScript;
+
     public Tourney[] tourneys;
+
+    private void Start()
+    {
+        customizeCarScript = GetComponent<CustomizeCar>();
+    }
 
     void Awake()
     {

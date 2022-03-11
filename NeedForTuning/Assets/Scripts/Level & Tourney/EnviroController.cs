@@ -7,8 +7,11 @@ public class EnviroController : MonoBehaviour
     //component
     private Rigidbody rb;
 
+    private Vector3 originPos;
+
     void Start()
     {
+        originPos = transform.position;
         rb = GetComponent<Rigidbody>();
     }
 
@@ -22,6 +25,11 @@ public class EnviroController : MonoBehaviour
         else
         {
             rb.velocity = Vector3.zero;
+        }
+
+        if (ChunkManager.Instance.car.GetComponent<CarController>().currentState == CarController.LevelState.preview)
+        {
+            transform.position = originPos;
         }
     }
 }
