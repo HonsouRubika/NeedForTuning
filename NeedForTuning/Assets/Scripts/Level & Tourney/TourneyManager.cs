@@ -56,6 +56,7 @@ public class TourneyManager : MonoBehaviour
             Debug.Log("reset next level");
             //TODO : override on equal
             GameManager.Instance.timerScript.resetTimer();
+            GameManager.Instance.ghostTimerScript.resetTimer();
             ChunkManager.Instance.selectedLevel = levels[levelActu++];
             ChunkManager.Instance.Preview();
         }

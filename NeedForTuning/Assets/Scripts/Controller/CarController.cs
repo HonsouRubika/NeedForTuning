@@ -133,6 +133,9 @@ public class CarController : MonoBehaviour
         {
             currentState = LevelState.play;
 
+            //reset timer
+            GameManager.Instance.timerScript.resetTimer();
+
             //reset cam position
             cameraController.ResetCameraPosition();
 
@@ -142,6 +145,7 @@ public class CarController : MonoBehaviour
         }
         else if (currentState == LevelState.play && ChunkManager.Instance.isFinished)
         {
+            GameManager.Instance.timerScript.resetTimer();
             currentState = LevelState.preview;
             TourneyManager.Instance.NextLevel();
         }
@@ -315,11 +319,13 @@ public class CarController : MonoBehaviour
                         //abilityController.StopAbility();
                         CarInObstacle(minSpdObstacle);
                         inObtsacle = true;
+                        chunk.enabled = false;
 
                         break;
                     case "WhompDetection":
                     case "WhompDetection(Clone)":
                         chunk.GetComponentInParent<Womp>().Fall();
+                        Debug.Log("whomp");
 
                         break;
                     default:
