@@ -15,8 +15,8 @@ MonoBehaviour:
   type: 0
   name: OldEngine
   image: {fileID: 0}
-  cardPrefab: {fileID: 6556219383127088620, guid: 742a65c71770ae141bfef870866c529c, type: 3}
-  piecePrefab: {fileID: 919132149155446097, guid: 92fe11305a572c9448bde02d7e69981a, type: 3}
+  cardPrefab: {fileID: 6556219383127088620, guid: eeabd6d3875700640a834203492618b8, type: 3}
+  piecePrefab: {fileID: 919132149155446097, guid: 70acd9284ffaf5b449f19c16d6a4fc10, type: 3}
   maxSpeedConcrete: 4
   maxSpeedSand: 3
   maxSpeedIce: 2

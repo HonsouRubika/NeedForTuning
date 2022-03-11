@@ -16,7 +16,7 @@ MonoBehaviour:
   name: SteamEngine
   image: {fileID: 0}
   cardPrefab: {fileID: 6556219383127088620, guid: 742a65c71770ae141bfef870866c529c, type: 3}
-  piecePrefab: {fileID: 919132149155446097, guid: 92fe11305a572c9448bde02d7e69981a, type: 3}
+  piecePrefab: {fileID: 919132149155446097, guid: 2528876b014f2ff439bc9b3bd03f33e7, type: 3}
   maxSpeedConcrete: 3
   maxSpeedSand: 4
   maxSpeedIce: 1

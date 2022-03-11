@@ -15,8 +15,8 @@ MonoBehaviour:
   type: 2
   name: TrainFrame
   image: {fileID: 0}
-  cardPrefab: {fileID: 0}
-  piecePrefab: {fileID: 0}
+  cardPrefab: {fileID: 6556219383127088620, guid: 7cbee4641a1f47949b97534819ddbdb3, type: 3}
+  piecePrefab: {fileID: 919132149155446097, guid: e44bc13c79d60ab44a1a91b7c1f115e5, type: 3}
   maxSpeedConcrete: 3
   maxSpeedSand: 3
   maxSpeedIce: 3
