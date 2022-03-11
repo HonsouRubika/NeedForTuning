@@ -17,6 +17,8 @@ public class AbilityController : MonoBehaviour
     public Abilities currentAbilityTire;
     public Abilities currentAbilityChassis;
 
+    public GameObject[] Turbos;
+
     [Header("Images")]
     public Image engineButtonImage;
     public Image ChassisButtonImage;
@@ -45,6 +47,7 @@ public class AbilityController : MonoBehaviour
     {
         car = GetComponent<CarController>();
         AttributePieces();
+        
     }
     void AttributePieces()
     {
@@ -288,7 +291,15 @@ public class AbilityController : MonoBehaviour
 
         if (enabled)
         {
+            
+            Turbos = new GameObject[2];
+            Turbos[0] = GameObject.Find("Turbo");
+            Turbos[1] = GameObject.Find("Turbo (1)");
 
+            for (int i = 0; i < Turbos.Length; i++)
+            {
+                Turbos[i].GetComponent<ParticleSystem>().Play();
+            }
             ChunkManager.Instance.modulesToCrossEngine = ChunkManager.Instance.totalNbOfLineActu + ability.moduleDistance;
 
             ChunkManager.Instance.speedActu = car.engineMaxSpeed * turboMultiplier;
@@ -296,6 +307,10 @@ public class AbilityController : MonoBehaviour
         }
         else
         {
+            for (int i = 0; i < Turbos.Length; i++)
+            {
+                Turbos[i].GetComponent<ParticleSystem>().Stop();
+            }
             ChunkManager.Instance.speedActu = car.engineMaxSpeed;
             currentAbilityEngine = Abilities.Default;
         }
