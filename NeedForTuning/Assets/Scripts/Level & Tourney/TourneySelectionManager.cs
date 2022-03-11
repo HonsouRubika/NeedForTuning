@@ -53,6 +53,7 @@ public class TourneySelectionManager : MonoBehaviour
 
     public void PickTourney()
     {
+        GameManager.Instance.GetComponent<CustomizeCar>().ConfirmSelection();
         Debug.Log("ici");
         if (tourneys == null)
         {

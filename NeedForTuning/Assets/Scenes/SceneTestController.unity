@@ -1871,11 +1871,14 @@ MonoBehaviour:
   currentAbilityTire: 0
   currentAbilityChassis: 0
   engineButtonImage: {fileID: 908439781}
-  ChassisButtonImage: {fileID: 0}
-  TireButtonImage: {fileID: 0}
+  ChassisButtonImage: {fileID: 1983199295}
+  TireButtonImage: {fileID: 1540566358}
   turboMultiplier: 2.5
   jumpHeight: 2
   AutoGearBoxRatio: 10
+  abilityEngineButton: {fileID: 739762766}
+  abilityTireButton: {fileID: 2107654508}
+  abilityChassisButton: {fileID: 10259643}
 --- !u!1 &1953657187
 GameObject:
   m_ObjectHideFlags: 0

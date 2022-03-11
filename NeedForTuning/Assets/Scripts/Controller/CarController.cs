@@ -56,10 +56,10 @@ public class CarController : MonoBehaviour
     //launching pad
     public float jumpPadTimer = 2;
     public float jumpPadTimerActu = 0;
-    private bool isInvicible = false;
+    public bool isInvicible = false;
 
     //component
-    private Rigidbody rb;
+    public Rigidbody rb;
     public ParticleSystem explosion;
     public BoxCollider bc;
 

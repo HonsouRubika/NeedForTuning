@@ -18,5 +18,6 @@ MonoBehaviour:
   efficiencySand: 2
   efficiencyIce: 2
   efficiencyBump: 2
-  moduleDistance: 1
+  moduleDistance: 10
   utilisationNumber: 2
+  cooldown: 3

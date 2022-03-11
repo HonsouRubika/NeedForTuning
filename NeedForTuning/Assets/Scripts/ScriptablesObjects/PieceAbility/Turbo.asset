@@ -20,3 +20,4 @@ MonoBehaviour:
   efficiencyBump: 0
   moduleDistance: 6
   utilisationNumber: 2
+  cooldown: 3
