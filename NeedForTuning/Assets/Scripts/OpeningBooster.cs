@@ -78,6 +78,9 @@ public class OpeningBooster : MonoBehaviour
             InventoryManager.Instance.AddPiece(pieceEngine, InventoryManager.Instance.ownedPiecesEngine);
             InventoryManager.Instance.AddPiece(pieceTire, InventoryManager.Instance.ownedPiecesTire);
             InventoryManager.Instance.AddPiece(pieceChassis, InventoryManager.Instance.ownedPiecesChassis);
+            card01.GetComponentInChildren<CardBehaviour>().assignPiece();
+            card02.GetComponentInChildren<CardBehaviour>().assignPiece();
+            card03.GetComponentInChildren<CardBehaviour>().assignPiece();
             StartCoroutine(BoosterDisapear());
         }        
     }
