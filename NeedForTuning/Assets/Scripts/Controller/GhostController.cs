@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class GhostController : MonoBehaviour
 {
@@ -24,6 +25,12 @@ public class GhostController : MonoBehaviour
         else
         {
             rb.velocity = Vector3.zero;
+        }
+
+        //check if finished
+        if (ChunkManager.Instance.chunksInLD.Count() > 0 && ChunkManager.Instance.chunksInLD.Last().transform.position.z + 5 <= transform.position.z)
+        {
+            ChunkManager.Instance.isGhostFinished = true;
         }
     }
 }

@@ -22,6 +22,11 @@ public class CustomizeCar : MonoBehaviour
 
     public void instantiateCards(int index)
     {
+        //init car coord values
+        if (cardPosEngine == null) cardPosEngine = TourneySelectionManager.Instance.posEngine;
+        if (cardPosTire == null) cardPosTire = TourneySelectionManager.Instance.posTire;
+        if (cardPosChassis == null) cardPosChassis = TourneySelectionManager.Instance.posChasis;
+
         switch (index)
         {
             case 1:
@@ -103,6 +108,6 @@ public class CustomizeCar : MonoBehaviour
         Instantiate(engine.piecePrefab, newChassis.transform.GetChild(1).transform.position, newChassis.transform.GetChild(1).transform.rotation, newChassis.transform.GetChild(1).transform);
         Instantiate(tire.piecePrefab, newChassis.transform.GetChild(2).transform.position, newChassis.transform.GetChild(2).transform.rotation, newChassis.transform.GetChild(2).transform);
         Instantiate(tire.piecePrefab, newChassis.transform.GetChild(3).transform.position, newChassis.transform.GetChild(3).transform.rotation, newChassis.transform.GetChild(3).transform);
-        Debug.Log(newChassis.transform.GetChild(3));
+        //Debug.Log(newChassis.transform.GetChild(3));
     }
 }

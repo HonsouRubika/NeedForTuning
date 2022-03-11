@@ -26,7 +26,7 @@ public class DisplayCarSpeed : MonoBehaviour
         //Debug.Log(scene.name);
         if (scene.name == "SceneTestController")
         {
-            Debug.Log("gets car");
+            //Debug.Log("gets car");
             car = FindObjectOfType<CarController>();
             //TourneyManager.Instance.SpawnCar();
         }

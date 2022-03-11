@@ -356,9 +356,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1195060487}
-        m_TargetAssemblyTypeName: CustomizeCar, Assembly-CSharp
-        m_MethodName: instantiateCards
+      - m_Target: {fileID: 1508181829}
+        m_TargetAssemblyTypeName: TourneySelectionManager, Assembly-CSharp
+        m_MethodName: OnClickAbilityButton
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1431,9 +1431,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1195060487}
-        m_TargetAssemblyTypeName: CustomizeCar, Assembly-CSharp
-        m_MethodName: instantiateCards
+      - m_Target: {fileID: 1508181829}
+        m_TargetAssemblyTypeName: TourneySelectionManager, Assembly-CSharp
+        m_MethodName: OnClickAbilityButton
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1947,9 +1947,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1195060487}
-        m_TargetAssemblyTypeName: CustomizeCar, Assembly-CSharp
-        m_MethodName: instantiateCards
+      - m_Target: {fileID: 1508181829}
+        m_TargetAssemblyTypeName: TourneySelectionManager, Assembly-CSharp
+        m_MethodName: OnClickAbilityButton
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2039,17 +2039,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 23.999939}
   m_SizeDelta: {x: 194.59998, y: 81.099976}
   m_Pivot: {x: 0.5, y: 0}
---- !u!114 &1195060487 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1195060487, guid: 6bedef4ae69662346b37399ffedc4dc3, type: 3}
-  m_PrefabInstance: {fileID: 1260385538}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2905b676c8fe16e46b3d05e8ed479038, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1260385538
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2633,53 +2622,33 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1377306925837487056, guid: d3cd9f70d9726e04fa2e532bd65b7435, type: 3}
-      propertyPath: saison1Tracks.Array.size
-      value: 2
-      objectReference: {fileID: 0}
+      propertyPath: posTire
+      value: 
+      objectReference: {fileID: 1459398873}
     - target: {fileID: 1377306925837487056, guid: d3cd9f70d9726e04fa2e532bd65b7435, type: 3}
-      propertyPath: saison2Tracks.Array.size
-      value: 2
-      objectReference: {fileID: 0}
+      propertyPath: posChasis
+      value: 
+      objectReference: {fileID: 752428379}
     - target: {fileID: 1377306925837487056, guid: d3cd9f70d9726e04fa2e532bd65b7435, type: 3}
-      propertyPath: saison3Tracks.Array.size
-      value: 3
-      objectReference: {fileID: 0}
+      propertyPath: posEngine
+      value: 
+      objectReference: {fileID: 547646124}
+    - target: {fileID: 1377306925837487056, guid: d3cd9f70d9726e04fa2e532bd65b7435, type: 3}
+      propertyPath: recapSeason1
+      value: 
+      objectReference: {fileID: 790442992}
+    - target: {fileID: 1377306925837487056, guid: d3cd9f70d9726e04fa2e532bd65b7435, type: 3}
+      propertyPath: recapSeason2
+      value: 
+      objectReference: {fileID: 500870833}
+    - target: {fileID: 1377306925837487056, guid: d3cd9f70d9726e04fa2e532bd65b7435, type: 3}
+      propertyPath: recapSeason3
+      value: 
+      objectReference: {fileID: 1818573160}
     - target: {fileID: 1377306925837487056, guid: d3cd9f70d9726e04fa2e532bd65b7435, type: 3}
       propertyPath: existantLevels.Array.size
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 1377306925837487056, guid: d3cd9f70d9726e04fa2e532bd65b7435, type: 3}
-      propertyPath: tutorialTracks.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1377306925837487056, guid: d3cd9f70d9726e04fa2e532bd65b7435, type: 3}
-      propertyPath: saison1Tracks.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: c40dde36cebba7b48ac3e866860e23ef, type: 2}
-    - target: {fileID: 1377306925837487056, guid: d3cd9f70d9726e04fa2e532bd65b7435, type: 3}
-      propertyPath: saison1Tracks.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: f67c79b8f92fe4f4aa1ce15ae82411b5, type: 2}
-    - target: {fileID: 1377306925837487056, guid: d3cd9f70d9726e04fa2e532bd65b7435, type: 3}
-      propertyPath: saison2Tracks.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: 32bfbcd1718a0be4cbf8c64dc784e08e, type: 2}
-    - target: {fileID: 1377306925837487056, guid: d3cd9f70d9726e04fa2e532bd65b7435, type: 3}
-      propertyPath: saison2Tracks.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: 3cff1133c34593b469badb9f870e6b75, type: 2}
-    - target: {fileID: 1377306925837487056, guid: d3cd9f70d9726e04fa2e532bd65b7435, type: 3}
-      propertyPath: saison3Tracks.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: 8ca39dc478ed08146a2bb38bea0102d0, type: 2}
-    - target: {fileID: 1377306925837487056, guid: d3cd9f70d9726e04fa2e532bd65b7435, type: 3}
-      propertyPath: saison3Tracks.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: 11e862cf00340b84fbca1ea4be4966b7, type: 2}
-    - target: {fileID: 1377306925837487056, guid: d3cd9f70d9726e04fa2e532bd65b7435, type: 3}
-      propertyPath: saison3Tracks.Array.data[2]
-      value: 
-      objectReference: {fileID: 11400000, guid: 564a18fef48861649879fa36fc760ecc, type: 2}
     - target: {fileID: 1377306925837487056, guid: d3cd9f70d9726e04fa2e532bd65b7435, type: 3}
       propertyPath: existantLevels.Array.data[0]
       value: 
@@ -2718,10 +2687,6 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 1fe895eb019f1244a8f6466bce114365, type: 2}
     - target: {fileID: 1377306925837487056, guid: d3cd9f70d9726e04fa2e532bd65b7435, type: 3}
       propertyPath: existantLevels.Array.data[9]
-      value: 
-      objectReference: {fileID: 11400000, guid: 1fe895eb019f1244a8f6466bce114365, type: 2}
-    - target: {fileID: 1377306925837487056, guid: d3cd9f70d9726e04fa2e532bd65b7435, type: 3}
-      propertyPath: tutorialTracks.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: 1fe895eb019f1244a8f6466bce114365, type: 2}
     - target: {fileID: 1377306925837487056, guid: d3cd9f70d9726e04fa2e532bd65b7435, type: 3}

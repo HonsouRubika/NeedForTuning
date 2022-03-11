@@ -1119,6 +1119,7 @@ MonoBehaviour:
   cursorClicked: {fileID: 2800000, guid: cf3195994a2af274fa31a8e4e0263e5c, type: 3}
   canInteractWithCards: 0
   cardHit: {fileID: 0}
+  cards: []
 --- !u!4 &954423704
 Transform:
   m_ObjectHideFlags: 0
@@ -1611,9 +1612,9 @@ MonoBehaviour:
   card01: {fileID: 0}
   card02: {fileID: 0}
   card03: {fileID: 0}
-  pieceEngine: {fileID: 11400000, guid: b645f03dd158b8e4da2a81c04ae22993, type: 2}
-  pieceTire: {fileID: 11400000, guid: 307d00b9a011524428593ceb42e962df, type: 2}
-  pieceChassis: {fileID: 11400000, guid: a88ddc27178156b419d02d26a4bd9eeb, type: 2}
+  pieceEngine: {fileID: 11400000, guid: 2da5136f79c0765489b2967a309a3ad0, type: 2}
+  pieceTire: {fileID: 11400000, guid: 77965bb1533eeec43807178f865edb2a, type: 2}
+  pieceChassis: {fileID: 11400000, guid: 17c84d32861d3544ab681ed98e33cc91, type: 2}
   initialCardPos: {fileID: 1699840793}
   targetCard01: {fileID: 1060920100}
   targetCard03: {fileID: 1961685972}
@@ -1648,7 +1649,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1647196566}
   - component: {fileID: 1647196565}
-  - component: {fileID: 1647196567}
   m_Layer: 0
   m_Name: 'GAME MANAGER TEMPORAIRE '
   m_TagString: Untagged
@@ -1702,37 +1702,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1647196567
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1647196564}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84886d7e62610e34b9ff9b377ccd9970, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ownedPiecesEngine: []
-  ownedPiecesTire: []
-  ownedPiecesChassis: []
-  engine: {fileID: 0}
-  tire: {fileID: 0}
-  chassis: {fileID: 0}
-  maxSpeedConcrete: 0
-  maxSpeedSand: 0
-  maxSpeedIce: 0
-  maxSpeedBump: 0
-  accelerationConcrete: 0
-  accelerationSand: 0
-  accelerationIce: 0
-  accelerationBump: 0
-  gripConcrete: 0
-  gripSand: 0
-  gripIce: 0
-  gripBump: 0
-  resistance: 0
 --- !u!1 &1681983955
 GameObject:
   m_ObjectHideFlags: 0

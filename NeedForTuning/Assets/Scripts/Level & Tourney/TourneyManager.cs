@@ -19,7 +19,7 @@ public class TourneyManager : MonoBehaviour
     void Start()
     {
         DontDestroyOnLoad(this);
-        TourneySelectionManager.Instance.StartRace();
+        //TourneySelectionManager.Instance.StartRace();
     }
 
     void Awake()
@@ -64,7 +64,25 @@ public class TourneyManager : MonoBehaviour
             //tourney finished
             testIsFinished = true;
             levelActu = 0;
-            SceneManager.LoadScene("TourneySelection");
+            //SceneManager.LoadScene("TourneySelection");
+            switch (GameManager.Instance.nbOfTurney)
+            {
+                case 1:
+                    SceneManager.LoadScene("OpeningBooster 1");
+                    break;
+                case 2:
+                    SceneManager.LoadScene("OpeningBooster 2");
+                    break;
+                case 3:
+                    SceneManager.LoadScene("OpeningBooster 3");
+                    break;
+                case 4:
+                    SceneManager.LoadScene("OpeningBooster 4");
+                    break;
+                default:
+                    SceneManager.LoadScene("TourneySelection");
+                    break;
+            }
         }
     }
 
@@ -73,7 +91,7 @@ public class TourneyManager : MonoBehaviour
         //GameManager.Instance.car = FindObjectOfType<CarController>().gameObject;
         //GameManager.Instance.GetComponent<CustomizeCar>().UpdateVisual();
         GameManager.Instance.car = car;
-        //GameManager.Instance.GetComponent<CustomizeCar>().UpdateVisual();
+        GameManager.Instance.GetComponent<CustomizeCar>().UpdateVisual();
     }
 
 }

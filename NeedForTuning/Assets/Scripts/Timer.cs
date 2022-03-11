@@ -10,13 +10,21 @@ public class Timer : MonoBehaviour
     public float timerRounded;
     public TextMeshProUGUI timeText;
 
+    public bool isGhostTimer = false;
+
     private void Start()
     {
         GameManager.Instance.timerScript = this;
     }
     void Update()
     {
-        if (ChunkManager.Instance.isRuning)
+        if (!isGhostTimer && ChunkManager.Instance.isRuning)
+        {
+            currentTime += Time.deltaTime;
+            timerRounded = Mathf.Round(currentTime * 100f) / 100f;
+            timeText.text = timerRounded.ToString();
+        }
+        else if(isGhostTimer && ChunkManager.Instance.isRuning && !ChunkManager.Instance.isGhostFinished)
         {
             currentTime += Time.deltaTime;
             timerRounded = Mathf.Round(currentTime * 100f) / 100f;

@@ -44,6 +44,7 @@ public class ChunkManager : MonoBehaviour
     //start run
     public bool isRuning = false;
     public bool isFinished = false;
+    public bool isGhostFinished;
     public float startTimer = 1f;
     private float startTimerActu = 0;
 
@@ -86,6 +87,7 @@ public class ChunkManager : MonoBehaviour
         {
             /// TODO:  start timer
             isRuning = true;
+            isGhostFinished = false;
         }
 
         //if (isRuning)
@@ -123,6 +125,7 @@ public class ChunkManager : MonoBehaviour
             /// TODO:  stop timer
             isFinished = true;
             isRuning = false;
+            isGhostFinished = true;
             ChunkManager.Instance.speedActu = 0;
         }
     }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CardBehaviour : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class CardBehaviour : MonoBehaviour
             default:
                 break;
         }
-        GameManager.Instance.GetComponent<CustomizeCar>().GarageUpdate();
+        if (GameManager.Instance.car != null) GameManager.Instance.GetComponent<CustomizeCar>().GarageUpdate();
+        else if (TemporaryManager.Instance != null && GameManager.Instance.nbOfTurney > 0) SceneManager.LoadScene("TourneySelection");
     }
 }
