@@ -13,13 +13,13 @@ public class UIRace : MonoBehaviour
 
     private void Start()
     {
-        carController = GameManager.Instance.car.GetComponent<CarController>();
+        if (GameManager.Instance.car != null) carController = GameManager.Instance.car.GetComponent<CarController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (carController == null)
+        if (carController == null && GameManager.Instance.car != null)
         {
             carController = GameManager.Instance.car.GetComponent<CarController>();
         }
