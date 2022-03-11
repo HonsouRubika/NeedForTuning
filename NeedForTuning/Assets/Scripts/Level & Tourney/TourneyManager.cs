@@ -87,11 +87,10 @@ public class TourneyManager : MonoBehaviour
         }
     }
 
-    public void SpawnCar(GameObject car)
+    public void SpawnCar()
     {
         //GameManager.Instance.car = FindObjectOfType<CarController>().gameObject;
         //GameManager.Instance.GetComponent<CustomizeCar>().UpdateVisual();
-        GameManager.Instance.car = car;
         GameManager.Instance.GetComponent<CustomizeCar>().UpdateVisual();
     }
 

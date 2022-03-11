@@ -100,7 +100,6 @@ public class CustomizeCar : MonoBehaviour
         Instantiate(engine.piecePrefab, newChassis.transform.GetChild(1).transform.position, newChassis.transform.GetChild(1).transform.rotation, newChassis.transform.GetChild(1).transform);
         Instantiate(tire.piecePrefab, newChassis.transform.GetChild(2).transform.position, newChassis.transform.GetChild(2).transform.rotation, newChassis.transform.GetChild(2).transform);
         Instantiate(tire.piecePrefab, newChassis.transform.GetChild(3).transform.position, newChassis.transform.GetChild(3).transform.rotation, newChassis.transform.GetChild(3).transform);
-        GameManager.Instance.car = FindObjectOfType<CarController>().gameObject;
     }
     public void GarageUpdate()
     {
@@ -110,6 +109,5 @@ public class CustomizeCar : MonoBehaviour
         Instantiate(tire.piecePrefab, newChassis.transform.GetChild(2).transform.position, newChassis.transform.GetChild(2).transform.rotation, newChassis.transform.GetChild(2).transform);
         Instantiate(tire.piecePrefab, newChassis.transform.GetChild(3).transform.position, newChassis.transform.GetChild(3).transform.rotation, newChassis.transform.GetChild(3).transform);
         //Debug.Log(newChassis.transform.GetChild(3));
-        GameManager.Instance.car = FindObjectOfType<CarController>().gameObject;
     }
 }
