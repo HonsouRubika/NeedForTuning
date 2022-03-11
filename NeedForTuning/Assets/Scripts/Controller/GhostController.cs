@@ -28,7 +28,7 @@ public class GhostController : MonoBehaviour
         }
 
         //check if finished
-        if (ChunkManager.Instance.chunksInLD.Count() > 0 && ChunkManager.Instance.chunksInLD.Last().transform.position.z + 5 <= transform.position.z)
+        if (ChunkManager.Instance.isRuning && ChunkManager.Instance.chunksInLD.Count() > 0 && ChunkManager.Instance.chunksInLD.Last().transform.position.z + 5 <= transform.position.z)
         {
             ChunkManager.Instance.isGhostFinished = true;
         }

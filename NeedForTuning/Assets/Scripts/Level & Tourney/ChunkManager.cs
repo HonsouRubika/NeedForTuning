@@ -101,7 +101,6 @@ public class ChunkManager : MonoBehaviour
 
     private void OnLoadScene(Scene scene, LoadSceneMode mode)
     {
-        
         //CreateChunks
         //Debug.Log(scene.name);
         if (scene.name == "SceneTestController")

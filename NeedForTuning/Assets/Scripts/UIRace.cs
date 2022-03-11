@@ -28,7 +28,7 @@ public class UIRace : MonoBehaviour
         {
             pressSpace.GetComponent<TextMeshProUGUI>().text = "Press Space to start";
         }
-        else
+        else if(carController != null)
         {
             pressSpace.GetComponent<TextMeshProUGUI>().text = "";
         }
