@@ -6,23 +6,21 @@ EditorUserSettings:
   serializedVersion: 4
   m_ConfigSettings:
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
+=======
+>>>>>>> AuR_FinalRush
     RecentlyUsedScenePath-0:
-      value: 22424703114646680e0b0227036c7000131911242b0a293f3e3d1821a2b17a2decee22f0
+      value: 22424703114646680e0b0227036c7e0202231d39381b2535232c5212f7d20b14e3e578fce9332b25
       flags: 0
     RecentlyUsedScenePath-1:
-      value: 22424703114646680e0b0227036c6c1313191d1e293b32112f20113af6e9312bacf238e0f323
-      flags: 0
-    RecentlyUsedScenePath-2:
-      value: 22424703114646680e0b0227036c6c1313191d1e293b321322270921edec383df0a923e7ee2e26
-      flags: 0
-    RecentlyUsedScenePath-3:
       value: 22424703114646680e0b0227036c6c0417050c192f2d2835633c133af6f9
       flags: 0
-    RecentlyUsedScenePath-4:
+    RecentlyUsedScenePath-2:
       value: 22424703114646680e0b0227036c6b1f0305162f351b233c282a093aedee7a2decee22f0
       flags: 0
+<<<<<<< HEAD
     RecentlyUsedScenePath-5:
       value: 22424703114646680e0b0227036c722635282c25393a2835341a183fe7e32031ede978fce9332b25
       flags: 0
@@ -44,6 +42,8 @@ EditorUserSettings:
       value: 22424703114646680e0b0227036c6c1313191d1e293b321322270921edec383df0a923e7ee2e26
       flags: 0
 >>>>>>> LUD_FixAbilities
+=======
+>>>>>>> AuR_FinalRush
     vcSharedLogLevel:
       value: 0d5e400f0650
       flags: 0
