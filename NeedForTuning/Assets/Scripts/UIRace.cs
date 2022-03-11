@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class UIRace : MonoBehaviour
@@ -12,19 +13,24 @@ public class UIRace : MonoBehaviour
 
     private void Start()
     {
-        carController = GetComponent<CarController>();
+        carController = GameManager.Instance.car.GetComponent<CarController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (carController.currentState == CarController.LevelState.preview)
+        if (carController == null)
         {
-            pressSpace.GetComponent<TextMeshProUGUI>().enabled = true;
+            carController = GameManager.Instance.car.GetComponent<CarController>();
+        }
+
+        if (carController != null && carController.currentState == CarController.LevelState.preview)
+        {
+            pressSpace.GetComponent<TextMeshProUGUI>().text = "Press Space to start";
         }
         else
         {
-            pressSpace.GetComponent<TextMeshProUGUI>().enabled = false;
+            pressSpace.GetComponent<TextMeshProUGUI>().text = "";
         }
     }
 }

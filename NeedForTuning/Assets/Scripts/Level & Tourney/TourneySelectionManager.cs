@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 
@@ -46,19 +47,19 @@ public class TourneySelectionManager : MonoBehaviour
         switch (GameManager.Instance.nbOfTurney)
         {
             case 0:
-                recapSeason1.GetComponent<TextMeshProUGUI>().enabled = true;
-                recapSeason2.GetComponent<TextMeshProUGUI>().enabled = false;
-                recapSeason3.GetComponent<TextMeshProUGUI>().enabled = false;
+                recapSeason1.GetComponent<Image>().enabled = true;
+                recapSeason2.GetComponent<Image>().enabled = false;
+                recapSeason3.GetComponent<Image>().enabled = false;
                 break;
             case 1:
-                recapSeason1.GetComponent<TextMeshProUGUI>().enabled = false;
-                recapSeason2.GetComponent<TextMeshProUGUI>().enabled = true;
-                recapSeason3.GetComponent<TextMeshProUGUI>().enabled = false;
+                recapSeason1.GetComponent<Image>().enabled = false;
+                recapSeason2.GetComponent<Image>().enabled = true;
+                recapSeason3.GetComponent<Image>().enabled = false;
                 break;
             case 2:
-                recapSeason1.GetComponent<TextMeshProUGUI>().enabled = false;
-                recapSeason2.GetComponent<TextMeshProUGUI>().enabled = false;
-                recapSeason3.GetComponent<TextMeshProUGUI>().enabled = true;
+                recapSeason1.GetComponent<Image>().enabled = false;
+                recapSeason2.GetComponent<Image>().enabled = false;
+                recapSeason3.GetComponent<Image>().enabled = true;
                 break;
         }
     }
