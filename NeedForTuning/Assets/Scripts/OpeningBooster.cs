@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class OpeningBooster : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class OpeningBooster : MonoBehaviour
     public TemporaryManager temporaryManager;
 
     public GameObject button;
+    public GameObject buttonNextScene;
 
     public GameObject card01;
     public GameObject card02;
@@ -32,6 +34,10 @@ public class OpeningBooster : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
+        if (SceneManager.GetActiveScene().name != "StartScene")
+        {
+            buttonNextScene.SetActive(false);
+        }
     }
 
     void Update()
@@ -81,6 +87,12 @@ public class OpeningBooster : MonoBehaviour
             card01.GetComponentInChildren<CardBehaviour>().assignPiece();
             card02.GetComponentInChildren<CardBehaviour>().assignPiece();
             card03.GetComponentInChildren<CardBehaviour>().assignPiece();
+
+            if (SceneManager.GetActiveScene().name != "StartScene")
+            {
+                buttonNextScene.SetActive(true);
+            }
+
             StartCoroutine(BoosterDisapear());
         }        
     }

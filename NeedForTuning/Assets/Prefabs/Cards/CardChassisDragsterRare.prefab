@@ -85,7 +85,7 @@ TextMesh:
 
     Dragster
 
-    (Turbo)'
+    (Grip)'
   m_OffsetZ: 0
   m_CharacterSize: 0.03
   m_LineSpacing: 1
@@ -516,7 +516,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f84f0e73c5f7fe419d98470f1b9d513, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  linkedPiece: {fileID: 11400000, guid: a4bd023b36365cf4682670bed133aa76, type: 2}
+  linkedPiece: {fileID: 11400000, guid: a88ddc27178156b419d02d26a4bd9eeb, type: 2}
 --- !u!1001 &7136816217630561167
 PrefabInstance:
   m_ObjectHideFlags: 0

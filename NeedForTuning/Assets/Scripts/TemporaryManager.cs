@@ -123,4 +123,9 @@ public class TemporaryManager : MonoBehaviour
             openingBooster.canOpenTheBooster = true;
         }
     }
+
+    public void RetourCustomCarScene()
+    {
+        SceneManager.LoadScene("TourneySelection");
+    }
 }

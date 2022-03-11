@@ -25,6 +25,5 @@ public class CardBehaviour : MonoBehaviour
                 break;
         }
         if (GameManager.Instance.car != null) GameManager.Instance.GetComponent<CustomizeCar>().GarageUpdate();
-        else if (TemporaryManager.Instance != null && GameManager.Instance.nbOfTurney > 0) SceneManager.LoadScene("TourneySelection");
     }
 }

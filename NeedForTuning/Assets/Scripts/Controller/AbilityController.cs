@@ -49,13 +49,16 @@ public class AbilityController : MonoBehaviour
         AttributePieces();
         
     }
-    void AttributePieces()
+    public void AttributePieces()
     {
         abilityEngine = InventoryManager.Instance.engine;
         abilityTire = InventoryManager.Instance.tire;
         abilityChassis = InventoryManager.Instance.chassis;
         UpdateButtons();
-    }
+        utilisationEngine = 0;
+        utilisationTire = 0;
+        utilisationChassis = 0;
+}
 
     void UpdateButtons()
     {

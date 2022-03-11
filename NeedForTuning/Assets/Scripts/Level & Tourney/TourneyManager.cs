@@ -59,6 +59,7 @@ public class TourneyManager : MonoBehaviour
             GameManager.Instance.ghostTimerScript.resetTimer();
             ChunkManager.Instance.selectedLevel = levels[levelActu++];
             ChunkManager.Instance.Preview();
+            GameManager.Instance.car.GetComponent<AbilityController>().AttributePieces();
         }
         else
         {

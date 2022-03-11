@@ -16,7 +16,7 @@ MonoBehaviour:
   name: DragsterFrame
   image: {fileID: 0}
   cardPrefab: {fileID: 6556219383127088620, guid: 7cbee4641a1f47949b97534819ddbdb3, type: 3}
-  piecePrefab: {fileID: 4493566539765463004, guid: 2b7e912ab08f02847b764cc0584438b4, type: 3}
+  piecePrefab: {fileID: 1105193239545419798, guid: af0fc94aa0f223a4fa39ec5aa2b11a71, type: 3}
   maxSpeedConcrete: 5
   maxSpeedSand: 3
   maxSpeedIce: 4
